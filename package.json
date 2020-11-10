@@ -3,9 +3,60 @@
   "version": "0.1.0",
   "description": "Next.js online magazine starter",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "edgarlr",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edgarlr/magazine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edgarlr/magazine/issues"
+  },
+  "homepage": "https://github.com/edgarlr/magazine#readme",
+  "scripts": {
+    "dev": "next dev",
+    "dev:inspect": "NODE_OPTIONS='--inspect' next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc --pretty --noEmit",
+    "lint": "eslint . --ext .ts --ext .tsx --ext .js",
+    "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --fix",
+    "format": "prettier . --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "next": "^10.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.7",
+    "@types/react": "^16.9.56",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": ">=4",
+    "lint-staged": ">=10",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.5"
+  }
 }
