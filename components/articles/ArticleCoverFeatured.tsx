@@ -1,3 +1,5 @@
+import dateFormatter from '@lib/dateFormatter'
+
 type Props = {
   title: string
   author: string
@@ -21,7 +23,7 @@ const ArticleCoverFeatured = ({
         <p>
           por: <span className="italic">{author}</span>
         </p>
-        <span>{date}</span>
+        <span>{dateFormatter(date)}</span>
       </div>
       <div>
         <img src={image} alt={title} />

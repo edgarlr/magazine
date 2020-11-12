@@ -3,7 +3,7 @@ import { IconBookmark, IconSearch } from '@components/icons'
 
 const Header = () => {
   return (
-    <div className="fixed bg-primary top-0 left-0 right-0 text-center py-2 px-4 flex justify-between items-center">
+    <div className="fixed bg-primary top-0 left-0 right-0 text-center py-2 px-4 flex justify-between items-center z-20">
       <Link href="/">
         <a>
           <IconBookmark />
