@@ -1,19 +1,20 @@
-import { useTheme } from 'next-themes'
+// import { useTheme } from 'next-themes'
 import { NextPage } from 'next'
-import { Layout } from '@components/core'
+import { Layout, Nav } from '@components/core'
+import { ArticlesCarousel } from '@components/articles'
+import { articles } from '@lib/mocks/article-list'
+import { ArticlesList } from '@components/articles'
+import { categories } from '@lib/mocks/categories'
 
 const Home: NextPage = () => {
-  const { setTheme } = useTheme()
+  // const { setTheme } = useTheme()
   return (
     <Layout>
-      <div className="py-20">
-        <h1 className="text-5xl text-center text-accent-1">
-          Next.js + Tailwind CSS
-        </h1>
-        <h2 className="text-5xl font-serif">Magazine</h2>
-        <button onClick={() => setTheme('dark')}>Light Mode</button>
-        <button onClick={() => setTheme('light')}>Light Mode</button>
-      </div>
+      <ArticlesCarousel title="Top stories" articles={articles} />
+      <Nav categories={categories} />
+      <ArticlesList articles={articles} />
+      {/* <button onClick={() => setTheme('dark')}>Light Mode</button>
+        <button onClick={() => setTheme('light')}>Light Mode</button> */}
     </Layout>
   )
 }
