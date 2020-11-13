@@ -6,12 +6,34 @@ module.exports = {
   purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      inset: {
+        '1/2': '50%',
+      },
+      spacing: {
+        '1/2': '50%',
+        '1/3': '33.3333%',
+        '2/3': '66.6667%',
+        '1/4': '25%',
+        '3/4': '75%',
+        '1/5': '20%',
+        '2/5': '40%',
+        '3/5': '60%',
+        '4/5': '80%',
+        full: '100%',
+      },
+      boxShadow: {
+        'outline-2': '0 0 0 2px var(--accents-2)',
+        magical:
+          'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
+      },
       fontFamily: {
         sans: 'var(--font-sans)',
         serif: 'var(--font-serif)',
       },
-      maxWidth: {
-        '8xl': '1920px',
+      textColor: {
+        base: 'var(--text-base)',
+        primary: 'var(--text-primary)',
+        secondary: 'var(--text-secondary)',
       },
       colors: {
         primary: 'var(--primary)',
@@ -38,19 +60,6 @@ module.exports = {
         blue: 'var(--blue)',
         green: 'var(--green)',
         red: 'var(--red)',
-      },
-      textColor: {
-        base: 'var(--text-base)',
-        primary: 'var(--text-primary)',
-        secondary: 'var(--text-secondary)',
-      },
-      boxShadow: {
-        'outline-2': '0 0 0 2px var(--accents-2)',
-        magical:
-          'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
-      },
-      lineHeight: {
-        'extra-loose': '2.2',
       },
     },
   },
