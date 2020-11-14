@@ -9,6 +9,21 @@ type TArticleCover = {
   }
 }
 
+type TContributorFeatured = {
+  name: string
+  jobtitle: string
+  slug: string
+  urls: {
+    profilephoto: string
+  }
+}
+
+type TContributor = {
+  name: string
+  jobtitle: string
+  slug: string
+}
+
 type TCategory = {
   title: string
   slug: string
