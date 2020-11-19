@@ -15,7 +15,7 @@
   "homepage": "https://github.com/edgarlr/magazine#readme",
   "scripts": {
     "dev": "next dev",
-    "dev:inspect": "NODE_OPTIONS='--inspect' next",
+    "dev:inspect": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",

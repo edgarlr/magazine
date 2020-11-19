@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Rufina&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 :root {
   --font-sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
     sans-serif;
 
-  --font-serif: 'Rufina', serif;
+  --font-serif: 'Playfair Display', serif;
 
   --primary: #ffffff;
   --primary-2: #f1f3f5;

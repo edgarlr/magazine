@@ -1,14 +1,13 @@
 import Contributor from '@components/contribuitors/Contributor'
 import ContributorFeatured from '@components/contribuitors/ContributorFeatured'
 import { Layout } from '@components/core'
+import Hero from '@components/core/Hero/Hero'
 import { otherTeam, team } from '@lib/mocks/team'
 
 const ContributorsPage = () => {
   return (
     <Layout>
-      <h1 className="font-serif text-2xl uppercase text-center pt-2 pb-6">
-        Contributors
-      </h1>
+      <Hero title="Contributors" />
       <div>
         {team.map((contributor) => (
           <ContributorFeatured

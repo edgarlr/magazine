@@ -1,4 +1,4 @@
-import { IconList } from '@components/icons'
+// import { IconList } from '@components/icons'
 import Link from 'next/link'
 
 const Nav = ({ categories }: { categories: TCategory[] }) => {
@@ -11,9 +11,9 @@ const Nav = ({ categories }: { categories: TCategory[] }) => {
           </a>
         </Link>
       ))}
-      <button className="sticky py-2 pl-2 right-0  bg-primary">
+      {/* <button className="sticky py-2 pl-2 right-0  bg-primary">
         <IconList />
-      </button>
+      </button> */}
     </nav>
   )
 }

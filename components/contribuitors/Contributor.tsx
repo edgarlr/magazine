@@ -1,11 +1,15 @@
+import Link from 'next/link'
+
 const Contributor = ({ contributor }: { contributor: TContributor }) => {
   return (
-    <div className="py-4 border-b border-accents-2">
-      <h3 className="font-serif text-lg">{contributor.name}</h3>
-      <p className="text-xs capitalize text-accents-3">
-        {contributor.jobtitle}
-      </p>
-    </div>
+    <Link href={`/contributors/${contributor.slug}`}>
+      <div className="py-4 border-b border-accents-2">
+        <p className="font-serif text-lg">{contributor.name}</p>
+        <p className="text-xs capitalize text-accents-3">
+          {contributor.jobtitle}
+        </p>
+      </div>
+    </Link>
   )
 }
 

@@ -9,6 +9,17 @@ type TArticleCover = {
   }
 }
 
+type TCategory = {
+  id: number
+  title: string
+  slug: string
+  description: string
+  published_at: Date
+  created_at: Date
+  updated_at: Date
+  cover: null
+}
+
 type TContributorFeatured = {
   name: string
   jobtitle: string
@@ -21,10 +32,5 @@ type TContributorFeatured = {
 type TContributor = {
   name: string
   jobtitle: string
-  slug: string
-}
-
-type TCategory = {
-  title: string
   slug: string
 }
