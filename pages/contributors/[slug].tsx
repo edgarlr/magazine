@@ -1,4 +1,4 @@
-// import { ArticlesList } from '@components/articles'
+import { ArticlesList } from '@components/articles'
 import { Layout } from '@components/core'
 import { fetchAPI, getMediaURL } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
@@ -24,16 +24,23 @@ export async function getStaticProps({
   const contributor: TContributor = (
     await fetchAPI(`/contributors?slug=${params?.slug}`)
   )[0]
+
+  const articles: TArticle[] = await fetchAPI(
+    `/articles?author.slug=${params?.slug}`
+  )
+
+  // empty props will trigger the 404
   if (!contributor) return { props: {} }
-  return { props: { contributor } }
+  return { props: { contributor, articles } }
 }
 
 function ContributorPage({
   contributor,
+  articles,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback } = useRouter()
 
-  if (!isFallback && !contributor?.slug) {
+  if (!isFallback && !contributor) {
     return <ErrorPage statusCode={404} />
   }
 
@@ -67,7 +74,7 @@ function ContributorPage({
         <p className="text-center py-2">{contributor?.featured?.description}</p>
       )}
       <h4 className="uppercase pt-4">all contributons</h4>
-      {/* <ArticlesList articles={articles} /> */}
+      <ArticlesList articles={articles!} />
     </Layout>
   )
 }

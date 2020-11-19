@@ -1,6 +1,5 @@
 import { Layout } from '@components/core'
 import { ArticlesList } from '@components/articles'
-import { articles } from '@lib/mocks/article-list'
 import { IconList } from '@components/icons'
 import Hero from '@components/core/Hero/Hero'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
@@ -20,18 +19,25 @@ export async function getStaticProps({
   const category: TCategory = (
     await fetchAPI(`/categories?slug=${params?.slug}`)
   )[0]
+
   const categories: TCategory[] = await fetchAPI('/categories')
+
+  const articles: TArticle[] = await fetchAPI(
+    `/articles?category.slug=${params?.slug}`
+  )
 
   return {
     props: {
       category,
       categories,
+      articles,
     },
   }
 }
 
 function CategoryPage({
   category,
+  articles,
 }: // categories,
 InferGetStaticPropsType<typeof getStaticProps>) {
   return (

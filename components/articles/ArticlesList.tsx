@@ -1,17 +1,10 @@
 import ArticleCover from './ArticleCover'
 
-const ArticlesList = ({ articles }: { articles: TArticleCover[] }) => {
+const ArticlesList = ({ articles }: { articles: TArticle[] }) => {
   return (
     <section>
       {articles.map((article) => (
-        <ArticleCover
-          key={article.slug}
-          category={article.category}
-          title={article.title}
-          author={article.author}
-          date={article.date}
-          image={article.urls.image}
-        />
+        <ArticleCover article={article} key={article.slug} />
       ))}
     </section>
   )

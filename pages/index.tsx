@@ -2,7 +2,7 @@
 import { InferGetStaticPropsType } from 'next'
 import { Layout, Nav } from '@components/core'
 import { ArticlesCarousel } from '@components/articles'
-// import { ArticlesList } from '@components/articles'
+import { ArticlesList } from '@components/articles'
 import { fetchAPI } from '@lib/api'
 
 export async function getStaticProps() {
@@ -27,7 +27,7 @@ function Home({
     <Layout>
       <ArticlesCarousel title="Top stories" articles={articles} />
       <Nav categories={categories} />
-      {/* <ArticlesList articles={articles} /> */}
+      <ArticlesList articles={articles} />
       {/* <button onClick={() => setTheme('dark')}>Light Mode</button>
         <button onClick={() => setTheme('light')}>Light Mode</button> */}
     </Layout>
