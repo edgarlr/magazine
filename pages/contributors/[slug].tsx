@@ -1,6 +1,6 @@
 import { ArticlesList } from '@components/articles'
 import { Layout } from '@components/core'
-import { fetchAPI } from '@lib/api'
+import { fetchAPI, getMediaURL } from '@lib/api'
 import { articles } from '@lib/mocks/article-list'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
@@ -38,19 +38,35 @@ function ContributorPage({
     return <ErrorPage statusCode={404} />
   }
 
+  const isFeatured = contributor?.featured !== null
+
+  const thumbnailUrl = getMediaURL(
+    contributor?.featured?.profile_image.formats.thumbnail.url
+  )
+
   return (
     <Layout>
       <div className="text-center py-4">
-        <div className="relative w-24  h-24   mx-auto my-2">
-          {/* <img
-            className="absolute h-full w-full object-cover rounded-full"
-            src={contributor.urls.profilephoto}
-            alt={contributor.name}
-          /> */}
-        </div>
-        <h3 className="font-serif text-2xl">{contributor.name}</h3>
-        <p className="text-xs uppercase text-accents-3">{contributor.role}</p>
+        {isFeatured && (
+          <div className="relative w-24  h-24   mx-auto my-2">
+            <img
+              className="absolute h-full w-full object-cover rounded-full"
+              src={thumbnailUrl}
+              alt="profile"
+            />
+          </div>
+        )}
+        <h3 className="font-serif text-2xl">{contributor?.name}</h3>
+        <p className="text-xs uppercase text-accents-3">{contributor?.role}</p>
+        {contributor?.urls.twitter && (
+          <a href={`https://twitter.com/${contributor?.urls.twitter}`}>
+            @{contributor?.urls.twitter}
+          </a>
+        )}
       </div>
+      {isFeatured && (
+        <p className="text-center py-2">{contributor?.featured?.description}</p>
+      )}
       <h4 className="uppercase pt-4">all contributons</h4>
       <ArticlesList articles={articles} />
     </Layout>

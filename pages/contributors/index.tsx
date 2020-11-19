@@ -3,26 +3,23 @@ import ContributorFeatured from '@components/contribuitors/ContributorFeatured'
 import { Layout } from '@components/core'
 import Hero from '@components/core/Hero/Hero'
 import { fetchAPI } from '@lib/api'
+import { partition } from '@lib/partition'
+import { InferGetStaticPropsType } from 'next'
 
 export async function getStaticProps() {
-  const featured: TContributor[] = await fetchAPI('/contributors?featured=true')
-  const contributors: TContributor[] = await fetchAPI(
-    '/contributors?featured=false'
+  const contributors: TContributor[] = await fetchAPI('/contributors')
+  return { props: { contributors } }
+}
+
+export function ContributorsPage({
+  contributors,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  // Create 2 differents arrays based on the condition
+  const [featured, others] = partition<TContributor>(
+    contributors,
+    (i) => i.featured !== null
   )
-  return {
-    props: {
-      featured,
-      contributors,
-    },
-  }
-}
 
-type Props = {
-  featured: TContributor[]
-  contributors: TContributor[]
-}
-
-const ContributorsPage = ({ featured, contributors }: Props) => {
   return (
     <Layout>
       <Hero title="Contributors" />
@@ -34,9 +31,9 @@ const ContributorsPage = ({ featured, contributors }: Props) => {
           />
         ))}
       </div>
-      <h4 className="uppercase pt-4">Other contributors</h4>
+      <h4 className="uppercase pt-4">Other ontributors</h4>
       <div>
-        {contributors.map((contributor) => (
+        {others.map((contributor) => (
           <Contributor contributor={contributor} key={contributor.slug} />
         ))}
       </div>

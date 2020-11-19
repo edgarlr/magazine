@@ -11,3 +11,10 @@ export async function fetchAPI(path: string) {
   const data = await response.json()
   return data
 }
+
+export const getMediaURL = (url?: string) => {
+  if (!url) return ' '
+  // Return the full url when it's external
+  if (url.startsWith('http') || url.startsWith('//')) return url
+  return getStrapiURL(url)
+}
