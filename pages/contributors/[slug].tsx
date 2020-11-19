@@ -29,7 +29,7 @@ export async function getStaticProps({
     `/articles?author.slug=${params?.slug}`
   )
 
-  // empty props will trigger the 404
+  // No props will trigger a 404
   if (!contributor) return { props: {} }
   return { props: { contributor, articles } }
 }
@@ -74,7 +74,7 @@ function ContributorPage({
         <p className="text-center py-2">{contributor?.featured?.description}</p>
       )}
       <h4 className="uppercase pt-4">all contributons</h4>
-      <ArticlesList articles={articles!} />
+      <ArticlesList articles={articles || []} />
     </Layout>
   )
 }
