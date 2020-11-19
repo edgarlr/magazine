@@ -20,17 +20,20 @@ type TCategory = {
   cover: null
 }
 
-type TContributorFeatured = {
-  name: string
-  jobtitle: string
-  slug: string
-  urls: {
-    profilephoto: string
-  }
-}
-
 type TContributor = {
+  id: number
   name: string
-  jobtitle: string
   slug: string
+  role: string
+  published_at: Date
+  created_at: Date
+  updated_at: Date
+  urls: [
+    {
+      __component: string
+      id: number
+      twitter: string
+    }
+  ]
+  articles: []
 }

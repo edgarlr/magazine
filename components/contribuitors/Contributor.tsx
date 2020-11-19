@@ -5,9 +5,7 @@ const Contributor = ({ contributor }: { contributor: TContributor }) => {
     <Link href={`/contributors/${contributor.slug}`}>
       <div className="py-4 border-b border-accents-2">
         <p className="font-serif text-lg">{contributor.name}</p>
-        <p className="text-xs capitalize text-accents-3">
-          {contributor.jobtitle}
-        </p>
+        <p className="text-xs capitalize text-accents-3">{contributor.role}</p>
       </div>
     </Link>
   )
