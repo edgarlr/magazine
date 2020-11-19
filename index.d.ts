@@ -1,12 +1,14 @@
-type TArticleCover = {
-  category: string
-  slug: string
+type TArticle = {
+  id: number
   title: string
-  author: string
-  date: string
-  urls: {
-    image: string
-  }
+  slug: string
+  author: TContributor
+  content: string
+  category: TCategory
+  published_at: Date
+  created_at: Date
+  updated_at: Date
+  cover: TStrapiImage
 }
 
 type TCategory = {
@@ -49,8 +51,10 @@ type TStrapiImage = {
   width: number
   height: number
   formats: {
-    thumbnail: TStrapiImageFormat
-    small: TStrapiImageFormat
+    thumbnail?: TStrapiImageFormat
+    large?: TStrapiImageFormat
+    medium?: TStrapiImageFormat
+    small?: TStrapiImageFormat
   }
   hash: string
   ext: string

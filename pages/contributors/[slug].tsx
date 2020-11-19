@@ -1,7 +1,6 @@
-import { ArticlesList } from '@components/articles'
+// import { ArticlesList } from '@components/articles'
 import { Layout } from '@components/core'
 import { fetchAPI, getMediaURL } from '@lib/api'
-import { articles } from '@lib/mocks/article-list'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
@@ -41,7 +40,7 @@ function ContributorPage({
   const isFeatured = contributor?.featured !== null
 
   const thumbnailUrl = getMediaURL(
-    contributor?.featured?.profile_image.formats.thumbnail.url
+    contributor?.featured?.profile_image.formats.thumbnail?.url
   )
 
   return (
@@ -68,7 +67,7 @@ function ContributorPage({
         <p className="text-center py-2">{contributor?.featured?.description}</p>
       )}
       <h4 className="uppercase pt-4">all contributons</h4>
-      <ArticlesList articles={articles} />
+      {/* <ArticlesList articles={articles} /> */}
     </Layout>
   )
 }

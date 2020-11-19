@@ -1,4 +1,4 @@
-export default function dateFormatter(dateToformat: string) {
+export default function dateFormatter(dateToformat: Date) {
   const date = new Date(dateToformat)
   const year = date.getFullYear()
 
