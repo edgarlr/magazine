@@ -3,16 +3,16 @@ import { Layout } from '@components/core'
 import { fetchAPI } from '@lib/api'
 import { articles } from '@lib/mocks/article-list'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import { useRouter } from 'next/router'
+import ErrorPage from 'next/error'
 
 export async function getStaticPaths() {
   // If you don't have to many contributors you can uncomment this code and pre-build each page instead
-
   // const slugs: TContributor[] = await fetchAPI('/contributors')
   // return {
   //   paths: slugs.map((contributor) => `/contributors/${contributor.slug}`),
   //   fallback: false,
   // }
-
   return {
     paths: [],
     fallback: 'blocking',
@@ -25,12 +25,19 @@ export async function getStaticProps({
   const contributor: TContributor = (
     await fetchAPI(`/contributors?slug=${params?.slug}`)
   )[0]
+  if (!contributor) return { props: {} }
   return { props: { contributor } }
 }
 
 function ContributorPage({
   contributor,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { isFallback } = useRouter()
+
+  if (!isFallback && !contributor?.slug) {
+    return <ErrorPage statusCode={404} />
+  }
+
   return (
     <Layout>
       <div className="text-center py-4">
