@@ -63,7 +63,7 @@ function ContributorPage({
           </div>
         )}
         <h3 className="font-serif text-2xl">{contributor?.name}</h3>
-        <p className="text-xs uppercase text-accents-3">{contributor?.role}</p>
+        <p className="text-xs uppercase text-secondary">{contributor?.role}</p>
         {contributor?.urls.twitter && (
           <a href={`https://twitter.com/${contributor?.urls.twitter}`}>
             @{contributor?.urls.twitter}

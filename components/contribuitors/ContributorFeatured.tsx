@@ -21,7 +21,7 @@ const ContributorFeatured = ({
         </div>
         <div className="ml-5">
           <div className="font-serif text-2xl">{contributor.name}</div>
-          <p className="text-xs uppercase text-accents-3">{contributor.role}</p>
+          <p className="text-xs uppercase text-secondary">{contributor.role}</p>
         </div>
       </a>
     </Link>

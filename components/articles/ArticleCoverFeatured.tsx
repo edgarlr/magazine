@@ -6,17 +6,17 @@ import s from './ArticleCoverFeatured.module.css'
 
 const ArticleCoverFeatured = ({ article }: { article: TArticle }) => {
   return (
-    <div className="flex items-center h-56 relative text-gray-500  min-w-full mr-20">
+    <div className="flex items-center h-56 relative text-secondary  min-w-full mr-20">
       <div className="pt-4">
         <Link href={`/${article.category.slug}`}>
-          <a className="uppercase text-sm font-bold text-purple-400">
+          <a className="uppercase text-sm font-bold text-accent">
             {article.category.title}
           </a>
         </Link>
         <Link href={`/articles/${article.slug}`}>
           <h3 className={s.title}>{article.title}</h3>
         </Link>
-        <p className="font-serif text-s text-white">
+        <p className="font-serif text-s text-primary">
           By{' '}
           <Link href={`/contributors/${article.author.slug}`}>
             <span className="italic">{article.author.name}</span>

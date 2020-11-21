@@ -5,5 +5,5 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  @apply font-serif capitalize text-3xl text-white leading-tight;
+  @apply font-serif capitalize text-3xl text-primary leading-tight;
 }
