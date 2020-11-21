@@ -1,6 +1,6 @@
 import { IconBookmark, IconDownload } from '@components/icons'
 import { getMediaURL } from '@lib/api'
-import dateFormatter from '@lib/dateFormatter'
+import { getFormatedDate } from '@lib/dateFormatter'
 import Link from 'next/link'
 import s from './ArticleCoverFeatured.module.css'
 
@@ -22,7 +22,7 @@ const ArticleCoverFeatured = ({ article }: { article: TArticle }) => {
             <span className="italic">{article.author.name}</span>
           </Link>
         </p>
-        <span className="text-sm">{dateFormatter(article.published_at)}</span>
+        <span className="text-sm">{getFormatedDate(article.published_at)}</span>
       </div>
       <div className="absolute bottom-0 bg-primary left-1/2 transform -translate-x-1/2 ">
         <button className="pl-4">

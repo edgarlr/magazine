@@ -1,6 +1,6 @@
 import { IconBookmark, IconThreeDots } from '@components/icons'
 import { getMediaURL } from '@lib/api'
-import dateFormatter from '@lib/dateFormatter'
+import { getFormatedDate } from '@lib/dateFormatter'
 import Link from 'next/link'
 
 const ArticleCover = ({ article }: { article: TArticle }) => {
@@ -33,7 +33,7 @@ const ArticleCover = ({ article }: { article: TArticle }) => {
           </Link>
         </p>
         <span className="text-xs text-secondary">
-          {dateFormatter(article.published_at)}
+          {getFormatedDate(article.published_at)}
         </span>
       </div>
       <div className="absolute bottom-0 right-0 pb-3">

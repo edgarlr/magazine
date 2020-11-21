@@ -11,7 +11,7 @@ import {
   IconShare,
   IconTwitter,
 } from '@components/icons'
-import dateFormatter from '@lib/dateFormatter'
+import { getFormatedDate } from '@lib/dateFormatter'
 import ReactMarkdown from 'react-markdown'
 import Contributor from '@components/contribuitors/Contributor'
 import ContributorFeatured from '@components/contribuitors/ContributorFeatured'
@@ -59,7 +59,7 @@ function ArticlePage({
       </Link>
       <h1>{article?.title}</h1>
       <div>by {article?.author.name}</div>
-      <div>{dateFormatter(article?.published_at)}</div>
+      <div>{getFormatedDate(article?.published_at)}</div>
       <div>
         <IconBookmark />
         <IconDownload />
