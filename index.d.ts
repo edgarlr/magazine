@@ -5,9 +5,9 @@ type TArticle = {
   author: TContributor
   content: string
   category: TCategory
-  published_at: Date
-  created_at: Date
-  updated_at: Date
+  published_at: Date | string
+  created_at: Date | string
+  updated_at: Date | string
   cover: TStrapiImage
 }
 
@@ -16,9 +16,9 @@ type TCategory = {
   title: string
   slug: string
   description: string
-  published_at: Date
-  created_at: Date
-  updated_at: Date
+  published_at: Date | string
+  created_at: Date | string
+  updated_at: Date | string
   cover: null
 }
 
@@ -27,9 +27,9 @@ type TContributor = {
   name: string
   slug: string
   role: string
-  published_at: Date
-  created_at: Date
-  updated_at: Date
+  published_at: Date | string
+  created_at: Date | string
+  updated_at: Date | string
   urls: {
     id: number
     instagram: string | null
@@ -64,8 +64,8 @@ type TStrapiImage = {
   previewUrl: null
   provider: string
   provider_metadata: null
-  created_at: Date
-  updated_at: Date
+  created_at: Date | string
+  updated_at: Date | string
 }
 
 type TStrapiImageFormat = {

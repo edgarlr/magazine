@@ -11,10 +11,10 @@ import {
   IconShare,
   IconTwitter,
 } from '@components/icons'
-import { getFormatedDate } from '@lib/dateFormatter'
 import ReactMarkdown from 'react-markdown'
 import Contributor from '@components/contribuitors/Contributor'
 import ContributorFeatured from '@components/contribuitors/ContributorFeatured'
+import { Date } from '@components/ui'
 
 export async function getStaticPaths() {
   // If you don't have to many articles you can uncomment this code and pre-build each page instead
@@ -57,9 +57,10 @@ function ArticlePage({
           <IconArrowLeft />
         </button>
       </Link>
-      <h1>{article?.title}</h1>
+      <span>{article?.category.title}</span>
+      <h1 className="text-3xl font-serif">{article?.title}</h1>
       <div>by {article?.author.name}</div>
-      <div>{getFormatedDate(article?.published_at)}</div>
+      <Date date={article?.published_at as string} />
       <div>
         <IconBookmark />
         <IconDownload />

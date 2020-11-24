@@ -14,19 +14,21 @@ article img {
   @apply max-w-full w-auto mx-auto block rounded;
 }
 
-article h1,
 article h2,
-article h3,
-article h4 {
-  @apply font-bold;
+article h3 {
+  @apply font-serif;
 }
 
 article h2 {
-  @apply mt-16 text-2xl;
+  @apply mt-16 text-3xl;
 }
 
 article h3 {
-  @apply mt-12 text-xl;
+  @apply mt-12 text-2xl;
+}
+
+article h4 {
+  @apply font-bold text-xl;
 }
 
 article hr {

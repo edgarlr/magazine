@@ -1,4 +1,4 @@
-export const getFormatedDate = (dateToformat: Date) => {
+export const getFormattedDate = (dateToformat: Date | string | number) => {
   const date = new Date(dateToformat)
   const year = date.getFullYear()
 
