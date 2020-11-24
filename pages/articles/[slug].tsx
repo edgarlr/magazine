@@ -57,29 +57,37 @@ function ArticlePage({
           <IconArrowLeft />
         </button>
       </Link>
-      <span>{article?.category.title}</span>
-      <h1 className="text-3xl font-serif">{article?.title}</h1>
-      <div>by {article?.author.name}</div>
-      <Date date={article?.published_at as string} />
-      <div>
-        <IconBookmark />
-        <IconDownload />
-      </div>
       <article>
-        <ReactMarkdown>{article?.content || ''}</ReactMarkdown>
-      </article>
-      <div>
-        {article?.author.featured === null ? (
-          <Contributor contributor={article.author} />
-        ) : (
-          <ContributorFeatured contributor={article.author} />
-        )}
+        <header>
+          <span>{article?.category.title}</span>
+          <h1 className="text-3xl font-serif">{article?.title}</h1>
+          <div>by {article?.author.name}</div>
+          <Date date={article?.published_at as string} />
+        </header>
         <div>
-          <IconTwitter />
-          <IconShare />
           <IconBookmark />
+          <IconDownload />
         </div>
-      </div>
+        <ReactMarkdown>{article?.content || ''}</ReactMarkdown>
+        <footer>
+          {article?.author.featured === null ? (
+            <Contributor contributor={article.author} />
+          ) : (
+            <ContributorFeatured contributor={article.author} />
+          )}
+          <ul>
+            <li>
+              <IconTwitter />
+            </li>
+            <li>
+              <IconShare />
+            </li>
+            <li>
+              <IconBookmark />
+            </li>
+          </ul>
+        </footer>
+      </article>
     </Layout>
   )
 }
