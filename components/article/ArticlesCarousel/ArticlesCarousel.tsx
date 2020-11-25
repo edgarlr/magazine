@@ -9,8 +9,8 @@ type Props = {
 
 const ArticlesCarousel = ({ title, articles }: Props) => {
   return (
-    <div>
-      <div className="flex items-center justify-between h-auto">
+    <section className="mb-12">
+      <div className="flex items-center justify-between h-auto py-4">
         <p className="uppercase">{title}</p>
         <div>
           <button className="opacity-25">
@@ -30,7 +30,7 @@ const ArticlesCarousel = ({ title, articles }: Props) => {
           />
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 

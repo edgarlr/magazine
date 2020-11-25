@@ -73,8 +73,7 @@ function ContributorPage({
       {isFeatured && (
         <p className="text-center py-2">{contributor?.featured?.description}</p>
       )}
-      <h4 className="uppercase pt-4">all contributons</h4>
-      <ArticlesList articles={articles || []} />
+      <ArticlesList articles={articles || []} title="all contributons" />
     </Layout>
   )
 }

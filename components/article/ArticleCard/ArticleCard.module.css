@@ -1,30 +1,27 @@
 .cover {
   @apply pt-6 pb-4 border-b border-primary relative;
-  /* cover image */
   & figure {
     @apply relative w-full;
     & img {
       @apply w-full object-cover;
     }
   }
-  /* actions */
   & ul {
     @apply absolute bottom-0 right-0 pb-3 flex;
   }
 }
 
 .carousel {
-  @apply flex flex-row-reverse items-center h-56 relative min-w-full mr-20;
-  /* cover image */
+  @apply box-border flex flex-row-reverse items-center justify-between relative min-w-full mr-10;
+  scroll-snap-align: start;
   & figure {
-    @apply relative w-2/3 pb-2/5 transform translate-x-1/3;
-    & img {
-      @apply absolute h-full w-full object-cover;
-    }
+    @apply relative pb-56 w-2/5;
   }
-  /* actions */
+  & img {
+    @apply absolute h-full max-h-full w-full max-w-full object-cover;
+  }
   & ul {
-    @apply flex absolute bottom-0 bg-primary left-1/2 transform -translate-x-1/2;
+    @apply flex absolute bottom-0 bg-primary right-0 transform translate-x-1 translate-y-1;
   }
 }
 

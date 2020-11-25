@@ -1,6 +1,6 @@
 import { Layout } from '@components/core'
 import { ArticlesList } from '@components/article'
-import { IconList } from '@components/icons'
+
 import Hero from '@components/core/Hero/Hero'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { fetchAPI } from '@lib/api'
@@ -43,13 +43,11 @@ InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
       <Hero title={category.title} description={category.description} />
-      <div className="flex justify-between">
-        <p className="uppercase font-bold">Articles</p>
-        <button>
-          <IconList />
-        </button>
+      <div className="">
+        <p className="uppercase">Articles</p>
+        <button></button>
       </div>
-      <ArticlesList articles={articles} />
+      <ArticlesList articles={articles} title="Articles" />
     </Layout>
   )
 }
