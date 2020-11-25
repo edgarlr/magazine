@@ -6,39 +6,36 @@ import {
   IconShare,
   IconTwitter,
 } from '@components/icons'
-import Contributor from '@components/contribuitors/Contributor'
-import ContributorFeatured from '@components/contribuitors/ContributorFeatured'
 import { Date } from '@components/ui'
+import { Author, AuthorCard, CategoryTag, Title } from '../ui'
 
 function Article({ article }: { article: TArticle | undefined }) {
   if (!article) return <p>something went wrong</p>
 
   return (
     <article>
-      <header>
-        <span>{article.category.title}</span>
-        <h1 className="text-3xl font-serif">{article.title}</h1>
-        <p>
-          by <em>{article.author.name}</em>
-        </p>
+      <header className="py-10">
+        <CategoryTag category={article.category} />
+        <Title title={article.title} />
+        <Author author={article.author} />
         <Date date={article.published_at as string} />
       </header>
-      <div>
-        <IconBookmark />
-        <IconDownload />
-      </div>
+      <ul className="flex">
+        <li>
+          <IconBookmark />
+        </li>
+        <li>
+          <IconDownload />
+        </li>
+      </ul>
 
       <section className={s.markdown}>
         <ReactMarkdown>{article.content || ''}</ReactMarkdown>
       </section>
 
-      <footer>
-        {article.author.featured === null ? (
-          <Contributor contributor={article.author} />
-        ) : (
-          <ContributorFeatured contributor={article.author} />
-        )}
-        <ul>
+      <footer className="border-t border-primary py-6">
+        <AuthorCard author={article.author} />
+        <ul className="flex  justify-end py-4">
           <li>
             <IconTwitter />
           </li>

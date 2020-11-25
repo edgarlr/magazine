@@ -38,7 +38,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
         <p className="font-serif text-s text-primary">
           By{' '}
           <Link href={`/contributors/${article.author.slug}`}>
-            <span className="italic">{article.author.name}</span>
+            <em>{article.author.name}</em>
           </Link>
         </p>
         <Date date={article.published_at as string} />

@@ -24,8 +24,8 @@ function Home({
 
   return (
     <Layout>
-      <ArticlesCarousel title="Top stories" articles={articles} />
       <Nav categories={categories} />
+      <ArticlesCarousel title="Top stories" articles={articles} />
       <ArticlesList articles={articles} />
       {/* <button onClick={() => setTheme('dark')}>Light Mode</button>
         <button onClick={() => setTheme('light')}>Light Mode</button> */}
