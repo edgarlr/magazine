@@ -1,5 +1,5 @@
 import { Layout } from '@components/core'
-import { ArticlesList } from '@components/articles'
+import { ArticlesList } from '@components/article'
 import { IconList } from '@components/icons'
 import Hero from '@components/core/Hero/Hero'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'

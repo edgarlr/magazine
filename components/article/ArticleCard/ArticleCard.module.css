@@ -1,0 +1,39 @@
+.cover {
+  @apply pt-6 pb-4 border-b border-primary relative;
+  /* cover image */
+  & figure {
+    @apply relative w-full;
+    & img {
+      @apply w-full object-cover;
+    }
+  }
+  /* actions */
+  & ul {
+    @apply absolute bottom-0 right-0 pb-3 flex;
+  }
+}
+
+.carousel {
+  @apply flex flex-row-reverse items-center h-56 relative min-w-full mr-20;
+  /* cover image */
+  & figure {
+    @apply relative w-2/3 pb-2/5 transform translate-x-1/3;
+    & img {
+      @apply absolute h-full w-full object-cover;
+    }
+  }
+  /* actions */
+  & ul {
+    @apply flex absolute bottom-0 bg-primary left-1/2 transform -translate-x-1/2;
+  }
+}
+
+.title {
+  overflow: hidden;
+  max-height: 7rem;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  @apply font-serif capitalize text-3xl text-primary leading-tight;
+}

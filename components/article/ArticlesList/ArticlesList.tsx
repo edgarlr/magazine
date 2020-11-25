@@ -1,10 +1,10 @@
-import ArticleCover from './ArticleCover'
+import { ArticleCard } from '..'
 
 const ArticlesList = ({ articles }: { articles: TArticle[] }) => {
   return (
     <section>
       {articles.map((article) => (
-        <ArticleCover article={article} key={article.slug} />
+        <ArticleCard article={article} key={article.slug} />
       ))}
     </section>
   )

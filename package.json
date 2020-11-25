@@ -1,7 +1,7 @@
 {
   "name": "magazine",
   "version": "0.1.0",
-  "description": "Next.js online magazine starter",
+  "description": "Next.js online magazine starter kit",
   "main": "index.js",
   "author": "edgarlr",
   "license": "MIT",

@@ -1,4 +1,4 @@
-import { ArticlesList } from '@components/articles'
+import { ArticlesList } from '@components/article'
 import { Layout } from '@components/core'
 import { fetchAPI, getMediaURL } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 
 export async function getStaticPaths() {
-  // If you don't have to many contributors you can uncomment this code and pre-build each page instead
+  // If you don't have too many contributors you can uncomment this code and pre-build each page instead
   // const slugs: TContributor[] = await fetchAPI('/contributors')
   // return {
   //   paths: slugs.map((contributor) => `/contributors/${contributor.slug}`),

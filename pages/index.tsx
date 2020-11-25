@@ -1,8 +1,7 @@
 // import { useTheme } from 'next-themes'
 import { InferGetStaticPropsType } from 'next'
 import { Layout, Nav } from '@components/core'
-import { ArticlesCarousel } from '@components/articles'
-import { ArticlesList } from '@components/articles'
+import { ArticlesCarousel, ArticlesList } from '@components/article'
 import { fetchAPI } from '@lib/api'
 
 export async function getStaticProps() {

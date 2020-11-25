@@ -1,5 +1,5 @@
 import { IconArrowLeft, IconArrowRight } from '@components/icons'
-import ArticleCoverFeatured from './ArticleCoverFeatured'
+import { ArticleCard } from '..'
 import s from './ArticlesCarousel.module.css'
 
 type Props = {
@@ -23,7 +23,11 @@ const ArticlesCarousel = ({ title, articles }: Props) => {
       </div>
       <div className={s.root}>
         {articles.map((article) => (
-          <ArticleCoverFeatured article={article} key={article.slug} />
+          <ArticleCard
+            article={article}
+            key={article.slug}
+            variant="carousel"
+          />
         ))}
       </div>
     </div>
