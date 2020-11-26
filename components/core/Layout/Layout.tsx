@@ -1,15 +1,17 @@
-import { Header } from '@components/core'
+import { Header, Nav } from '@components/core'
 
 type Props = {
   children: React.ReactNode
+  nav?: TCategory[]
 }
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children, nav }: Props) => {
   return (
-    <div className="px-4">
+    <>
       <Header />
-      <main className="pt-20 flex flex-col">{children}</main>
-    </div>
+      {nav && <Nav categories={nav} />}
+      <main className="flex flex-col px-4 pt-14">{children}</main>
+    </>
   )
 }
 

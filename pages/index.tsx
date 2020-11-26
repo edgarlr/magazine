@@ -1,6 +1,6 @@
 // import { useTheme } from 'next-themes'
 import { InferGetStaticPropsType } from 'next'
-import { Layout, Nav } from '@components/core'
+import { Layout } from '@components/core'
 import { ArticlesCarousel, ArticlesList } from '@components/article'
 import { fetchAPI } from '@lib/api'
 
@@ -23,8 +23,7 @@ function Home({
   // const { setTheme } = useTheme()
 
   return (
-    <Layout>
-      <Nav categories={categories} />
+    <Layout nav={categories}>
       <ArticlesCarousel title="Top stories" articles={articles} />
       <ArticlesList articles={articles} title="Recent" />
       {/* <button onClick={() => setTheme('dark')}>Light Mode</button>

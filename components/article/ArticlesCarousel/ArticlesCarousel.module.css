@@ -1,8 +1,6 @@
 .root {
   @apply flex overflow-hidden overflow-x-scroll;
   scroll-snap-type: x mandatory;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
   }

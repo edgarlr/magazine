@@ -8,11 +8,13 @@ import { InferGetStaticPropsType } from 'next'
 
 export async function getStaticProps() {
   const contributors: TContributor[] = await fetchAPI('/contributors')
-  return { props: { contributors } }
+  const categories: TCategory[] = await fetchAPI('/categories')
+  return { props: { contributors, categories } }
 }
 
 export function ContributorsPage({
   contributors,
+  categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   // Create 2 differents arrays based on the condition
   const [featured, others] = partition<TContributor>(
@@ -21,7 +23,7 @@ export function ContributorsPage({
   )
 
   return (
-    <Layout>
+    <Layout nav={categories}>
       <Hero title="Contributors" />
       <div>
         {featured.map((contributor) => (

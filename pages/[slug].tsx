@@ -38,10 +38,10 @@ export async function getStaticProps({
 function CategoryPage({
   category,
   articles,
-}: // categories,
-InferGetStaticPropsType<typeof getStaticProps>) {
+  categories,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout>
+    <Layout nav={categories}>
       <Hero title={category.title} description={category.description} />
       <div className="">
         <p className="uppercase">Articles</p>

@@ -1,0 +1,9 @@
+.root {
+  @apply overflow-x-scroll sticky flex h-14 items-center whitespace-nowrap top-14 px-4 z-10 bg-primary;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & a:first-child {
+    padding-left: 0;
+  }
+}

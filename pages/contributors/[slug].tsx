@@ -6,12 +6,15 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 
 export async function getStaticPaths() {
-  // If you don't have too many contributors you can uncomment this code and pre-build each page instead
+  // If you don't have too many contributors you can uncomment
+  // this code and pre-build each page instead.
+
   // const slugs: TContributor[] = await fetchAPI('/contributors')
   // return {
   //   paths: slugs.map((contributor) => `/contributors/${contributor.slug}`),
   //   fallback: false,
   // }
+
   return {
     paths: [],
     fallback: 'blocking',
