@@ -11,7 +11,7 @@ function Author({ author, className }: Props) {
     <p className={cn('font-serif text-s text-primary', className)}>
       By{' '}
       <Link href={`/contributors/${author.slug}`}>
-        <em>{author.name}</em>
+        <a>{author.name}</a>
       </Link>
     </p>
   )

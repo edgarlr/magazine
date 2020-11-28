@@ -5,6 +5,7 @@ type TArticle = {
   author: TContributor
   content: string
   category: TCategory
+  description: string
   published_at: Date | string
   created_at: Date | string
   updated_at: Date | string
@@ -19,7 +20,7 @@ type TCategory = {
   published_at: Date | string
   created_at: Date | string
   updated_at: Date | string
-  cover: null
+  cover: TStrapiImage
 }
 
 type TContributor = {
@@ -40,6 +41,26 @@ type TContributor = {
     description: string
     profile_image: TStrapiImage
   } | null
+}
+
+type TGlobal = {
+  id: number
+  site_name: string
+  description: string
+  site_url: string
+  published_at: Date
+  created_at: Date
+  updated_at: Date
+  social_links: {
+    id?: number
+    twitter?: string
+    instagram?: string
+    facebook?: string
+    youtube?: string
+    linkedin?: string
+    contact_email?: string
+  }
+  cover: TStrapiImage
 }
 
 // Strapi Types

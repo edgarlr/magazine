@@ -3,7 +3,8 @@ import { ArticlesList } from '@components/article'
 
 import Hero from '@components/core/Hero/Hero'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import { fetchAPI } from '@lib/api'
+import { fetchAPI, getMediaURL } from '@lib/api'
+import { NextSeo } from 'next-seo'
 
 export async function getStaticPaths() {
   const categories: TCategory[] = await fetchAPI('/categories')
@@ -42,6 +43,25 @@ function CategoryPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout nav={categories}>
+      <NextSeo
+        title={category.title}
+        description={category.description}
+        openGraph={{
+          title: category.title,
+          description: category.description,
+          // Only include OG image if exists
+          // This will break disabling Strapi Image Optimization
+          ...(category.cover && {
+            images: Object.values(category.cover.formats).map((image) => {
+              return {
+                url: getMediaURL(image?.url),
+                width: image?.width,
+                height: image?.height,
+              }
+            }),
+          }),
+        }}
+      />
       <Hero title={category.title} description={category.description} />
       <div className="">
         <p className="uppercase">Articles</p>
