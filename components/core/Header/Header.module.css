@@ -1,0 +1,27 @@
+.searchContainer {
+  @apply justify-center items-center fixed bg-primary top-0 left-0 right-0 h-14 border-primary mt-14 px-4;
+}
+
+.searchLabel {
+  @apply flex  border border-secondary w-full py-2 px-3 rounded-xl;
+}
+.searchLabel:focus-within {
+  @apply border-primary;
+}
+.searchIcon {
+  @apply absolute;
+}
+
+.searchInput {
+  @apply bg-transparent outline-none w-full pr-2 pl-10;
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+}
+
+.searchClear {
+  @apply px-1 opacity-50;
+  &:hover {
+    @apply opacity-100;
+  }
+}

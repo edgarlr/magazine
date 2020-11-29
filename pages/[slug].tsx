@@ -63,10 +63,6 @@ function CategoryPage({
         }}
       />
       <Hero title={category.title} description={category.description} />
-      <div className="">
-        <p className="uppercase">Articles</p>
-        <button></button>
-      </div>
       <ArticlesList articles={articles} title="Articles" />
     </Layout>
   )
