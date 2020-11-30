@@ -1,7 +1,9 @@
 export function getStrapiURL(path: string) {
-  return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
-  }${path}`
+  // Uncomment this code before you deplyo the Strapi CMS
+  // return `${
+  //   process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
+  // }${path}`
+  return `http://localhost:1337${path}`
 }
 
 // Helper to make GET requests to Strapi
