@@ -33,7 +33,14 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
           </a>
         </Link>
         <Link href={`/articles/${article.slug}`}>
-          <h3 className={s.title}>{article.title}</h3>
+          <h3
+            className={cn(
+              s.title,
+              'capitalize text-3xl leading-tight text-serif overflow-hidden max-h-28'
+            )}
+          >
+            {article.title}
+          </h3>
         </Link>
         <p className="font-serif text-s text-primary">
           By{' '}

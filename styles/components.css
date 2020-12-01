@@ -1,0 +1,85 @@
+@layer components {
+  .text-serif {
+    @apply font-serif font-normal;
+  }
+
+  .markdown {
+    @apply text-lg max-w-full leading-article;
+    & > * + p {
+      @apply my-4;
+    }
+
+    & a {
+      @apply underline;
+    }
+
+    & img {
+      @apply max-w-full w-auto mx-auto block rounded;
+    }
+
+    & h2,
+    & h3 {
+      @apply font-serif font-normal;
+    }
+
+    & h2 {
+      @apply mt-16;
+    }
+
+    & h3 {
+      @apply mt-12;
+    }
+
+    & hr {
+      @apply border-none border border-t border-primary;
+    }
+
+    & em {
+      @apply block text-center text-sm border-primary mb-8 text-secondary;
+    }
+
+    & blockquote {
+      @apply my-6 pt-1 pb-2 pl-6 pr-4 relative text-secondary border-l-4 border-primary leading-tight;
+    }
+
+    & blockquote p {
+      @apply text-base;
+    }
+
+    /* Code Snippets */
+    & *:not(pre) > code {
+      @apply text-base p-1 bg-primary-2 rounded-sm;
+    }
+
+    & *:not(pre) > code::before,
+    & *:not(pre) > code::after {
+      user-select: none;
+    }
+
+    & pre {
+      @apply overflow-x-auto bg-primary-2 leading-6 py-6 px-5 rounded text-base;
+    }
+
+    /* Unordered List */
+    & ul {
+      @apply px-6 list-inside leading-normal;
+    }
+
+    & ul li {
+      @apply leading-6 list-disc px-4 p-1;
+    }
+
+    & ul li strong {
+      @apply font-bold;
+    }
+
+    /* Order List */
+    & ol {
+      @apply px-6 list-outside list-decimal leading-normal;
+    }
+
+    & ol li {
+      @apply p-2 leading-6;
+    }
+  }
+}

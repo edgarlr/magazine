@@ -1,0 +1,11 @@
+@layer utilities {
+  .scroll-snap-x-mandatory {
+    scroll-snap-type: x mandatory;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .search-btn-none::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+}

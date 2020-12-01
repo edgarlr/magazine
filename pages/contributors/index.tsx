@@ -1,6 +1,5 @@
 import Contributor from '@components/contribuitors/Contributor'
 import ContributorFeatured from '@components/contribuitors/ContributorFeatured'
-import { Layout } from '@components/core'
 import Hero from '@components/core/Hero/Hero'
 import { fetchAPI } from '@lib/api'
 import { partition } from '@lib/partition'
@@ -14,7 +13,6 @@ export async function getStaticProps() {
 
 export function ContributorsPage({
   contributors,
-  categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   // Create 2 differents arrays based on the condition
   const [featured, others] = partition<TContributor>(
@@ -23,7 +21,7 @@ export function ContributorsPage({
   )
 
   return (
-    <Layout nav={categories}>
+    <>
       <Hero title="Contributors" />
       <div>
         {featured.map((contributor) => (
@@ -39,7 +37,7 @@ export function ContributorsPage({
           <Contributor contributor={contributor} key={contributor.slug} />
         ))}
       </div>
-    </Layout>
+    </>
   )
 }
 

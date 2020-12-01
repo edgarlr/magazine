@@ -1,16 +1,19 @@
-import { Header, Nav } from '@components/core'
+import { Footer, Header, Nav } from '@components/core'
 
 type Props = {
   children: React.ReactNode
-  nav?: TCategory[]
+  global: TGlobal
+  categories: TCategory[]
+  pages: TPage[]
 }
 
-const Layout = ({ children, nav }: Props) => {
+const Layout = ({ children, categories, global, pages }: Props) => {
   return (
     <>
       <Header />
-      {nav && <Nav categories={nav} />}
+      <Nav categories={categories} />
       <main className="flex flex-col px-4 pt-14">{children}</main>
+      <Footer categories={categories} pages={pages} global={global} />
     </>
   )
 }

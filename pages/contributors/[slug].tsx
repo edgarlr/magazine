@@ -1,5 +1,4 @@
 import { ArticlesList } from '@components/article'
-import { Layout } from '@components/core'
 import { fetchAPI, getMediaURL } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
@@ -54,7 +53,7 @@ function ContributorPage({
   )
 
   return (
-    <Layout>
+    <>
       <div className="text-center py-4">
         {isFeatured && (
           <div className="relative w-24  h-24   mx-auto my-2">
@@ -77,7 +76,7 @@ function ContributorPage({
         <p className="text-center py-2">{contributor?.featured?.description}</p>
       )}
       <ArticlesList articles={articles || []} title="all contributons" />
-    </Layout>
+    </>
   )
 }
 

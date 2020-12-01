@@ -1,13 +1,23 @@
 import App from 'next/app'
 import type { AppProps, AppContext } from 'next/app'
-import '@styles/main.css'
 import { ThemeProvider } from 'next-themes'
 import { fetchAPI, getMediaURL } from '@lib/api'
 import { DefaultSeo } from 'next-seo'
 import Head from 'next/head'
+import { Layout } from '@components/core'
+import '@styles/main.css'
+import '@styles/tailwind.css'
+import 'tailwindcss/utilities.css'
+import '@styles/utilities.css'
+
+type Props = {
+  global: TGlobal
+  categories: TCategory[]
+  pages: TPage[]
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { global }: { global: TGlobal } = pageProps
+  const { global, categories, pages }: Props = pageProps
 
   return (
     <ThemeProvider>
@@ -35,7 +45,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           cardType: 'summary_large_image',
         }}
       />
-      <Component {...pageProps} />
+      <Layout global={global} categories={categories} pages={pages}>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   )
 }
@@ -45,8 +57,10 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext)
   // Fetch global site data
   const global = await fetchAPI('/global')
+  const categories = await fetchAPI('/categories')
+  const pages = await fetchAPI('/pages')
 
-  return { ...appProps, pageProps: { global } }
+  return { ...appProps, pageProps: { global, categories, pages } }
 }
 
 export default MyApp

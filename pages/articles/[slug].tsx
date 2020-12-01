@@ -1,4 +1,3 @@
-import { Layout } from '@components/core'
 import { fetchAPI, getMediaURL } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
@@ -44,7 +43,7 @@ function ArticlePage({
   }
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={article?.title}
         description={article?.description}
@@ -80,7 +79,7 @@ function ArticlePage({
         </button>
       </Link>
       <Article article={article} />
-    </Layout>
+    </>
   )
 }
 

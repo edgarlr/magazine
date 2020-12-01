@@ -26,11 +26,8 @@
 }
 
 .title {
-  overflow: hidden;
-  max-height: 7rem;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  @apply font-serif capitalize text-3xl text-primary leading-tight;
 }

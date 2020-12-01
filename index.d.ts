@@ -63,6 +63,18 @@ type TGlobal = {
   cover: TStrapiImage
 }
 
+type TPage = {
+  id: number
+  Title: string
+  slug: string
+  description: string
+  content: string
+  published_at: Date
+  created_at: Date
+  updated_at: Date
+  cover?: TStrapiImage
+}
+
 // Strapi Types
 type TStrapiImage = {
   id: number

@@ -1,5 +1,4 @@
 import { ArticleCard } from '..'
-import s from './ArticlesCarousel.module.css'
 
 type Props = {
   articles: TArticle[]
@@ -12,7 +11,7 @@ const ArticlesCarousel = ({ title, articles }: Props) => {
       <div className="flex items-center justify-between h-auto py-4">
         <p className="uppercase">{title}</p>
       </div>
-      <div className={s.root}>
+      <div className="flex overflow-hidden overflow-x-scroll scroll-snap-x-mandatory scrollbar-none">
         {articles.map((article) => (
           <ArticleCard
             article={article}

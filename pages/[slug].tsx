@@ -1,4 +1,3 @@
-import { Layout } from '@components/core'
 import { ArticlesList } from '@components/article'
 
 import Hero from '@components/core/Hero/Hero'
@@ -39,10 +38,9 @@ export async function getStaticProps({
 function CategoryPage({
   category,
   articles,
-  categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout nav={categories}>
+    <>
       <NextSeo
         title={category.title}
         description={category.description}
@@ -64,7 +62,7 @@ function CategoryPage({
       />
       <Hero title={category.title} description={category.description} />
       <ArticlesList articles={articles} title="Articles" />
-    </Layout>
+    </>
   )
 }
 

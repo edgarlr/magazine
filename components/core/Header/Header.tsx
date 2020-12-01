@@ -22,8 +22,11 @@ const Header = () => {
         {showSearch ? <IconClose /> : <IconSearch />}
       </button>
       <div className={cn(s.searchContainer, showSearch ? 'flex' : 'hidden')}>
-        <label htmlFor="search" className={s.searchLabel}>
-          <span className={s.searchIcon}>
+        <label
+          htmlFor="search"
+          className="flex border border-secondary w-full py-2 px-3 rounded-xl focus-within:border-primary"
+        >
+          <span className="absolute">
             <IconSearch />
           </span>
           <input
@@ -31,7 +34,7 @@ const Header = () => {
             name="search"
             id="search"
             placeholder="Buscar..."
-            className={s.searchInput}
+            className="bg-transparent outline-none w-full pr-2 pl-10 search-btn-none"
             onKeyUp={(e) => {
               e.preventDefault()
               if (e.key === 'Enter') {

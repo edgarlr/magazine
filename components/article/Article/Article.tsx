@@ -1,13 +1,12 @@
 import ReactMarkdown from 'react-markdown'
-import s from './Article.module.css'
+import { Date } from '@components/ui'
+import { Author, AuthorCard, CategoryTag, Title } from '../ui'
 import {
   IconBookmark,
   IconDownload,
   IconShare,
   IconTwitter,
 } from '@components/icons'
-import { Date } from '@components/ui'
-import { Author, AuthorCard, CategoryTag, Title } from '../ui'
 
 function Article({ article }: { article: TArticle | undefined }) {
   if (!article) return <p>something went wrong</p>
@@ -29,7 +28,7 @@ function Article({ article }: { article: TArticle | undefined }) {
         </li>
       </ul>
 
-      <section className={s.markdown}>
+      <section className="markdown">
         <ReactMarkdown>{article.content || ''}</ReactMarkdown>
       </section>
 
