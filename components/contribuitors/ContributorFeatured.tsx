@@ -11,19 +11,19 @@ const ContributorFeatured = ({
   )
   return (
     <Link href={`/contributors/${contributor.slug}`}>
-      <a className="flex py-2">
-        <div className="relative w-16 h-16">
+      <li className="flex py-2">
+        <figure className="relative w-16 h-16">
           <img
             className="absolute h-full w-full object-cover rounded-full"
             src={thumbnailUrl}
             alt="profile"
           />
-        </div>
+        </figure>
         <div className="ml-5">
           <h3 className="serif">{contributor.name}</h3>
           <p className="text-xs uppercase text-secondary">{contributor.role}</p>
         </div>
-      </a>
+      </li>
     </Link>
   )
 }

@@ -3,8 +3,8 @@ module.exports = {
   darkMode: false,
   theme: {
     borderColor: (theme) => ({
-      DEFAULT: theme('var(--primary)', 'currentColor'),
-      primary: 'var(--primary-1)',
+      DEFAULT: theme('var(--primary-2)', 'currentColor'),
+      primary: 'var(--primary)',
       secondary: 'var(--primary-2)',
       danger: 'var(--red)',
       succes: 'var(--green)',

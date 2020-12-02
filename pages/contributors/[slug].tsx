@@ -3,6 +3,7 @@ import { fetchAPI, getMediaURL } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
+import ExternalLink from '@components/ui/Link/ExternalLink'
 
 export async function getStaticPaths() {
   // If you don't have too many contributors you can uncomment
@@ -54,27 +55,29 @@ function ContributorPage({
 
   return (
     <>
-      <div className="text-center py-4">
+      <section className="text-center py-4">
         {isFeatured && (
-          <div className="relative w-24 h-24 mx-auto my-2">
+          <figure className="relative w-24 h-24 mx-auto my-2">
             <img
               className="absolute h-full w-full object-cover rounded-full"
               src={thumbnailUrl}
               alt="profile"
             />
-          </div>
+          </figure>
         )}
         <h3 className="serif">{contributor?.name}</h3>
         <p className="text-xs uppercase text-secondary">{contributor?.role}</p>
         {contributor?.urls.twitter && (
-          <a href={`https://twitter.com/${contributor?.urls.twitter}`}>
+          <ExternalLink to={`https://twitter.com/${contributor?.urls.twitter}`}>
             @{contributor?.urls.twitter}
-          </a>
+          </ExternalLink>
         )}
-      </div>
-      {isFeatured && (
-        <p className="text-center py-2">{contributor?.featured?.description}</p>
-      )}
+        {isFeatured && (
+          <p className="text-center py-2 leading-tight">
+            {contributor?.featured?.description}
+          </p>
+        )}
+      </section>
       <ArticlesList articles={articles || []} title="all contributons" />
     </>
   )
