@@ -16,7 +16,7 @@ const ArticlesList = ({ articles, title, sort = false }: Props) => {
           ['flex justify-between items-center']: sort === true,
         })}
       >
-        <h4 className="uppercase font-bold">{title}</h4>
+        <h6 className="uppercase">{title}</h6>
         {sort && (
           <button>
             <IconList />

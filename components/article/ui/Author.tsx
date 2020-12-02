@@ -8,7 +8,7 @@ type Props = {
 
 function Author({ author, className }: Props) {
   return (
-    <p className={cn('font-serif text-s text-primary', className)}>
+    <p className={cn('serif text-s', className)}>
       By{' '}
       <Link href={`/contributors/${author.slug}`}>
         <a>{author.name}</a>

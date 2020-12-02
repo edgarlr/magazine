@@ -36,13 +36,13 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
           <h3
             className={cn(
               s.title,
-              'capitalize text-3xl leading-tight text-serif overflow-hidden max-h-28'
+              'serif leading-tight overflow-hidden max-h-28'
             )}
           >
             {article.title}
           </h3>
         </Link>
-        <p className="font-serif text-s text-primary">
+        <p className="serif text-s">
           By{' '}
           <Link href={`/contributors/${article.author.slug}`}>
             <em>{article.author.name}</em>

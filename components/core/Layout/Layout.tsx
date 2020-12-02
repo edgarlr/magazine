@@ -12,8 +12,14 @@ const Layout = ({ children, categories, global, pages }: Props) => {
     <>
       <Header />
       <Nav categories={categories} />
-      <main className="flex flex-col px-4 pt-14">{children}</main>
-      <Footer categories={categories} pages={pages} global={global} />
+      <main className="min-h-screen px-4 pt-14 pb-20 flex flex-col">
+        {children}
+      </main>
+      <Footer
+        categories={categories}
+        pages={pages}
+        socialLinks={global.social_links}
+      />
     </>
   )
 }

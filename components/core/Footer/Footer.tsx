@@ -1,33 +1,30 @@
-import Twitter from '@components/icons/Twitter'
-import ExternalLink from '@components/ui/Link/ExternalLink'
+import { SocialLinks } from '../SocialLinks'
 
 type Props = {
   categories: TCategory[]
   pages: TPage[]
-  global: TGlobal
+  socialLinks: TGlobal['social_links']
 }
 
-const Footer = ({ categories, pages, global }: Props) => {
+const Footer = ({ categories, pages, socialLinks }: Props) => {
   return (
-    <footer>
-      <h6 className="text-serif">Sections</h6>
+    <footer className="block bottom-0 left-0 right-0 bg-primary-2 px-4 py-6">
+      <h6 className="mt-2">Sections</h6>
       <ul>
         {categories.map((category) => (
           <li key={category.slug}>{category.title}</li>
         ))}
       </ul>
 
-      <h6>Contributors</h6>
+      <h6 className="mt-2">Contributors</h6>
 
       {pages.map((page) => (
-        <h6 key={page.slug}>{page.Title}</h6>
+        <h6 className="my-2" key={page.slug}>
+          {page.Title}
+        </h6>
       ))}
 
-      <ul>
-        <ExternalLink to={`https://twitter.com/${global.social_links.twitter}`}>
-          <Twitter />
-        </ExternalLink>
-      </ul>
+      <SocialLinks socialLinks={socialLinks} />
     </footer>
   )
 }

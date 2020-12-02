@@ -6,7 +6,7 @@ type Props = {
 }
 
 function Title({ title, className }: Props) {
-  return <h1 className={cn('text-4xl font-serif pb-4', className)}>{title}</h1>
+  return <h1 className={cn('serif pb-4', className)}>{title}</h1>
 }
 
 export default Title

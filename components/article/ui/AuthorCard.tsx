@@ -22,7 +22,7 @@ function AuthorCard({ author }: { author: TContributor }) {
       )}
       <div>
         <Link href={`/contributors/${author.slug}`}>
-          <a className="font-serif text-xl">{author.name}</a>
+          <a className="serif text-xl">{author.name}</a>
         </Link>
         <SocialMediaLink urls={author.urls} />
       </div>

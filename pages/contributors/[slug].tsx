@@ -56,7 +56,7 @@ function ContributorPage({
     <>
       <div className="text-center py-4">
         {isFeatured && (
-          <div className="relative w-24  h-24   mx-auto my-2">
+          <div className="relative w-24 h-24 mx-auto my-2">
             <img
               className="absolute h-full w-full object-cover rounded-full"
               src={thumbnailUrl}
@@ -64,7 +64,7 @@ function ContributorPage({
             />
           </div>
         )}
-        <h3 className="font-serif text-2xl">{contributor?.name}</h3>
+        <h3 className="serif">{contributor?.name}</h3>
         <p className="text-xs uppercase text-secondary">{contributor?.role}</p>
         {contributor?.urls.twitter && (
           <a href={`https://twitter.com/${contributor?.urls.twitter}`}>

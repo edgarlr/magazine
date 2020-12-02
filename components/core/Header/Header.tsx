@@ -16,7 +16,7 @@ const Header = () => {
         </a>
       </Link>
       <Link href="/">
-        <a className="font-serif text-3xl">Magazine</a>
+        <a className="serif text-3xl">Magazine</a>
       </Link>
       <button onClick={() => setShowSearch(!showSearch)}>
         {showSearch ? <IconClose /> : <IconSearch />}

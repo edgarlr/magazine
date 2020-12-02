@@ -1,5 +1,5 @@
 @layer components {
-  .text-serif {
+  .serif {
     @apply font-serif font-normal;
   }
 

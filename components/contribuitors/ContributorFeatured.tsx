@@ -20,7 +20,7 @@ const ContributorFeatured = ({
           />
         </div>
         <div className="ml-5">
-          <div className="font-serif text-2xl">{contributor.name}</div>
+          <h3 className="serif">{contributor.name}</h3>
           <p className="text-xs uppercase text-secondary">{contributor.role}</p>
         </div>
       </a>

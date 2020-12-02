@@ -6,8 +6,12 @@ import { DefaultSeo } from 'next-seo'
 import Head from 'next/head'
 import { Layout } from '@components/core'
 import '@styles/main.css'
-import '@styles/tailwind.css'
+// import '@styles/tailwind.css'
+import 'tailwindcss/base.css'
+import 'tailwindcss/components.css'
 import 'tailwindcss/utilities.css'
+import '@styles/base.css'
+import '@styles/components.css'
 import '@styles/utilities.css'
 
 type Props = {
