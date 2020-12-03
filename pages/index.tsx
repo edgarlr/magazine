@@ -4,15 +4,8 @@ import { ArticlesCarousel, ArticlesList } from '@components/article'
 import { fetchAPI } from '@lib/api'
 
 export async function getStaticProps() {
-  const categories: TCategory[] = await fetchAPI('/categories')
   const articles: TArticle[] = await fetchAPI('/articles')
-
-  return {
-    props: {
-      categories,
-      articles,
-    },
-  }
+  return { props: { articles } }
 }
 
 function Home({ articles }: InferGetStaticPropsType<typeof getStaticProps>) {

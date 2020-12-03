@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     borderColor: (theme) => ({
       DEFAULT: theme('var(--primary-2)', 'currentColor'),
-      primary: 'var(--primary)',
+      primary: 'var(--primary-1)',
       secondary: 'var(--primary-2)',
       danger: 'var(--red)',
       succes: 'var(--green)',
