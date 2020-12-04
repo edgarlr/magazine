@@ -6,6 +6,7 @@ module.exports = {
       DEFAULT: theme('var(--primary-2)', 'currentColor'),
       primary: 'var(--primary-1)',
       secondary: 'var(--primary-2)',
+      tertiary: 'var(--secondary)',
       danger: 'var(--red)',
       succes: 'var(--green)',
     }),

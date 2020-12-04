@@ -1,4 +1,5 @@
 import { SocialLinks } from '../SocialLinks'
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch'
 
 type Props = {
   categories: TCategory[]
@@ -25,6 +26,8 @@ const Footer = ({ categories, pages, socialLinks }: Props) => {
       ))}
 
       <SocialLinks socialLinks={socialLinks} />
+
+      <ThemeSwitch />
     </footer>
   )
 }

@@ -3,6 +3,10 @@
     @apply font-serif font-normal;
   }
 
+  .input-primary {
+    @apply border border-tertiary py-2 px-3 rounded-xl focus:outline-none focus:border-primary;
+  }
+
   .markdown {
     @apply text-lg max-w-full leading-article;
     & > * + p {
