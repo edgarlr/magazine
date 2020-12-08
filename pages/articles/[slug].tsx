@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Article } from '@components/article'
 import { IconArrowLeft } from '@components/icons'
 import { NextSeo } from 'next-seo'
+import ExitPreviewButton from '@components/article/ui/ExitPreviewButton'
 
 export async function getStaticPaths() {
   // If you don't have too many articles you can uncomment this code and pre-build each page instead
@@ -23,18 +24,25 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({
   params,
+  preview = false,
 }: GetStaticPropsContext<{ slug: string }>) {
+  // if is preview it will search on to the unpublished entries as well
   const article: TArticle = (
-    await fetchAPI(`/articles?slug=${params?.slug}`)
+    await fetchAPI(
+      `/articles?slug=${params?.slug}${
+        preview ? '&_publicationState=preview' : ''
+      }`
+    )
   )[0]
 
   // No props will trigger a 404
   if (!article) return { props: {} }
-  return { props: { article } }
+  return { props: { preview, article } }
 }
 
 function ArticlePage({
   article,
+  preview,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback } = useRouter()
 
@@ -79,6 +87,7 @@ function ArticlePage({
         </button>
       </Link>
       <Article article={article} />
+      {preview && <ExitPreviewButton />}
     </>
   )
 }

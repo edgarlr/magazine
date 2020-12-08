@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import ReactMarkdown from 'react-markdown'
 import { NextSeo } from 'next-seo'
+import ExitPreviewButton from '@components/article/ui/ExitPreviewButton'
 
 export async function getStaticPaths() {
   // If you don't have too many contributors you can uncomment
@@ -23,15 +24,25 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({
   params,
+  preview = false,
 }: GetStaticPropsContext<{ slug: string }>) {
-  const page: TPage = (await fetchAPI(`/pages?slug=${params?.slug}`))[0]
+  const page: TPage = (
+    await fetchAPI(
+      `/pages?slug=${params?.slug}${
+        preview ? '&_publicationState=preview' : ''
+      }`
+    )
+  )[0]
 
   // No props will trigger a 404
   if (!page) return { props: {} }
-  return { props: { page } }
+  return { props: { page, preview } }
 }
 
-function PagesPage({ page }: InferGetStaticPropsType<typeof getStaticProps>) {
+function PagesPage({
+  page,
+  preview,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback } = useRouter()
 
   if (!isFallback && !page) {
@@ -63,6 +74,7 @@ function PagesPage({ page }: InferGetStaticPropsType<typeof getStaticProps>) {
       <section className="markdown">
         <ReactMarkdown>{page?.content || ''}</ReactMarkdown>
       </section>
+      {preview && <ExitPreviewButton />}
     </>
   )
 }
