@@ -47,7 +47,8 @@ function ContributorPage({
     return <ErrorPage statusCode={404} />
   }
 
-  const isFeatured = contributor?.featured !== null
+  // if featuared is diferent than undefined it will be true
+  const isFeatured = !!contributor?.featured
 
   const thumbnailUrl = getMediaURL(
     contributor?.featured?.profile_image.formats.thumbnail?.url
@@ -67,7 +68,7 @@ function ContributorPage({
         )}
         <h3 className="serif">{contributor?.name}</h3>
         <p className="text-xs uppercase text-secondary">{contributor?.role}</p>
-        {contributor?.urls.twitter && (
+        {contributor?.urls?.twitter && (
           <ExternalLink to={`https://twitter.com/${contributor?.urls.twitter}`}>
             @{contributor?.urls.twitter}
           </ExternalLink>

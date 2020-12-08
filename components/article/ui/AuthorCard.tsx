@@ -1,6 +1,6 @@
 import { getMediaURL } from '@lib/api'
 import Link from 'next/link'
-import SocialMediaLink from './SocialMediaLink'
+import SocialMediaUrls from './SocialMediaUrls'
 
 function AuthorCard({ author }: { author: TContributor }) {
   const thumbnailUrl = getMediaURL(
@@ -24,7 +24,7 @@ function AuthorCard({ author }: { author: TContributor }) {
         <Link href={`/contributors/${author.slug}`}>
           <a className="serif text-xl">{author.name}</a>
         </Link>
-        <SocialMediaLink urls={author.urls} />
+        <SocialMediaUrls urls={author.urls} />
       </div>
     </div>
   )

@@ -18,7 +18,7 @@ const Layout = ({ children, categories, global, pages }: Props) => {
       <Footer
         categories={categories}
         pages={pages}
-        socialLinks={global.social_links}
+        socialUrls={global.social_urls}
       />
     </>
   )

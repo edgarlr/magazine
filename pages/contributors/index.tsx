@@ -16,7 +16,7 @@ export function ContributorsPage({
   // Create 2 differents arrays based on the condition
   const [featured, others] = partition<TContributor>(
     contributors,
-    (i) => i.featured !== null
+    (i) => !!i.featured
   )
 
   return (

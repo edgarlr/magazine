@@ -31,16 +31,18 @@ type TContributor = {
   published_at: Date | string
   created_at: Date | string
   updated_at: Date | string
-  urls: {
+  urls?: {
     id: number
-    instagram: string | null
-    twitter: string | null
+    twitter?: string
+    instagram?: string
+    facebook?: string
+    linkedin?: string
   }
-  featured: {
+  featured?: {
     id: number
     description: string
     profile_image: TStrapiImage
-  } | null
+  }
 }
 
 type TGlobal = {
@@ -51,8 +53,8 @@ type TGlobal = {
   published_at: Date
   created_at: Date
   updated_at: Date
-  social_links: {
-    id?: number
+  social_urls?: {
+    id: number
     twitter?: string
     instagram?: string
     facebook?: string
