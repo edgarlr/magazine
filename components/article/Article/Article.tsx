@@ -7,6 +7,7 @@ import {
   IconShare,
   IconTwitter,
 } from '@components/icons'
+import ImageRenderer from '../ui/ImageRenderer'
 
 function Article({ article }: { article: TArticle | undefined }) {
   if (!article) return <p>something went wrong</p>
@@ -29,7 +30,9 @@ function Article({ article }: { article: TArticle | undefined }) {
       </ul>
 
       <section className="markdown">
-        <ReactMarkdown>{article.content || ''}</ReactMarkdown>
+        <ReactMarkdown renderers={{ image: ImageRenderer }}>
+          {article.content || ''}
+        </ReactMarkdown>
       </section>
 
       <footer className="border-t border-primary py-6">
