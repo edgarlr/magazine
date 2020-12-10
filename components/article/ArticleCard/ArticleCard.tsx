@@ -4,6 +4,7 @@ import { getMediaURL } from '@lib/api'
 import Link from 'next/link'
 import s from './ArticleCard.module.css'
 import cn from 'classnames'
+import Image from 'next/image'
 
 type Props = {
   article: TArticle
@@ -20,9 +21,11 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
     <article className={rootClassName}>
       <Link href={`/articles/${article.slug}`}>
         <figure>
-          <img
-            src={getMediaURL(article.cover.formats.thumbnail?.url)}
-            alt={article.cover.alternativeText}
+          <Image
+            src={getMediaURL(article.cover.url)}
+            alt={article.cover.alternativeText || ''}
+            layout="fill"
+            className="object-cover"
           />
         </figure>
       </Link>

@@ -1,10 +1,7 @@
 .cover {
-  @apply pt-6 pb-4 border-b border-primary relative;
+  @apply py-6 border-b border-secondary relative;
   & figure {
-    @apply relative w-full;
-    & img {
-      @apply w-full object-cover;
-    }
+    @apply relative pb-3/5 w-full;
   }
   & ul {
     @apply absolute bottom-0 right-0 pb-3 flex;
@@ -12,13 +9,14 @@
 }
 
 .carousel {
-  @apply box-border flex flex-row-reverse items-center justify-between relative min-w-full mr-10;
+  @apply flex flex-row-reverse items-center justify-between relative min-w-full mr-10;
   scroll-snap-align: start;
   & figure {
-    @apply relative pb-56 w-2/5;
+    @apply relative pb-2/3 flex-1;
   }
-  & img {
-    @apply absolute h-full max-h-full w-full max-w-full object-cover;
+  & section {
+    flex: 1.5;
+    @apply mr-8;
   }
   & ul {
     @apply flex absolute bottom-0 bg-primary right-0 transform translate-x-1 translate-y-1;

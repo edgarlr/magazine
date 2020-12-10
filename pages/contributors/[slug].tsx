@@ -4,6 +4,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import ExternalLink from '@components/ui/Link/ExternalLink'
+import Image from 'next/image'
 
 export async function getStaticPaths() {
   // If you don't have too many contributors you can uncomment
@@ -59,10 +60,11 @@ function ContributorPage({
       <section className="text-center py-4">
         {isFeatured && (
           <figure className="relative w-24 h-24 mx-auto my-2">
-            <img
-              className="absolute h-full w-full object-cover rounded-full"
+            <Image
               src={thumbnailUrl}
-              alt="profile"
+              className="rounded-full"
+              alt={`${contributor?.name} profile`}
+              layout="fill"
             />
           </figure>
         )}

@@ -1,5 +1,6 @@
 import { getMediaURL } from '@lib/api'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const ContributorFeatured = ({
   contributor,
@@ -13,10 +14,11 @@ const ContributorFeatured = ({
     <Link href={`/contributors/${contributor.slug}`}>
       <li className="flex py-2">
         <figure className="relative w-16 h-16">
-          <img
-            className="absolute h-full w-full object-cover rounded-full"
+          <Image
             src={thumbnailUrl}
-            alt="profile"
+            className="rounded-full"
+            alt={`${contributor?.name} profile`}
+            layout="fill"
           />
         </figure>
         <div className="ml-5">

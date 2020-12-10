@@ -1,6 +1,7 @@
 import { getMediaURL } from '@lib/api'
 import Link from 'next/link'
 import SocialMediaUrls from './SocialMediaUrls'
+import Image from 'next/image'
 
 function AuthorCard({ author }: { author: TContributor }) {
   const thumbnailUrl = getMediaURL(
@@ -12,10 +13,11 @@ function AuthorCard({ author }: { author: TContributor }) {
       {author.featured && (
         <Link href={`/contributors/${author.slug}`}>
           <figure className="relative w-12 h-12 mr-5">
-            <img
-              className="absolute h-full w-full object-cover rounded-full"
+            <Image
               src={thumbnailUrl}
-              alt="profile"
+              className="rounded-full"
+              alt={`${author?.name} profile`}
+              layout="fill"
             />
           </figure>
         </Link>
