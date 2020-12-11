@@ -64,7 +64,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
           <ShareButton
             path={`/articles/${article.slug}`}
             title={article.title}
-            message="Check this article"
+            message={'Check this article'}
           />
         </li>
       </ul>
