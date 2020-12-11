@@ -1,10 +1,11 @@
-import { IconBookmark, IconThreeDots } from '@components/icons'
+import { IconBookmark } from '@components/icons'
 import { Date } from '@components/ui'
 import { getMediaURL } from '@lib/api'
 import Link from 'next/link'
 import s from './ArticleCard.module.css'
 import cn from 'classnames'
 import Image from 'next/image'
+import ShareButton from '@components/core/ShareButton/ShareButton'
 
 type Props = {
   article: TArticle
@@ -60,9 +61,11 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
           </button>
         </li>
         <li>
-          <button className="p-2">
-            <IconThreeDots />
-          </button>
+          <ShareButton
+            path={`/articles/${article.slug}`}
+            title={article.title}
+            message="Check this article"
+          />
         </li>
       </ul>
     </article>
