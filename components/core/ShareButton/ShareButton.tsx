@@ -1,7 +1,7 @@
 import { IconThreeDots, IconTwitter } from '@components/icons'
 import ExternalLink from '@components/ui/Link/ExternalLink'
 import { useGlobal } from '@lib/hooks/use-global'
-import { useState, useEffect, MouseEvent } from 'react'
+import { useState, useEffect, useRef, MouseEvent } from 'react'
 
 type Props = {
   title: string
@@ -12,6 +12,8 @@ type Props = {
 const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
   const [showShare, setShowShare] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
+
+  const shareMenuRef = useRef<HTMLDivElement>(null)
 
   const { site_url, social_urls } = useGlobal()
 
@@ -56,8 +58,19 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
     return () => clearTimeout(timer)
   }, [isCopied])
 
+  useEffect(() => {
+    document.addEventListener('click', onOutsideClick)
+    return () => document.removeEventListener('click', onOutsideClick)
+  })
+
+  const onOutsideClick = (e: any) => {
+    if (shareMenuRef.current && !shareMenuRef.current.contains(e.target)) {
+      setShowShare(false)
+    }
+  }
+
   return (
-    <div className="relative">
+    <div className="relative" ref={shareMenuRef}>
       <button className="p-2" onClick={onShareClick}>
         <IconThreeDots />
       </button>
