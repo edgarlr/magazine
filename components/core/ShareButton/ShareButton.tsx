@@ -1,4 +1,6 @@
-import { IconThreeDots, IconTwitter } from '@components/icons'
+import { IconTwitter } from '@components/icons'
+import Close from '@components/icons/Close'
+import Share from '@components/icons/Share'
 import ExternalLink from '@components/ui/Link/ExternalLink'
 import { useGlobal } from '@lib/hooks/use-global'
 import { useState, useEffect, useRef, MouseEvent } from 'react'
@@ -31,7 +33,7 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
           })
           .catch(console.error)
       } else {
-        setShowShare(true)
+        setShowShare(!showShare)
       }
     }
   }
@@ -64,7 +66,11 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
   })
 
   const onOutsideClick = (e: any) => {
-    if (shareMenuRef.current && !shareMenuRef.current.contains(e.target)) {
+    if (
+      shareMenuRef.current &&
+      !shareMenuRef.current.contains(e.target) &&
+      showShare
+    ) {
       setShowShare(false)
     }
   }
@@ -72,10 +78,10 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
   return (
     <div className="relative" ref={shareMenuRef}>
       <button className="p-2" onClick={onShareClick}>
-        <IconThreeDots />
+        {showShare ? <Close /> : <Share />}
       </button>
       {showShare && (
-        <ul className="bg-primary flex flex-col p-4 border rounded-lg w-64">
+        <ul className="bg-primary flex flex-col p-4 border rounded-lg w-64 transform translate-y-full z-20">
           <li>
             <button
               className="py-4 flex"
