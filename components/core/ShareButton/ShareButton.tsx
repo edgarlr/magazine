@@ -1,5 +1,6 @@
 import { IconThreeDots, IconTwitter } from '@components/icons'
 import ExternalLink from '@components/ui/Link/ExternalLink'
+import { useGlobal } from '@lib/hooks/use-global'
 import { useState, useEffect, MouseEvent } from 'react'
 
 type Props = {
@@ -9,14 +10,12 @@ type Props = {
 }
 
 const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
-  const [showShare, setShowShare] = useState(true)
+  const [showShare, setShowShare] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
 
-  let fullURL = ''
+  const { site_url, social_urls } = useGlobal()
 
-  if (typeof window !== 'undefined') {
-    fullURL = `${window.location.origin}${path}`
-  }
+  const fullURL = `${site_url}${path}`
 
   const onShareClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -47,12 +46,13 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
   }
 
   useEffect(() => {
-    let timer: NodeJS.Timeout
-    if (isCopied) {
-      timer = setTimeout(() => {
-        setIsCopied(!isCopied)
-      }, 3000)
-    }
+    // Early return when isCopied is false.
+    if (!isCopied) return
+
+    const timer = setTimeout(() => {
+      setIsCopied(!isCopied)
+    }, 3000)
+
     return () => clearTimeout(timer)
   }, [isCopied])
 
@@ -81,7 +81,9 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
           <li>
             <ExternalLink
               className="py-4 flex"
-              to={`https://twitter.com/intent/tweet?url=${fullURL}&text=${title}&via=edgarlr`}
+              to={`https://twitter.com/intent/tweet?url=${fullURL}&text=${title}${
+                social_urls?.twitter ? `&via=${social_urls?.twitter}` : ''
+              }`}
             >
               <IconTwitter className="mr-4 " />
               Share on Twitter
