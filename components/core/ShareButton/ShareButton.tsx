@@ -15,26 +15,25 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
   const [showShare, setShowShare] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
 
-  const shareMenuRef = useRef<HTMLDivElement>(null)
-
   const { site_url, social_urls } = useGlobal()
+
+  const shareMenuRef = useRef<HTMLDivElement>(null)
 
   const fullURL = `${site_url}${path}`
 
   const onShareClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    if (typeof window !== 'undefined') {
-      if (navigator.share) {
-        navigator
-          .share({
-            title: title,
-            text: message,
-            url: fullURL,
-          })
-          .catch(console.error)
-      } else {
-        setShowShare(!showShare)
-      }
+
+    if (navigator.share) {
+      navigator
+        .share({
+          title: title,
+          text: message,
+          url: fullURL,
+        })
+        .catch(console.error)
+    } else {
+      setShowShare(!showShare)
     }
   }
 
@@ -50,6 +49,21 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
   }
 
   useEffect(() => {
+    const onOutsideClick = (e: any) => {
+      if (
+        shareMenuRef.current &&
+        !shareMenuRef.current.contains(e.target) &&
+        showShare
+      ) {
+        setShowShare(false)
+      }
+    }
+
+    document.addEventListener('click', onOutsideClick)
+    return () => document.removeEventListener('click', onOutsideClick)
+  }, [showShare])
+
+  useEffect(() => {
     // Early return when isCopied is false.
     if (!isCopied) return
 
@@ -59,21 +73,6 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
 
     return () => clearTimeout(timer)
   }, [isCopied])
-
-  useEffect(() => {
-    document.addEventListener('click', onOutsideClick)
-    return () => document.removeEventListener('click', onOutsideClick)
-  })
-
-  const onOutsideClick = (e: any) => {
-    if (
-      shareMenuRef.current &&
-      !shareMenuRef.current.contains(e.target) &&
-      showShare
-    ) {
-      setShowShare(false)
-    }
-  }
 
   return (
     <div className="relative" ref={shareMenuRef}>
