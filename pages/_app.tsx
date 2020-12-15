@@ -3,7 +3,6 @@ import type { AppProps, AppContext } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { fetchAPI, getMediaURL } from '@lib/api'
 import { DefaultSeo } from 'next-seo'
-import Head from 'next/head'
 import { Layout } from '@components/core'
 import '@styles/main.css'
 // import '@styles/tailwind.css'
@@ -14,6 +13,7 @@ import '@styles/base.css'
 import '@styles/components.css'
 import '@styles/utilities.css'
 import { GlobalContext } from '@lib/hooks/use-global'
+import Head from '@components/core/head'
 
 type Props = {
   global: TGlobal
@@ -26,9 +26,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
       <DefaultSeo
         titleTemplate={`%s | ${global.site_name}`}
         title="Online Magazine Starter Kit"
@@ -50,6 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           cardType: 'summary_large_image',
         }}
       />
+      <Head />
       <Layout global={global} categories={categories} pages={pages}>
         <GlobalContext.Provider value={global}>
           <Component {...pageProps} />
