@@ -1,8 +1,7 @@
 import App from 'next/app'
 import type { AppProps, AppContext } from 'next/app'
 import { ThemeProvider } from 'next-themes'
-import { fetchAPI, getMediaURL } from '@lib/api'
-import { DefaultSeo } from 'next-seo'
+import { fetchAPI } from '@lib/api'
 import { Layout } from '@components/core'
 import '@styles/main.css'
 // import '@styles/tailwind.css'
@@ -26,28 +25,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider>
-      <DefaultSeo
-        titleTemplate={`%s | ${global.site_name}`}
-        title="Online Magazine Starter Kit"
-        description={global.description}
-        openGraph={{
-          type: 'website',
-          locale: 'en_IE',
-          url: global.site_url,
-          site_name: global.site_name,
-          images: Object.values(global.cover.formats).map((image) => {
-            return {
-              url: getMediaURL(image?.url),
-              width: image?.width,
-              height: image?.height,
-            }
-          }),
-        }}
-        twitter={{
-          cardType: 'summary_large_image',
-        }}
-      />
-      <Head />
+      <Head global={global} />
+
       <Layout global={global} categories={categories} pages={pages}>
         <GlobalContext.Provider value={global}>
           <Component {...pageProps} />
@@ -60,6 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 MyApp.getInitialProps = async (appContext: AppContext) => {
   // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext)
+
   // Fetch global site data
   const global = await fetchAPI('/global')
   const categories = await fetchAPI('/categories')
