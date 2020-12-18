@@ -1,4 +1,3 @@
-import { IconBookmark } from '@components/icons'
 import { Date } from '@components/ui'
 import { getMediaURL } from '@lib/api'
 import Link from 'next/link'
@@ -6,6 +5,7 @@ import s from './ArticleCard.module.css'
 import cn from 'classnames'
 import Image from 'next/image'
 import ShareButton from '@components/core/ShareButton/ShareButton'
+import AddToListButton from '@components/core/AddToListButton/AddToListButton'
 
 type Props = {
   article: TArticle
@@ -56,9 +56,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
       </section>
       <ul>
         <li>
-          <button className="p-2">
-            <IconBookmark />
-          </button>
+          <AddToListButton article={article} />
         </li>
         <li>
           <ShareButton
