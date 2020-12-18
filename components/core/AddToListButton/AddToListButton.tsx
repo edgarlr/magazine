@@ -1,20 +1,29 @@
 import { IconBookmark } from '@components/icons'
-import { useList } from '@lib/hooks/use-list'
+// import { useList } from '@lib/hooks/use-list'
+import { useLocalStorage } from '@lib/hooks/use-local-storage'
 
 type Props = {
-  article: TArticle
+  slug: string
 }
 
-const AddToListButton = ({ article }: Props) => {
-  const { list, addToList, removeFromList } = useList()
+const AddToListButton = ({ slug }: Props) => {
+  const [list, setList] = useLocalStorage<string[]>('saved', [])
 
-  const isOnList = list.some((item: TArticle) => item.slug === article.slug)
+  const isOnList = list.includes(slug)
+
+  const addToList = (slug: string) => {
+    setList([...list, slug])
+  }
+
+  const removeFromList = (slug: string) => {
+    setList(list.filter((article: string) => article !== slug))
+  }
 
   const onButtonClick = () => {
     if (isOnList) {
-      removeFromList(article)
+      removeFromList(slug)
     } else {
-      addToList(article)
+      addToList(slug)
     }
   }
 
