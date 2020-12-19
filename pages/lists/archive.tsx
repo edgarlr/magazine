@@ -2,16 +2,16 @@ import { ArticlesList } from '@components/article'
 import { useLocalStorage } from '@lib/hooks/use-local-storage'
 import Link from 'next/link'
 
-const ListsPage = () => {
-  const [list] = useLocalStorage<TArticle[]>('saved', [])
+const ArchivePage = () => {
+  const [list] = useLocalStorage<TArticle[]>('archive', [])
   return (
     <>
       <ul>
         <Link href="/lists">
-          <li className="underline">Saved</li>
+          <li>Saved</li>
         </Link>
         <Link href="/lists/archive">
-          <li>Archive</li>
+          <li className="underline">Archive</li>
         </Link>
       </ul>
       <ArticlesList title={`${list.length} Articles`} articles={list} />
@@ -19,4 +19,4 @@ const ListsPage = () => {
   )
 }
 
-export default ListsPage
+export default ArchivePage
