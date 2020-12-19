@@ -1,21 +1,21 @@
 // import { useState, useEffect } from 'react'
 import { useLocalStorage } from '@lib/hooks/use-local-storage'
 
-type ReturnProps = {
-  list: string[]
-  addToList: (slug: string) => void
-  removeFromList: (slug: string) => void
+type ReturnProps<T> = {
+  list: T[]
+  addToList: (article: T) => void
+  removeFromList: (article: T) => void
 }
 
-export const useList = (): ReturnProps => {
-  const [list, setList] = useLocalStorage<string[]>('saved', [])
+export const useList = <T>(): ReturnProps<T> => {
+  const [list, setList] = useLocalStorage<T[]>('saved', [])
 
-  const addToList = (slug: string) => {
-    setList([...list, slug])
+  const addToList = (article: T) => {
+    setList([...list, article])
   }
 
-  const removeFromList = (slug: string) => {
-    setList(list.filter((article: string) => article !== slug))
+  const removeFromList = (article: T) => {
+    setList(list.filter((item: T) => article !== item))
   }
 
   // useEffect(() => {

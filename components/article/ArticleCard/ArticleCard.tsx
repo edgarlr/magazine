@@ -56,7 +56,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
       </section>
       <ul>
         <li>
-          <AddToListButton slug={article.slug} />
+          <AddToListButton article={article} />
         </li>
         <li>
           <ShareButton
