@@ -1,10 +1,18 @@
+import { useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import { getMediaURL } from '@lib/api'
+import { register, unregister } from 'next-offline/runtime'
 
 const Head = ({ global }: { global: TGlobal }) => {
   const { systemTheme } = useTheme()
+  useEffect(() => {
+    register('/service-worker.js', { scope: '/' })
+    return () => {
+      unregister()
+    }
+  }, [])
   return (
     <>
       <DefaultSeo
