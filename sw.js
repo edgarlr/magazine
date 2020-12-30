@@ -5,22 +5,54 @@ if (typeof importScripts === 'function') {
   )
   /* global workbox */
   if (workbox) {
-    // console.log('Workbox is loaded')
-    /* injection point for manifest files.  */
-    workbox.precaching.precacheAndRoute(self.__WB_MANIFEST)
-    // control the uncontrolled client side
-    workbox.core.clientsClaim()
-    // transit the status from waiting to activate
     workbox.core.skipWaiting()
+    workbox.core.clientsClaim()
+
+    /* injection point for manifest files.  */
+    const WB_MANIFEST = self.__WB_MANIFEST
+
+    // precache fallback route
+    WB_MANIFEST.push({ url: '/offline', revision: '12345678' })
+    workbox.precaching.precacheAndRoute(WB_MANIFEST)
 
     workbox.precaching.cleanupOutdatedCaches()
 
-    /* custom cache rules */
+    // Start URL
+    workbox.routing.registerRoute(
+      '/',
+      new workbox.strategies.NetworkFirst({
+        cacheName: 'start-url',
+        plugins: [
+          new workbox.expiration.ExpirationPlugin({
+            maxEntries: 1,
+            maxAgeSeconds: 24 * 60 * 60, // 24 hours
+          }),
+        ],
+      })
+    )
+
+    // Google Fonts
+    workbox.routing.registerRoute(
+      /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
+      new workbox.strategies.CacheFirst({
+        cacheName: 'google-fonts',
+        plugins: [
+          new workbox.cacheableResponse.CacheableResponsePlugin({
+            statuses: [0, 200],
+          }),
+          new workbox.expiration.ExpirationPlugin({
+            maxEntries: 4,
+            maxAgeSeconds: 365 * 24 * 60 * 60, // 365 days
+          }),
+        ],
+      }),
+      'GET'
+    )
 
     //For images
     workbox.routing.registerRoute(
-      new RegExp('.(?:png|gif|jpg|jpeg|webp|svg)$'),
-      new workbox.strategies.CacheFirst({
+      /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
+      new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'image-caches',
         plugins: [
           new workbox.cacheableResponse.CacheableResponsePlugin({
@@ -28,60 +60,111 @@ if (typeof importScripts === 'function') {
           }),
           new workbox.expiration.ExpirationPlugin({
             maxEntries: 20,
-            maxAgeSeconds: 12 * 60 * 60,
+            maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
       }),
       'GET'
     )
 
-    //For JS/CSS
-    /*
-    Resources are requested from both the cache and the network in parallel. 
-    The strategy will respond with the cached version if available, otherwise wait for the network response. 
-    The cache is updated with the network response with each successful request
-    */
+    // JS Files
     workbox.routing.registerRoute(
-      new RegExp('.(?:js|css)$'),
+      /\.(?:js)$/i,
       new workbox.strategies.StaleWhileRevalidate({
-        cacheName: 'js-css-caches',
+        cacheName: 'js-caches',
         plugins: [
           new workbox.cacheableResponse.CacheableResponsePlugin({
             statuses: [0, 200],
           }),
           new workbox.expiration.ExpirationPlugin({
             maxEntries: 20,
-            maxAgeSeconds: 12 * 60 * 60,
+            maxAgeSeconds: 12 * 60 * 60, // 12 hours
           }),
         ],
       })
     )
 
-    //For HTML
+    // CSS Files
     workbox.routing.registerRoute(
-      new RegExp('/'),
+      /\.(?:css)$/i,
+      new workbox.strategies.StaleWhileRevalidate({
+        cacheName: 'style-caches',
+        plugins: [
+          new workbox.cacheableResponse.CacheableResponsePlugin({
+            statuses: [0, 200],
+          }),
+          new workbox.expiration.ExpirationPlugin({
+            maxEntries: 20,
+            maxAgeSeconds: 24 * 60 * 60, // 24 hours
+          }),
+        ],
+      })
+    )
+
+    // JSON, XML, CSV FILES
+    workbox.routing.registerRoute(
+      /\.(?:json|xml|csv)$/i,
       new workbox.strategies.NetworkFirst({
-        cacheName: 'html-caches',
+        cacheName: 'data-caches',
         plugins: [
           new workbox.cacheableResponse.CacheableResponsePlugin({
             statuses: [0, 200],
           }),
           new workbox.expiration.ExpirationPlugin({
             maxEntries: 20,
-            maxAgeSeconds: 12 * 60 * 60,
+            maxAgeSeconds: 24 * 60 * 60, // 24 hours
+          }),
+        ],
+      })
+    )
+
+    // API Routes
+    workbox.routing.registerRoute(
+      /\/api\/.*$/i,
+      new workbox.strategies.NetworkFirst({
+        cacheName: 'api-caches',
+        plugins: [
+          new workbox.cacheableResponse.CacheableResponsePlugin({
+            statuses: [0, 200],
+          }),
+          new workbox.expiration.ExpirationPlugin({
+            maxEntries: 10,
+            maxAgeSeconds: 24 * 60 * 60, // 24 hours
+          }),
+        ],
+      })
+    )
+
+    // Others
+    workbox.routing.registerRoute(
+      /.*/i,
+      new workbox.strategies.NetworkFirst({
+        cacheName: 'others',
+        plugins: [
+          new workbox.cacheableResponse.CacheableResponsePlugin({
+            statuses: [0, 200],
+          }),
+          new workbox.expiration.ExpirationPlugin({
+            maxEntries: 20,
+            maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
       }),
       'GET'
     )
 
-    //Other resources
-    workbox.routing.registerRoute(
-      new RegExp('/_next/static/'),
-      new workbox.strategies.StaleWhileRevalidate({
-        cacheName: 'static-caches',
-      })
+    // Use a stale-while-revalidate strategy for all other requests.
+    workbox.routing.setDefaultHandler(
+      new workbox.strategies.StaleWhileRevalidate()
     )
+
+    // Fallback page
+    workbox.routing.setCatchHandler(async ({ event }) => {
+      if (event.request.destination === 'document') {
+        return workbox.precaching.matchPrecache('/offline')
+      }
+      return Response.error()
+    })
   } else {
     // console.log('Workbox could not be loaded. No Offline support');
   }

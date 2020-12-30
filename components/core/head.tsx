@@ -7,7 +7,10 @@ import { register, unregister } from 'next-offline/runtime'
 
 const Head = ({ global }: { global: TGlobal }) => {
   const { systemTheme } = useTheme()
+
   useEffect(() => {
+    // Prevent registering the sw on development
+    if (process.env.NODE_ENV === 'development') return
     register('/service-worker.js', { scope: '/' })
     return () => {
       unregister()
