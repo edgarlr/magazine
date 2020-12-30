@@ -1,4 +1,5 @@
 import { Footer, Header, Nav } from '@components/core'
+import OfflineBanner from '../OfflineBanner'
 
 type Props = {
   children: React.ReactNode
@@ -15,6 +16,7 @@ const Layout = ({ children, categories, global, pages }: Props) => {
       <main className="min-h-screen px-4 pt-14 pb-20 flex flex-col">
         {children}
       </main>
+      <OfflineBanner />
       <Footer
         categories={categories}
         pages={pages}
