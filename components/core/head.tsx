@@ -50,7 +50,11 @@ const Head = ({ global }: { global: TGlobal }) => {
 
         {/* General and favicon */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="manifest" href="/static/favicon/site.webmanifest" />
+        <link
+          rel="manifest"
+          href="/static/favicon/site.webmanifest"
+          key="site-manifest"
+        />
         <meta name="theme-color" content="#ffffff" />
         <meta name="msapplication-TileColor" content="#603cba" />
         <link
