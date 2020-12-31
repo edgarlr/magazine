@@ -1,9 +1,9 @@
 import { ArticlesList } from '@components/article'
-import { useLocalStorage } from '@lib/hooks/use-local-storage'
+import { useIndexedState } from '@lib/hooks/use-indexed-state'
 import Link from 'next/link'
 
 const ListsPage = () => {
-  const [list] = useLocalStorage<TArticle[]>('saved', [])
+  const [list] = useIndexedState<TArticle[]>('saved', [])
   return (
     <>
       <ul>

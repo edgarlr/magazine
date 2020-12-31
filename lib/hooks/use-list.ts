@@ -1,5 +1,6 @@
 // import { useState, useEffect } from 'react'
-import { useLocalStorage } from '@lib/hooks/use-local-storage'
+// import { useLocalStorage } from '@lib/hooks/use-local-storage'
+import { useIndexedState } from './use-indexed-state'
 
 type ReturnProps<T> = {
   list: T[]
@@ -8,7 +9,8 @@ type ReturnProps<T> = {
 }
 
 export const useList = <T>(): ReturnProps<T> => {
-  const [list, setList] = useLocalStorage<T[]>('saved', [])
+  // const [list, setList] = useLocalStorage<T[]>('saved', [])
+  const [list, setList] = useIndexedState<T[]>('saved', [])
 
   const addToList = (article: T) => {
     setList([...list, article])
