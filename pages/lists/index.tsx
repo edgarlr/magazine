@@ -1,4 +1,4 @@
-import { ArticlesList } from '@components/article'
+import { ArticleCard } from '@components/article'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { getAllStoredContent } from '@lib/storage'
@@ -40,7 +40,14 @@ const ListsPage = () => {
           <li>Archive</li>
         </Link>
       </ul>
-      <ArticlesList title={`${list.length} Articles`} articles={list} />
+      <section>
+        <div className="py-2 flex justify-between items-center">
+          <h6 className="uppercase">{list.length} Articles</h6>
+        </div>
+        {list.map((article) => (
+          <ArticleCard article={article} key={article.slug} route="lists" />
+        ))}
+      </section>
     </>
   )
 }

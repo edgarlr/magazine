@@ -10,9 +10,10 @@ import Image from 'next/image'
 type Props = {
   article: TArticle
   variant?: 'cover' | 'carousel'
+  route?: string
 }
 
-const ArticleCard = ({ article, variant = 'cover' }: Props) => {
+const ArticleCard = ({ article, variant = 'cover', route }: Props) => {
   const rootClassName = cn({
     [s.cover]: variant === 'cover',
     [s.carousel]: variant === 'carousel',
@@ -20,7 +21,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
 
   return (
     <article className={rootClassName}>
-      <Link href={`/articles/${article.slug}`}>
+      <Link href={`/${route || 'articles'}/${article.slug}`}>
         <figure>
           <Image
             src={getMediaURL(article.cover.url)}
@@ -36,7 +37,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
             {article.category.title}
           </a>
         </Link>
-        <Link href={`/articles/${article.slug}`}>
+        <Link href={`/${route || 'articles'}/${article.slug}`}>
           <h3
             className={cn(
               s.title,
