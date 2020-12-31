@@ -1,9 +1,35 @@
 import { ArticlesList } from '@components/article'
-import { useIndexedState } from '@lib/hooks/use-indexed-state'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { getAllStoredContent } from '@lib/storage'
+import { IconBookmark } from '@components/icons'
 
 const ListsPage = () => {
-  const [list] = useIndexedState<TArticle[]>('saved', [])
+  const [list, setList] = useState<TArticle[]>([])
+
+  useEffect(() => {
+    const getStoredArticles = async () => {
+      const storedArticles = await getAllStoredContent()
+      setList(storedArticles)
+    }
+    getStoredArticles()
+  }, [])
+
+  if (!list || list.length === 0) {
+    return (
+      <div className="text-center my-auto">
+        <p>You haven&apos;t saved anything yet.</p>
+        <p>
+          Tap the{' '}
+          <span>
+            <IconBookmark className="inline-block" />
+          </span>{' '}
+          icon to save them for later.
+        </p>
+      </div>
+    )
+  }
+
   return (
     <>
       <ul>
