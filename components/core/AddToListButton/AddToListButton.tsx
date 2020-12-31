@@ -14,9 +14,9 @@ const AddToListButton = ({ article }: Props) => {
 
   const isOnList = list.some((item) => item.slug === article.slug)
 
-  const addToList = (article: TArticle) => {
+  const addToList = async (article: TArticle) => {
     setList([...list, article])
-    set(article.slug, article)
+    await set(article.slug, article)
   }
 
   const removeFromList = (article: TArticle) => {
