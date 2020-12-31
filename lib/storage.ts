@@ -7,6 +7,7 @@ async function registerContent(article: TArticle) {
   const registration: SWR = await navigator.serviceWorker.ready
 
   if (!registration.index) return null
+
   try {
     await registration.index.add({
       id: article.slug,

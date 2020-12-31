@@ -31,8 +31,8 @@ const AddToListButton = ({ article }: Props) => {
   }
 
   const onButtonClick = async () => {
-    if (!isOnList) await addToList(article)
-    await removeFromList(article)
+    if (!isOnList) return await addToList(article)
+    return await removeFromList(article)
   }
 
   return (
