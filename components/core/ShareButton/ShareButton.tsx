@@ -80,7 +80,7 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
         {showShare ? <Close /> : <Share />}
       </button>
       {showShare && (
-        <ul className="bg-primary flex flex-col p-4 border rounded-lg w-64 transform translate-y-full z-20">
+        <ul className="absolute z-20 right-0 bg-primary flex flex-col p-4 border rounded-lg w-64">
           <li>
             <button
               className="py-4 flex"

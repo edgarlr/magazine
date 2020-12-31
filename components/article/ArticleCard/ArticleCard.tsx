@@ -4,8 +4,8 @@ import Link from 'next/link'
 import s from './ArticleCard.module.css'
 import cn from 'classnames'
 import Image from 'next/image'
-import ShareButton from '@components/core/ShareButton/ShareButton'
-import AddToListButton from '@components/core/AddToListButton/AddToListButton'
+// import ShareButton from '@components/core/ShareButton/ShareButton'
+// import AddToListButton from '@components/core/AddToListButton/AddToListButton'
 
 type Props = {
   article: TArticle
@@ -54,7 +54,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
         </p>
         <Date date={article.published_at as string} />
       </section>
-      <ul>
+      {/* <ul>
         <li>
           <AddToListButton article={article} />
         </li>
@@ -65,7 +65,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
             message={'Check this article'}
           />
         </li>
-      </ul>
+      </ul> */}
     </article>
   )
 }

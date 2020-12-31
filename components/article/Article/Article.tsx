@@ -1,13 +1,9 @@
 import ReactMarkdown from 'react-markdown'
 import { Date } from '@components/ui'
 import { Author, AuthorCard, CategoryTag, Title } from '../ui'
-import {
-  IconBookmark,
-  IconDownload,
-  IconShare,
-  IconTwitter,
-} from '@components/icons'
 import ImageRenderer from '../ui/ImageRenderer'
+import ShareButton from '@components/core/ShareButton/ShareButton'
+import AddToListButton from '@components/core/AddToListButton/AddToListButton'
 
 function Article({ article }: { article: TArticle | undefined }) {
   if (!article) return <p>something went wrong</p>
@@ -20,12 +16,16 @@ function Article({ article }: { article: TArticle | undefined }) {
         <Author author={article.author} />
         <Date date={article.published_at as string} />
       </header>
-      <ul className="flex">
+      <ul className="flex justify-end">
         <li>
-          <IconBookmark />
+          <AddToListButton article={article} />
         </li>
         <li>
-          <IconDownload />
+          <ShareButton
+            path={`/articles/${article.slug}`}
+            title={article.title}
+            message={'Check this article'}
+          />
         </li>
       </ul>
 
@@ -37,15 +37,16 @@ function Article({ article }: { article: TArticle | undefined }) {
 
       <footer className="border-t border-primary py-6">
         <AuthorCard author={article.author} />
-        <ul className="flex  justify-end py-4">
+        <ul className="flex justify-end">
           <li>
-            <IconTwitter />
+            <AddToListButton article={article} />
           </li>
           <li>
-            <IconShare />
-          </li>
-          <li>
-            <IconBookmark />
+            <ShareButton
+              path={`/articles/${article.slug}`}
+              title={article.title}
+              message={'Check this article'}
+            />
           </li>
         </ul>
       </footer>
