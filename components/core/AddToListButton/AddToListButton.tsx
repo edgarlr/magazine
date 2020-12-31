@@ -1,35 +1,38 @@
+import { useState, useEffect } from 'react'
 import { IconBookmark } from '@components/icons'
-import { useIndexedState } from '@lib/hooks/use-indexed-state'
+import { removeContent, storeContent, getAllStoredContent } from '@lib/storage'
 // import { useList } from '@lib/hooks/use-list'
-// import { useLocalStorage } from '@lib/hooks/use-local-storage'
-import { set, del } from 'idb-keyval'
 
 type Props = {
   article: TArticle
 }
 
 const AddToListButton = ({ article }: Props) => {
-  // const [list, setList] = useLocalStorage<TArticle[]>('saved', [])
-  const [list, setList] = useIndexedState<TArticle[]>('saved', [])
+  const [list, setList] = useState<TArticle[]>([])
 
-  const isOnList = list.some((item) => item.slug === article.slug)
+  useEffect(() => {
+    const getStoredArticles = async () => {
+      const storedArticles = await getAllStoredContent()
+      setList(storedArticles)
+    }
+    getStoredArticles()
+  }, [])
+
+  const isOnList = list.some((item: TArticle) => item.slug === article.slug)
 
   const addToList = async (article: TArticle) => {
     setList([...list, article])
-    await set(article.slug, article)
+    await storeContent(article)
   }
 
-  const removeFromList = (article: TArticle) => {
+  const removeFromList = async (article: TArticle) => {
     setList(list.filter((item: TArticle) => item.slug !== article.slug))
-    del(article.slug)
+    await removeContent(article)
   }
 
-  const onButtonClick = () => {
-    if (isOnList) {
-      removeFromList(article)
-    } else {
-      addToList(article)
-    }
+  const onButtonClick = async () => {
+    if (!isOnList) await addToList(article)
+    await removeFromList(article)
   }
 
   return (

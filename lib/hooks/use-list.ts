@@ -1,6 +1,5 @@
-// import { useState, useEffect } from 'react'
-// import { useLocalStorage } from '@lib/hooks/use-local-storage'
-import { useIndexedState } from './use-indexed-state'
+import { getAllStoredContent } from '@lib/storage'
+import { useState, useEffect } from 'react'
 
 type ReturnProps<T> = {
   list: T[]
@@ -9,8 +8,15 @@ type ReturnProps<T> = {
 }
 
 export const useList = <T>(): ReturnProps<T> => {
-  // const [list, setList] = useLocalStorage<T[]>('saved', [])
-  const [list, setList] = useIndexedState<T[]>('saved', [])
+  const [list, setList] = useState<T[]>([])
+
+  useEffect(() => {
+    const getStoredArticles = async () => {
+      const storedArticles = await getAllStoredContent()
+      setList(storedArticles)
+    }
+    getStoredArticles()
+  }, [])
 
   const addToList = (article: T) => {
     setList([...list, article])
@@ -19,10 +25,6 @@ export const useList = <T>(): ReturnProps<T> => {
   const removeFromList = (article: T) => {
     setList(list.filter((item: T) => article !== item))
   }
-
-  // useEffect(() => {
-  //   setList(list)
-  // }, [list, setList])
 
   return { list, addToList, removeFromList }
 }
