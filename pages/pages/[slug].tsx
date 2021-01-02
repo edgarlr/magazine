@@ -1,10 +1,11 @@
-import { fetchAPI, getMediaURL } from '@lib/api'
+import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import ReactMarkdown from 'react-markdown'
 import { NextSeo } from 'next-seo'
 import ExitPreviewButton from '@components/article/ui/ExitPreviewButton'
+import { Layout } from '@components/core'
 
 export async function getStaticPaths() {
   // If you don't have too many contributors you can uncomment
@@ -33,15 +34,17 @@ export async function getStaticProps({
       }`
     )
   )[0]
+  const navigation: TNavigation = await getNavigation()
 
   // No props will trigger a 404
   if (!page) return { props: {} }
-  return { props: { page, preview } }
+  return { props: { page, navigation, preview } }
 }
 
 function PagesPage({
   page,
   preview,
+  navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback } = useRouter()
 
@@ -50,7 +53,7 @@ function PagesPage({
   }
 
   return (
-    <>
+    <Layout navigation={navigation}>
       <NextSeo
         title={page?.Title}
         description={page?.description}
@@ -75,7 +78,7 @@ function PagesPage({
         <ReactMarkdown>{page?.content || ''}</ReactMarkdown>
       </section>
       {preview && <ExitPreviewButton />}
-    </>
+    </Layout>
   )
 }
 

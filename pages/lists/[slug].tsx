@@ -6,6 +6,7 @@ import { get } from 'idb-keyval'
 
 import { Article } from '@components/article'
 import { IconArrowLeft } from '@components/icons'
+import { Layout } from '@components/core'
 
 function ArticlePage() {
   const [article, setArticle] = useState<TArticle | 'loading' | null>('loading')
@@ -32,14 +33,14 @@ function ArticlePage() {
   }
 
   return (
-    <>
+    <Layout>
       <Link href={'/lists'}>
         <button>
           <IconArrowLeft />
         </button>
       </Link>
       <Article article={article as TArticle} />
-    </>
+    </Layout>
   )
 }
 

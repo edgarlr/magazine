@@ -1,5 +1,6 @@
 import Contributor from '@components/contribuitors/Contributor'
 import ContributorFeatured from '@components/contribuitors/ContributorFeatured'
+import { Layout } from '@components/core'
 import Hero from '@components/core/Hero/Hero'
 import { fetchAPI } from '@lib/api'
 import { partition } from '@lib/partition'
@@ -20,7 +21,7 @@ export function ContributorsPage({
   )
 
   return (
-    <>
+    <Layout>
       <Hero title="Contributors" />
       <ul>
         {featured.map((contributor) => (
@@ -36,7 +37,7 @@ export function ContributorsPage({
           <Contributor contributor={contributor} key={contributor.slug} />
         ))}
       </ul>
-    </>
+    </Layout>
   )
 }
 

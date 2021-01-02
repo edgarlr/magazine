@@ -17,12 +17,11 @@ export const getMediaURL = (url?: string) => {
   return getStrapiURL(url)
 }
 
-export async function fetchGlobal() {
-  const [global, categories, pages] = await Promise.all([
-    fetchAPI('/global'),
+export async function getNavigation(): Promise<TNavigation> {
+  const [categories, pages] = await Promise.all([
     fetchAPI('/categories'),
     fetchAPI('/pages'),
   ])
 
-  return { global, categories, pages }
+  return { categories, pages }
 }

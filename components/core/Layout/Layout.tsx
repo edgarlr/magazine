@@ -3,20 +3,24 @@ import OfflineBanner from '../OfflineBanner'
 
 type Props = {
   children: React.ReactNode
-  categories: TCategory[]
-  pages: TPage[]
+  navigation?: TNavigation
 }
 
-const Layout = ({ children, categories, pages }: Props) => {
+const Layout = ({ children, navigation }: Props) => {
   return (
     <>
       <Header />
-      <Nav categories={categories} />
+      {navigation && <Nav categories={navigation.categories} />}
+
       <main className="min-h-screen px-4 pt-14 pb-20 flex flex-col">
         {children}
       </main>
+
       <OfflineBanner />
-      <Footer categories={categories} pages={pages} />
+
+      {navigation && (
+        <Footer categories={navigation.categories} pages={navigation.pages} />
+      )}
     </>
   )
 }

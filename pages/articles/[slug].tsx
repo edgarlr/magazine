@@ -1,4 +1,4 @@
-import { fetchAPI, getMediaURL } from '@lib/api'
+import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
@@ -8,6 +8,7 @@ import { Article } from '@components/article'
 import { IconArrowLeft } from '@components/icons'
 import { NextSeo } from 'next-seo'
 import ExitPreviewButton from '@components/article/ui/ExitPreviewButton'
+import { Layout } from '@components/core'
 
 export async function getStaticPaths() {
   // If you don't have too many articles you can uncomment this code and pre-build each page instead
@@ -35,13 +36,16 @@ export async function getStaticProps({
     )
   )[0]
 
+  const navigation: TNavigation = await getNavigation()
+
   // No props will trigger a 404
   if (!article) return { props: {} }
-  return { props: { preview, article } }
+  return { props: { preview, navigation, article } }
 }
 
 function ArticlePage({
   article,
+  navigation,
   preview,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback } = useRouter()
@@ -51,7 +55,7 @@ function ArticlePage({
   }
 
   return (
-    <>
+    <Layout navigation={navigation}>
       <NextSeo
         title={article?.title}
         description={article?.description}
@@ -88,7 +92,7 @@ function ArticlePage({
       </Link>
       <Article article={article} />
       {preview && <ExitPreviewButton />}
-    </>
+    </Layout>
   )
 }
 

@@ -5,6 +5,7 @@ import { fetchAPI } from '@lib/api'
 import { InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 import { filterQueries } from '@lib/search'
+import { Layout } from '@components/core'
 
 export async function getStaticProps() {
   const categories: TCategory[] = await fetchAPI('/categories')
@@ -18,7 +19,7 @@ function SearchPage({
   const { q, category, sort } = query
   const { isLoading, data } = useSearch<TArticle>('/articles', query)
   return (
-    <>
+    <Layout>
       <h4>&quot;{query.q}&quot; in search</h4>
       {isLoading && <p>Loading...</p>}
       {data && data.length !== 0 ? (
@@ -70,7 +71,7 @@ function SearchPage({
       <ArticlesList articles={articles} title="Recent" /> */}
       {/* <button onClick={() => setTheme('dark')}>Light Mode</button>
         <button onClick={() => setTheme('light')}>Light Mode</button> */}
-    </>
+    </Layout>
   )
 }
 
