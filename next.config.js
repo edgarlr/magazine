@@ -1,5 +1,18 @@
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 
+const path = require('path')
+
+const withOffline = require('next-offline')
+// const nextOfflineConfig = {
+//   generateInDevMode: false,
+//   dontAutoRegisterSw: true,
+//   generateSw: false,
+//   workboxOpts: {
+//     swDest: 'static/service-worker.js',
+//     swSrc: path.join(__dirname, 'sw.js'),
+//   },
+// }
+
 module.exports = (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
@@ -10,7 +23,14 @@ module.exports = (phase) => {
     }
   }
 
-  return {
+  return withOffline({
+    generateInDevMode: false,
+    dontAutoRegisterSw: true,
+    generateSw: false,
+    workboxOpts: {
+      swDest: 'static/service-worker.js',
+      swSrc: path.join(__dirname, 'sw.js'),
+    },
     // I'm using cloudinary as a media provider, but you can use any other provider
 
     // This are the strapi docs of how to set a different provider
@@ -24,5 +44,13 @@ module.exports = (phase) => {
     images: {
       domains: ['res.cloudinary.com'],
     },
-  }
+    async rewrites() {
+      return [
+        {
+          source: '/service-worker.js',
+          destination: '/_next/static/service-worker.js',
+        },
+      ]
+    },
+  })
 }

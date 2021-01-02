@@ -16,3 +16,12 @@ export const getMediaURL = (url?: string) => {
   if (url.startsWith('http') || url.startsWith('//')) return url
   return getStrapiURL(url)
 }
+
+export async function getNavigation(): Promise<TNavigation> {
+  const [categories, pages] = await Promise.all([
+    fetchAPI('/categories'),
+    fetchAPI('/pages'),
+  ])
+
+  return { categories, pages }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Magazine",
+  "short_name": "Magazine",
+  "description": "Online magazine starter kit",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/static/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/favicon/android-chrome-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/favicon/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

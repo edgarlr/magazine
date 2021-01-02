@@ -1,3 +1,8 @@
+type TNavigation = {
+  categories: TCategory[]
+  pages: TPage[]
+}
+
 type TArticle = {
   id: number
   title: string

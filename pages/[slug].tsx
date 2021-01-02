@@ -1,9 +1,9 @@
 import { ArticlesList } from '@components/article'
-
 import Hero from '@components/core/Hero/Hero'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import { fetchAPI, getMediaURL } from '@lib/api'
+import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { NextSeo } from 'next-seo'
+import { Layout } from '@components/core'
 
 export async function getStaticPaths() {
   const categories: TCategory[] = await fetchAPI('/categories')
@@ -20,16 +20,15 @@ export async function getStaticProps({
     await fetchAPI(`/categories?slug=${params?.slug}`)
   )[0]
 
-  const categories: TCategory[] = await fetchAPI('/categories')
-
   const articles: TArticle[] = await fetchAPI(
     `/articles?category.slug=${params?.slug}`
   )
+  const navigation: TNavigation = await getNavigation()
 
   return {
     props: {
       category,
-      categories,
+      navigation,
       articles,
     },
   }
@@ -38,9 +37,10 @@ export async function getStaticProps({
 function CategoryPage({
   category,
   articles,
+  navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <>
+    <Layout navigation={navigation}>
       <NextSeo
         title={category.title}
         description={category.description}
@@ -62,7 +62,7 @@ function CategoryPage({
       />
       <Hero title={category.title} description={category.description} />
       <ArticlesList articles={articles} title="Articles" />
-    </>
+    </Layout>
   )
 }
 

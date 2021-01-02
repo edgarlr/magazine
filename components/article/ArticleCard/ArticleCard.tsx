@@ -1,18 +1,19 @@
-import { IconBookmark } from '@components/icons'
 import { Date } from '@components/ui'
 import { getMediaURL } from '@lib/api'
 import Link from 'next/link'
 import s from './ArticleCard.module.css'
 import cn from 'classnames'
 import Image from 'next/image'
-import ShareButton from '@components/core/ShareButton/ShareButton'
+// import ShareButton from '@components/core/ShareButton/ShareButton'
+// import AddToListButton from '@components/core/AddToListButton/AddToListButton'
 
 type Props = {
   article: TArticle
   variant?: 'cover' | 'carousel'
+  route?: string
 }
 
-const ArticleCard = ({ article, variant = 'cover' }: Props) => {
+const ArticleCard = ({ article, variant = 'cover', route }: Props) => {
   const rootClassName = cn({
     [s.cover]: variant === 'cover',
     [s.carousel]: variant === 'carousel',
@@ -20,7 +21,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
 
   return (
     <article className={rootClassName}>
-      <Link href={`/articles/${article.slug}`}>
+      <Link href={`/${route || 'articles'}/${article.slug}`}>
         <figure>
           <Image
             src={getMediaURL(article.cover.url)}
@@ -36,7 +37,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
             {article.category.title}
           </a>
         </Link>
-        <Link href={`/articles/${article.slug}`}>
+        <Link href={`/${route || 'articles'}/${article.slug}`}>
           <h3
             className={cn(
               s.title,
@@ -54,11 +55,9 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
         </p>
         <Date date={article.published_at as string} />
       </section>
-      <ul>
+      {/* <ul>
         <li>
-          <button className="p-2">
-            <IconBookmark />
-          </button>
+          <AddToListButton article={article} />
         </li>
         <li>
           <ShareButton
@@ -67,7 +66,7 @@ const ArticleCard = ({ article, variant = 'cover' }: Props) => {
             message={'Check this article'}
           />
         </li>
-      </ul>
+      </ul> */}
     </article>
   )
 }
