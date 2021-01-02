@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { IconBookmark } from '@components/icons'
 import { removeContent, storeContent, getAllStoredContent } from '@lib/storage'
-// import { useList } from '@lib/hooks/use-list'
 
 type Props = {
   article: TArticle

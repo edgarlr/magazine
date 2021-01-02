@@ -1,6 +1,5 @@
 import { ArticleCard } from '@components/article'
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { getAllStoredContent } from '@lib/storage'
 import { IconBookmark } from '@components/icons'
 
@@ -31,24 +30,14 @@ const ListsPage = () => {
   }
 
   return (
-    <>
-      <ul>
-        <Link href="/lists">
-          <li className="underline">Saved</li>
-        </Link>
-        <Link href="/lists/archive">
-          <li>Archive</li>
-        </Link>
-      </ul>
-      <section>
-        <div className="py-2 flex justify-between items-center">
-          <h6 className="uppercase">{list.length} Articles</h6>
-        </div>
-        {list.map((article) => (
-          <ArticleCard article={article} key={article.slug} route="lists" />
-        ))}
-      </section>
-    </>
+    <section>
+      <div className="py-2 flex justify-between items-center">
+        <h6 className="uppercase">{list.length} Articles</h6>
+      </div>
+      {list.map((article) => (
+        <ArticleCard article={article} key={article.slug} route="lists" />
+      ))}
+    </section>
   )
 }
 
