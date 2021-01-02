@@ -16,3 +16,13 @@ export const getMediaURL = (url?: string) => {
   if (url.startsWith('http') || url.startsWith('//')) return url
   return getStrapiURL(url)
 }
+
+export async function fetchGlobal() {
+  const [global, categories, pages] = await Promise.all([
+    fetchAPI('/global'),
+    fetchAPI('/categories'),
+    fetchAPI('/pages'),
+  ])
+
+  return { global, categories, pages }
+}
