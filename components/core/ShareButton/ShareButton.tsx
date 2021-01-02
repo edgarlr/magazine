@@ -2,7 +2,7 @@ import { IconTwitter } from '@components/icons'
 import Close from '@components/icons/Close'
 import Share from '@components/icons/Share'
 import ExternalLink from '@components/ui/Link/ExternalLink'
-import { useGlobal } from '@lib/hooks/use-global'
+import { SITE_URL, TWITTER_USERNAME } from '@lib/constants'
 import { useState, useEffect, useRef, MouseEvent } from 'react'
 
 type Props = {
@@ -15,11 +15,9 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
   const [showShare, setShowShare] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
 
-  const { site_url, social_urls } = useGlobal()
-
   const shareMenuRef = useRef<HTMLDivElement>(null)
 
-  const fullURL = `${site_url}${path}`
+  const fullURL = `${SITE_URL}${path}`
 
   const onShareClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -99,9 +97,7 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
           <li>
             <ExternalLink
               className="py-4 flex"
-              to={`https://twitter.com/intent/tweet?url=${fullURL}&text=${title}${
-                social_urls?.twitter ? `&via=${social_urls?.twitter}` : ''
-              }`}
+              to={`https://twitter.com/intent/tweet?url=${fullURL}&text=${title}&via=${TWITTER_USERNAME}`}
             >
               <IconTwitter className="mr-4 " />
               Share on Twitter

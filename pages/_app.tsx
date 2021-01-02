@@ -11,7 +11,6 @@ import 'tailwindcss/utilities.css'
 import '@styles/base.css'
 import '@styles/components.css'
 import '@styles/utilities.css'
-import { GlobalContext } from '@lib/hooks/use-global'
 import Head from '@components/core/head'
 
 type Props = {
@@ -28,9 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head global={global} />
 
       <Layout global={global} categories={categories} pages={pages}>
-        <GlobalContext.Provider value={global}>
-          <Component {...pageProps} />
-        </GlobalContext.Provider>
+        <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
   )
