@@ -1,9 +1,8 @@
-import ReactMarkdown from 'react-markdown'
 import { Date } from '@components/ui'
 import { Author, AuthorCard, CategoryTag, Title } from '../ui'
-import ImageRenderer from '../ui/ImageRenderer'
 import ShareButton from '@components/core/ShareButton/ShareButton'
 import AddToListButton from '@components/core/AddToListButton/AddToListButton'
+import Markdown from '@components/core/Markdown/Markdown'
 
 function Article({ article }: { article: TArticle | undefined }) {
   if (!article) return <p>something went wrong</p>
@@ -29,11 +28,7 @@ function Article({ article }: { article: TArticle | undefined }) {
         </li>
       </ul>
 
-      <section className="markdown">
-        <ReactMarkdown renderers={{ image: ImageRenderer }}>
-          {article.content || ''}
-        </ReactMarkdown>
-      </section>
+      <Markdown content={article.content} />
 
       <footer className="border-t border-primary py-6">
         <AuthorCard author={article.author} />

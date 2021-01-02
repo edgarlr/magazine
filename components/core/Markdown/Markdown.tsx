@@ -1,5 +1,16 @@
+import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 import { getMediaURL } from '@lib/api'
+
+const ParagraphRenderer = (props: any) => {
+  const element = props.children[0]
+  // escape all the image elements
+  return element.type.name === 'ImageRenderer' ? (
+    { ...element }
+  ) : (
+    <p {...props} />
+  )
+}
 
 const ImageRenderer = ({ src, alt }: { src: string; alt: string }) => {
   const srcUrl = getMediaURL(src)
@@ -18,4 +29,16 @@ const ImageRenderer = ({ src, alt }: { src: string; alt: string }) => {
   )
 }
 
-export default ImageRenderer
+const Markdown = ({ content }: { content?: string }) => {
+  return (
+    <section className="markdown">
+      <ReactMarkdown
+        renderers={{ image: ImageRenderer, paragraph: ParagraphRenderer }}
+      >
+        {content || ''}
+      </ReactMarkdown>
+    </section>
+  )
+}
+
+export default Markdown
