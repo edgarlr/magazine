@@ -3,12 +3,11 @@ import OfflineBanner from '../OfflineBanner'
 
 type Props = {
   children: React.ReactNode
-  global: TGlobal
   categories: TCategory[]
   pages: TPage[]
 }
 
-const Layout = ({ children, categories, global, pages }: Props) => {
+const Layout = ({ children, categories, pages }: Props) => {
   return (
     <>
       <Header />
@@ -17,11 +16,7 @@ const Layout = ({ children, categories, global, pages }: Props) => {
         {children}
       </main>
       <OfflineBanner />
-      <Footer
-        categories={categories}
-        pages={pages}
-        socialUrls={global.social_urls}
-      />
+      <Footer categories={categories} pages={pages} />
     </>
   )
 }

@@ -2,7 +2,7 @@ import { IconTwitter } from '@components/icons'
 import Close from '@components/icons/Close'
 import Share from '@components/icons/Share'
 import ExternalLink from '@components/ui/Link/ExternalLink'
-import { SITE_URL, TWITTER_USERNAME } from '@lib/constants'
+import { SITE_URL, SOCIAL_USERNAMES } from '@lib/constants'
 import { useState, useEffect, useRef, MouseEvent } from 'react'
 
 type Props = {
@@ -97,7 +97,11 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
           <li>
             <ExternalLink
               className="py-4 flex"
-              to={`https://twitter.com/intent/tweet?url=${fullURL}&text=${title}&via=${TWITTER_USERNAME}`}
+              to={`https://twitter.com/intent/tweet?url=${fullURL}&text=${title}${
+                SOCIAL_USERNAMES.twitter
+                  ? `&via=${SOCIAL_USERNAMES.twitter}`
+                  : ''
+              }`}
             >
               <IconTwitter className="mr-4 " />
               Share on Twitter

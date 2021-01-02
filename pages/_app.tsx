@@ -14,19 +14,18 @@ import '@styles/utilities.css'
 import Head from '@components/core/head'
 
 type Props = {
-  global: TGlobal
   categories: TCategory[]
   pages: TPage[]
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { global, categories, pages }: Props = pageProps
+  const { categories, pages }: Props = pageProps
 
   return (
     <ThemeProvider>
-      <Head global={global} />
+      <Head />
 
-      <Layout global={global} categories={categories} pages={pages}>
+      <Layout categories={categories} pages={pages}>
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
@@ -38,11 +37,10 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext)
 
   // Fetch global site data
-  const global = await fetchAPI('/global')
   const categories = await fetchAPI('/categories')
   const pages = await fetchAPI('/pages')
 
-  return { ...appProps, pageProps: { global, categories, pages } }
+  return { ...appProps, pageProps: { categories, pages } }
 }
 
 export default MyApp

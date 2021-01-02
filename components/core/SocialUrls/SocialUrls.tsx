@@ -1,9 +1,9 @@
 import Twitter from '@components/icons/Twitter'
 import ExternalLink from '@components/ui/Link/ExternalLink'
+import { SOCIAL_USERNAMES } from '@lib/constants'
 
-const SocialUrls = ({ socialUrls }: { socialUrls: TGlobal['social_urls'] }) => {
-  if (!socialUrls) return null
-  const { twitter, instagram, facebook, youtube, linkedin } = socialUrls
+const SocialUrls = () => {
+  const { twitter, instagram, facebook, youtube, linkedin } = SOCIAL_USERNAMES
   return (
     <ul className="flex">
       {twitter && (

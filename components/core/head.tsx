@@ -4,8 +4,9 @@ import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import { getMediaURL } from '@lib/api'
 import { register, unregister } from 'next-offline/runtime'
+import { OG_IMAGE, SEO_DESCRIPTION, SITE_NAME, SITE_URL } from '@lib/constants'
 
-const Head = ({ global }: { global: TGlobal }) => {
+const Head = () => {
   const { systemTheme } = useTheme()
 
   useEffect(() => {
@@ -16,22 +17,23 @@ const Head = ({ global }: { global: TGlobal }) => {
       unregister()
     }
   }, [])
+
   return (
     <>
       <DefaultSeo
-        titleTemplate={`%s | ${global.site_name}`}
+        titleTemplate={`%s | ${SITE_NAME}`}
         title="Online Magazine Starter Kit"
-        description={global.description}
+        description={SEO_DESCRIPTION}
         openGraph={{
           type: 'website',
           locale: 'en_IE',
-          url: global.site_url,
-          site_name: global.site_name,
-          images: Object.values(global.cover.formats).map((image) => {
+          url: SITE_URL,
+          site_name: SITE_NAME,
+          images: Object.values(OG_IMAGE).map((image) => {
             return {
-              url: getMediaURL(image?.url),
-              width: image?.width,
-              height: image?.height,
+              url: getMediaURL(image.url),
+              width: image.width,
+              height: image.height,
             }
           }),
         }}
