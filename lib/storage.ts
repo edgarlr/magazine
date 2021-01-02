@@ -5,9 +5,7 @@ type SWR = ServiceWorkerRegistration & { index?: any }
 
 async function registerContent(article: TArticle) {
   const registration: SWR = await navigator.serviceWorker.ready
-
   if (!registration.index) return null
-
   try {
     await registration.index.add({
       id: article.slug,
@@ -38,13 +36,13 @@ async function unregisterContent(id: string) {
 }
 
 export async function storeContent(article: TArticle) {
-  await registerContent(article)
   await set(article.slug, JSON.stringify(article))
+  await registerContent(article)
 }
 
 export async function removeContent(article: TArticle) {
-  await unregisterContent(article.slug)
   await del(article.slug)
+  await unregisterContent(article.slug)
 }
 
 export async function getAllStoredContent() {

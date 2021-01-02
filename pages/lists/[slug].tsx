@@ -17,19 +17,19 @@ function ArticlePage() {
 
   useEffect(() => {
     const getArticle = async () => {
-      const indexedArticle: TArticle = await get(slug?.toString() || '')
+      const indexedArticle: string = await get(slug?.toString() || '')
       if (!indexedArticle) return setArticle(null)
-      return setArticle(indexedArticle)
+      return setArticle(JSON.parse(indexedArticle))
     }
     getArticle()
   }, [slug])
 
-  if (article === 'loading') {
-    return <p>Loading</p>
-  }
-
   if (!article) {
     return <ErrorPage statusCode={404} />
+  }
+
+  if (article === 'loading') {
+    return <p>Loading</p>
   }
 
   return (
