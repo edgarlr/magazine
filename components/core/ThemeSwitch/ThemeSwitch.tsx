@@ -13,7 +13,7 @@ const ThemeSwitch = () => {
   return (
     // eslint-disable-next-line jsx-a11y/no-onchange
     <select
-      className="input-primary bg-primary-2 border-tertiary"
+      className="input-primary bg-primary-2 border-tertiary block my-2 mx-auto"
       id="theme"
       value={theme}
       onChange={(e) => setTheme(e.target.value)}
