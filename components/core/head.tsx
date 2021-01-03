@@ -53,8 +53,18 @@ const Head = () => {
           rel="stylesheet"
         />
 
+        {/* status bar transparent */}
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+
         {/* General and favicon */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+
         <link
           rel="manifest"
           href="/static/favicon/site.webmanifest"
