@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { SocialUrls } from '../SocialUrls'
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch'
 
@@ -7,16 +8,20 @@ const Footer = ({ categories, pages }: TNavigation) => {
       <h6 className="mt-2">Sections</h6>
       <ul>
         {categories.map((category) => (
-          <li key={category.slug}>{category.title}</li>
+          <Link href={`/${category.slug}`} key={category.slug}>
+            <li>{category.title}</li>
+          </Link>
         ))}
       </ul>
 
-      <h6 className="mt-2">Contributors</h6>
+      <Link href="/contributors">
+        <h6 className="mt-2">Contributors</h6>
+      </Link>
 
       {pages.map((page) => (
-        <h6 className="my-2" key={page.slug}>
-          {page.Title}
-        </h6>
+        <Link href={`/pages/${page.slug}`} key={page.slug}>
+          <h6 className="my-4">{page.Title}</h6>
+        </Link>
       ))}
 
       <SocialUrls />
