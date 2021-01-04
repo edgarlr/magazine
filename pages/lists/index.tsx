@@ -1,8 +1,8 @@
 import { ArticleCard } from '@components/article'
 import { useState, useEffect } from 'react'
 import { getAllStoredContent } from '@lib/storage'
-import { IconBookmark } from '@components/icons'
 import { Layout } from '@components/core'
+import Bookmark from '@components/icons/Bookmark'
 
 const ListsPage = () => {
   const [list, setList] = useState<TArticle[]>([])
@@ -23,7 +23,7 @@ const ListsPage = () => {
           <p>
             Tap the{' '}
             <span>
-              <IconBookmark className="inline-block" />
+              <Bookmark className="inline-block" />
             </span>{' '}
             icon to save them for later.
           </p>

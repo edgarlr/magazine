@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { IconBookmark } from '@components/icons'
 import { removeContent, storeContent, getAllStoredContent } from '@lib/storage'
+import Bookmark from '@components/icons/Bookmark'
 
 type Props = {
   article: TArticle
@@ -36,7 +36,7 @@ const AddToListButton = ({ article }: Props) => {
 
   return (
     <button className="p-2" onClick={onButtonClick}>
-      <IconBookmark style={isOnList ? { fill: 'currentColor' } : {}} />
+      <Bookmark style={isOnList ? { fill: 'currentColor' } : {}} />
     </button>
   )
 }

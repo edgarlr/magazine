@@ -1,4 +1,4 @@
-import { IconTwitter } from '@components/icons'
+import Twitter from '@components/icons/Twitter'
 import ExternalLink from '@components/ui/Link/ExternalLink'
 
 function SocialMediaUrls({ urls }: { urls: TContributor['urls'] }) {
@@ -11,7 +11,7 @@ function SocialMediaUrls({ urls }: { urls: TContributor['urls'] }) {
           className="text-secondary flex items-center pt-1"
           to={`https://twitter.com/${twitter}`}
         >
-          <IconTwitter width="20" height="20" />
+          <Twitter width="20" height="20" />
           <p className="ml-1">{twitter}</p>
         </ExternalLink>
       )}

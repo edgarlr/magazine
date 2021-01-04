@@ -1,6 +1,6 @@
 import { ArticleCard } from '..'
-import { IconList } from '@components/icons'
 import cn from 'classnames'
+import List from '@components/icons/List'
 
 type Props = {
   articles: TArticle[]
@@ -19,7 +19,7 @@ const ArticlesList = ({ articles, title, sort = false }: Props) => {
         <h6 className="uppercase">{title}</h6>
         {sort && (
           <button>
-            <IconList />
+            <List />
           </button>
         )}
       </div>

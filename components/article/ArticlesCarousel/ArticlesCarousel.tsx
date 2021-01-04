@@ -1,6 +1,7 @@
-import { IconArrowLeft, IconArrowRight } from '@components/icons'
 import { ArticleCard } from '..'
 import { useRef, MouseEvent } from 'react'
+import ArrowLeft from '@components/icons/ArrowLeft'
+import ArrowRight from '@components/icons/ArrowRight'
 
 type Props = {
   articles: TArticle[]
@@ -25,12 +26,12 @@ const ArticlesCarousel = ({ title, articles }: Props) => {
         <ul className="flex">
           <li>
             <button onClick={scrollToLeft} className="disabled:opacity-50">
-              <IconArrowLeft />
+              <ArrowLeft />
             </button>
           </li>
           <li>
             <button onClick={scrollToRight} className="disabled:opacity-50">
-              <IconArrowRight />
+              <ArrowRight />
             </button>
           </li>
         </ul>

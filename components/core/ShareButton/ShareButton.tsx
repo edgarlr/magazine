@@ -1,6 +1,7 @@
-import { IconTwitter } from '@components/icons'
 import Close from '@components/icons/Close'
+import Facebook from '@components/icons/Facebook'
 import Share from '@components/icons/Share'
+import Twitter from '@components/icons/Twitter'
 import ExternalLink from '@components/ui/Link/ExternalLink'
 import { SITE_URL, SOCIAL_USERNAMES } from '@lib/constants'
 import { useState, useEffect, useRef, MouseEvent } from 'react'
@@ -90,7 +91,7 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
                 )
               }
             >
-              <IconTwitter className="mr-4 " />
+              <Facebook className="mr-4 " />
               Share on Facebook
             </button>
           </li>
@@ -103,7 +104,7 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
                   : ''
               }`}
             >
-              <IconTwitter className="mr-4 " />
+              <Twitter className="mr-4 " />
               Share on Twitter
             </ExternalLink>
           </li>
