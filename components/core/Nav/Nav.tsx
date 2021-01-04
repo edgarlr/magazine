@@ -5,7 +5,7 @@ import cn from 'classnames'
 const Nav = ({ categories }: { categories: TCategory[] }) => {
   const router = useRouter()
   return (
-    <nav className="overflow-x-scroll sticky flex h-14 items-center whitespace-nowrap top-14 px-4 z-10 bg-primary scrollbar-none standalone:top-16 pt-2">
+    <nav className="overflow-x-scroll sticky flex h-14 items-center whitespace-nowrap top-14 px-4 z-10 bg-primary scrollbar-none">
       <Link href={`/`}>
         <a
           className={cn(

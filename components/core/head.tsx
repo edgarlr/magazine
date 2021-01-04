@@ -54,24 +54,20 @@ const Head = () => {
         />
 
         {/* status bar transparent */}
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
         {/* General and favicon */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-TileColor" content="#603cba" />
 
         <link
           rel="manifest"
           href="/static/favicon/site.webmanifest"
           key="site-manifest"
         />
-        <meta name="theme-color" content="#ffffff" />
-        <meta name="msapplication-TileColor" content="#603cba" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -86,6 +82,7 @@ const Head = () => {
         {/* Dynamic favicon */}
         {!systemTheme || systemTheme === 'light' ? (
           <>
+            å
             <link
               rel="icon"
               type="image/png"

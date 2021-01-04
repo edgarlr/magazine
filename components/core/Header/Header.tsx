@@ -9,7 +9,7 @@ const Header = () => {
   const router = useRouter()
   const [showSearch, setShowSearch] = useState(false)
   return (
-    <header className="fixed bg-primary h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 standalone:pt-14 pb-4">
+    <header className="fixed bg-primary h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 ">
       <Link href="/lists">
         <a>
           <IconBookmark />
