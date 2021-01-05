@@ -1,4 +1,4 @@
-import { Date } from '@components/ui'
+import { Date } from '@components/ui/Date'
 import { getMediaURL } from '@lib/api'
 import Link from 'next/link'
 import s from './ArticleCard.module.css'

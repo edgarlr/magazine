@@ -9,6 +9,7 @@ import { NextSeo } from 'next-seo'
 import ExitPreviewButton from '@components/core/ExitPreviewButton'
 import { Layout } from '@components/core'
 import ArrowLeft from '@components/icons/ArrowLeft'
+import { Button } from '@components/ui/Button'
 
 export async function getStaticPaths() {
   // If you don't have too many articles you can uncomment this code and pre-build each page instead
@@ -86,9 +87,9 @@ function ArticlePage({
         }}
       />
       <Link href={'/'}>
-        <button>
+        <Button>
           <ArrowLeft />
-        </button>
+        </Button>
       </Link>
       <Article article={article} />
       {preview && <ExitPreviewButton />}

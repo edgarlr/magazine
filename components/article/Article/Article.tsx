@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Markdown from '@components/core/Markdown/Markdown'
 import AuthorCard from './AuthorCard'
-import { Date } from '@components/ui'
+import { Date } from '@components/ui/Date'
 import ActionButtons from './ActionButtons'
 
 function Article({ article }: { article: TArticle | undefined }) {

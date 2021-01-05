@@ -2,6 +2,7 @@ import Close from '@components/icons/Close'
 import Facebook from '@components/icons/Facebook'
 import Share from '@components/icons/Share'
 import Twitter from '@components/icons/Twitter'
+import { Button } from '@components/ui/Button'
 import ExternalLink from '@components/ui/Link/ExternalLink'
 import { SITE_URL, SOCIAL_USERNAMES } from '@lib/constants'
 import { useState, useEffect, useRef, MouseEvent } from 'react'
@@ -75,9 +76,9 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
 
   return (
     <div className="relative" ref={shareMenuRef}>
-      <button className="p-2" onClick={onShareClick}>
+      <Button onClick={onShareClick}>
         {showShare ? <Close /> : <Share />}
-      </button>
+      </Button>
       {showShare && (
         <ul className="absolute z-20 right-0 bg-primary flex flex-col p-4 border rounded-lg w-64">
           <li>
@@ -112,9 +113,9 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
             <p className="whitespace-nowrap overflow-hidden overflow-ellipsis p-2">
               {fullURL}
             </p>
-            <button className="bg-primary-2 p-2" onClick={onCopyToClipboard}>
+            <Button className="bg-primary-2" onClick={onCopyToClipboard}>
               {isCopied ? 'Copied' : 'Copy'}
-            </button>
+            </Button>
           </li>
         </ul>
       )}

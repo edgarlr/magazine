@@ -2,6 +2,7 @@ import { ArticleCard } from '..'
 import { useRef, MouseEvent } from 'react'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import ArrowRight from '@components/icons/ArrowRight'
+import { Button } from '@components/ui/Button'
 
 type Props = {
   articles: TArticle[]
@@ -27,14 +28,14 @@ const ArticlesCarousel = ({ title, articles }: Props) => {
         <p className="uppercase">{title}</p>
         <ul className="flex">
           <li>
-            <button onClick={scrollToLeft} className="disabled:opacity-50">
+            <Button onClick={scrollToLeft}>
               <ArrowLeft />
-            </button>
+            </Button>
           </li>
           <li>
-            <button onClick={scrollToRight} className="disabled:opacity-50">
+            <Button onClick={scrollToRight}>
               <ArrowRight />
-            </button>
+            </Button>
           </li>
         </ul>
       </div>
