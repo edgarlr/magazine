@@ -7,6 +7,10 @@
     @apply border border-tertiary py-2 px-3 rounded-xl focus:outline-none focus:border-primary;
   }
 
+  .select-primary {
+    @apply border border-tertiary py-1 pl-4 pr-10 rounded-lg focus:outline-none focus:border-primary cursor-pointer;
+  }
+
   .markdown {
     @apply text-lg max-w-full leading-article;
     & > * + p {

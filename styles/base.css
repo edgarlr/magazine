@@ -29,4 +29,10 @@
   h1 {
     @apply text-4xl font-bold text-primary capitalize;
   }
+
+  select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
 }
