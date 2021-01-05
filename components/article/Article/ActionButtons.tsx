@@ -1,5 +1,5 @@
 import AddToListButton from './AddToListButton'
-import ShareButton from '@components/core/ShareButton/ShareButton'
+import ShareButton from '@components/common/ShareButton'
 
 const ActionButtons = ({ article }: { article: TArticle }) => {
   return (

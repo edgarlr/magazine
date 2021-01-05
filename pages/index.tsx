@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType } from 'next'
 import { ArticlesCarousel, ArticlesList } from '@components/article'
 import { fetchAPI, getNavigation } from '@lib/api'
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
 
 export async function getStaticProps() {
   const articles: TArticle[] = await fetchAPI('/articles')

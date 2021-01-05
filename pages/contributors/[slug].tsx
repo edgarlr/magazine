@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import ExternalLink from '@components/ui/Link/ExternalLink'
 import Image from 'next/image'
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
 
 export async function getStaticPaths() {
   // If you don't have too many contributors you can uncomment

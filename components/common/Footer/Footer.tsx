@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import SocialUrls from './SocialUrls'
-import ThemeSwitch from '../ThemeSwitch/ThemeSwitch'
+import ThemeSwitch from '../ThemeSwitch'
 
 const Footer = ({ categories, pages }: TNavigation) => {
   return (

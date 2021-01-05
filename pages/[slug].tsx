@@ -1,9 +1,9 @@
 import { ArticlesList } from '@components/article'
-import Hero from '@components/core/Hero/Hero'
+import { Hero } from '@components/common/Hero'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { NextSeo } from 'next-seo'
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
 
 export async function getStaticPaths() {
   const categories: TCategory[] = await fetchAPI('/categories')

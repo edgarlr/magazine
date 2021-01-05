@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { get } from 'idb-keyval'
 
 import { Article } from '@components/article'
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import { Button } from '@components/ui/Button'
 

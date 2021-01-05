@@ -5,7 +5,7 @@ import { fetchAPI } from '@lib/api'
 import { InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 import { filterQueries } from '@lib/search'
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
 
 export async function getStaticProps() {
   const categories: TCategory[] = await fetchAPI('/categories')

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Markdown from '@components/core/Markdown/Markdown'
+import { Markdown } from '@components/common/Markdown'
 import AuthorCard from './AuthorCard'
 import { Date } from '@components/ui/Date'
 import ActionButtons from './ActionButtons'

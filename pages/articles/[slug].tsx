@@ -6,8 +6,8 @@ import Link from 'next/link'
 
 import { Article } from '@components/article'
 import { NextSeo } from 'next-seo'
-import ExitPreviewButton from '@components/core/ExitPreviewButton'
-import { Layout } from '@components/core'
+import ExitPreviewButton from '@components/common/ExitPreviewButton'
+import { Layout } from '@components/common/Layout'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import { Button } from '@components/ui/Button'
 

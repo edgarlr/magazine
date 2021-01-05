@@ -1,7 +1,7 @@
 import { ArticleCard } from '@components/article'
 import { useState, useEffect } from 'react'
 import { getAllStoredContent } from '@lib/storage'
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
 import Bookmark from '@components/icons/Bookmark'
 
 const ListsPage = () => {
