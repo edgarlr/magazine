@@ -1,6 +1,6 @@
 import { getMediaURL } from '@lib/api'
 import Link from 'next/link'
-import SocialMediaUrls from './SocialMediaUrls'
+import AuthorSocialMedia from './AuthorSocialMedia'
 import Image from 'next/image'
 
 function AuthorCard({ author }: { author: TContributor }) {
@@ -22,11 +22,13 @@ function AuthorCard({ author }: { author: TContributor }) {
           </figure>
         </Link>
       )}
+
       <div>
         <Link href={`/contributors/${author.slug}`}>
           <a className="serif text-xl">{author.name}</a>
         </Link>
-        <SocialMediaUrls urls={author.urls} />
+
+        <AuthorSocialMedia urls={author.urls} />
       </div>
     </div>
   )

@@ -15,10 +15,12 @@ const ArticlesCarousel = ({ title, articles }: Props) => {
     e.preventDefault()
     carouselRef.current?.scrollBy({ left: -1, top: 0, behavior: 'smooth' })
   }
+
   const scrollToRight = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     carouselRef.current?.scrollBy({ left: 1, top: 0, behavior: 'smooth' })
   }
+
   return (
     <section className="mb-12">
       <div className="flex items-center justify-between h-auto py-4">
@@ -36,6 +38,7 @@ const ArticlesCarousel = ({ title, articles }: Props) => {
           </li>
         </ul>
       </div>
+
       <div
         ref={carouselRef}
         className="flex overflow-hidden overflow-x-scroll scroll-snap-x-mandatory scrollbar-none"

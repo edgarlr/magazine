@@ -1,5 +1,5 @@
-import Contributor from '@components/contribuitors/Contributor'
-import ContributorFeatured from '@components/contribuitors/ContributorFeatured'
+import Contributor from '@components/contributor/Contributor'
+import ContributorFeatured from '@components/contributor/ContributorFeatured'
 import { Layout } from '@components/core'
 import Hero from '@components/core/Hero/Hero'
 import { fetchAPI } from '@lib/api'

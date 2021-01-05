@@ -3,7 +3,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import { NextSeo } from 'next-seo'
-import ExitPreviewButton from '@components/article/ui/ExitPreviewButton'
+import ExitPreviewButton from '@components/core/ExitPreviewButton'
 import { Layout } from '@components/core'
 import Markdown from '@components/core/Markdown/Markdown'
 

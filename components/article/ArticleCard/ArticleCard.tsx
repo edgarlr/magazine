@@ -4,8 +4,7 @@ import Link from 'next/link'
 import s from './ArticleCard.module.css'
 import cn from 'classnames'
 import Image from 'next/image'
-// import ShareButton from '@components/core/ShareButton/ShareButton'
-// import AddToListButton from '@components/core/AddToListButton/AddToListButton'
+// import ActionButtons from '../Article/ActionButtons'
 
 type Props = {
   article: TArticle
@@ -31,6 +30,7 @@ const ArticleCard = ({ article, variant = 'cover', route }: Props) => {
           />
         </figure>
       </Link>
+
       <section className="pt-4">
         <Link href={`/${article.category.slug}`}>
           <a className="uppercase text-sm font-bold text-accent">
@@ -55,18 +55,8 @@ const ArticleCard = ({ article, variant = 'cover', route }: Props) => {
         </p>
         <Date date={article.published_at as string} />
       </section>
-      {/* <ul>
-        <li>
-          <AddToListButton article={article} />
-        </li>
-        <li>
-          <ShareButton
-            path={`/articles/${article.slug}`}
-            title={article.title}
-            message={'Check this article'}
-          />
-        </li>
-      </ul> */}
+
+      {/* <ActionButtons article={article} /> */}
     </article>
   )
 }

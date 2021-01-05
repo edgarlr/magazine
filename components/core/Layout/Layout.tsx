@@ -1,4 +1,6 @@
-import { Footer, Header, Nav } from '@components/core'
+import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
+import Nav from '../Nav/Nav'
 import OfflineBanner from '../OfflineBanner'
 
 type Props = {
