@@ -3,9 +3,9 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import { NextSeo } from 'next-seo'
-import ExitPreviewButton from '@components/article/ui/ExitPreviewButton'
-import { Layout } from '@components/core'
-import Markdown from '@components/core/Markdown/Markdown'
+import ExitPreviewButton from '@components/common/ExitPreviewButton'
+import { Layout } from '@components/common/Layout'
+import Markdown from '@components/common/Markdown/Markdown'
 
 export async function getStaticPaths() {
   // If you don't have too many contributors you can uncomment

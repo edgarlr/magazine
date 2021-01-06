@@ -1,49 +1,40 @@
-import { Date } from '@components/ui'
-import { Author, AuthorCard, CategoryTag, Title } from '../ui'
-import ShareButton from '@components/core/ShareButton/ShareButton'
-import AddToListButton from '@components/core/AddToListButton/AddToListButton'
-import Markdown from '@components/core/Markdown/Markdown'
+import Link from 'next/link'
+import { Markdown } from '@components/common/Markdown'
+import AuthorCard from './AuthorCard'
+import { Date } from '@components/ui/Date'
+import ActionButtons from './ActionButtons'
 
 function Article({ article }: { article: TArticle | undefined }) {
-  if (!article) return <p>something went wrong</p>
+  if (!article) return <p>Something went wrong</p>
 
   return (
     <article>
       <header className="py-10">
-        <CategoryTag category={article.category} />
-        <Title title={article.title} />
-        <Author author={article.author} />
+        <Link href={`/${article.category.slug}`}>
+          <a className="uppercase text-sm font-bold text-accent">
+            {article.category.title}
+          </a>
+        </Link>
+
+        <h1 className="serif pb-4">{article.title}</h1>
+
+        <p className="serif text-s">
+          By{' '}
+          <Link href={`/contributors/${article.author.slug}`}>
+            <a>{article.author.name}</a>
+          </Link>
+        </p>
+
         <Date date={article.published_at as string} />
+
+        <ActionButtons article={article} />
       </header>
-      <ul className="flex justify-end">
-        <li>
-          <AddToListButton article={article} />
-        </li>
-        <li>
-          <ShareButton
-            path={`/articles/${article.slug}`}
-            title={article.title}
-            message={'Check this article'}
-          />
-        </li>
-      </ul>
 
       <Markdown content={article.content} />
 
       <footer className="border-t border-primary py-6">
         <AuthorCard author={article.author} />
-        <ul className="flex justify-end">
-          <li>
-            <AddToListButton article={article} />
-          </li>
-          <li>
-            <ShareButton
-              path={`/articles/${article.slug}`}
-              title={article.title}
-              message={'Check this article'}
-            />
-          </li>
-        </ul>
+        <ActionButtons article={article} />
       </footer>
     </article>
   )

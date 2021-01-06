@@ -8,7 +8,7 @@ import 'tailwindcss/utilities.css'
 import '@styles/base.css'
 import '@styles/components.css'
 import '@styles/utilities.css'
-import Head from '@components/core/head'
+import Head from '@components/common/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

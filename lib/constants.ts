@@ -8,10 +8,10 @@ export const SITE_NAME = 'Magazine'
 export const SOCIAL_USERNAMES = {
   twitter: 'edgarlr_',
   instagram: 'edgar.lr',
-  facebook: null,
-  youtube: null,
-  linkedin: null,
-  email: null,
+  facebook: 'edgarlr',
+  youtube: 'edgarlr',
+  linkedin: 'edgarlr',
+  email: 'edgarlr',
 }
 
 // Default SEO

@@ -1,4 +1,4 @@
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
 
 const offline = () => {
   return (

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import ExternalLink from '@components/ui/Link/ExternalLink'
 import Image from 'next/image'
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
 
 export async function getStaticPaths() {
   // If you don't have too many contributors you can uncomment
@@ -72,7 +72,10 @@ function ContributorPage({
         <h3 className="serif">{contributor?.name}</h3>
         <p className="text-xs uppercase text-secondary">{contributor?.role}</p>
         {contributor?.urls?.twitter && (
-          <ExternalLink to={`https://twitter.com/${contributor?.urls.twitter}`}>
+          <ExternalLink
+            to={`https://twitter.com/${contributor?.urls.twitter}`}
+            ariaLabel="Contributor's twitter"
+          >
             @{contributor?.urls.twitter}
           </ExternalLink>
         )}

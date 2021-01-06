@@ -5,10 +5,10 @@ import ErrorPage from 'next/error'
 import Link from 'next/link'
 
 import { Article } from '@components/article'
-import { IconArrowLeft } from '@components/icons'
 import { NextSeo } from 'next-seo'
-import ExitPreviewButton from '@components/article/ui/ExitPreviewButton'
-import { Layout } from '@components/core'
+import ExitPreviewButton from '@components/common/ExitPreviewButton'
+import { Layout } from '@components/common/Layout'
+import ArrowLeft from '@components/icons/ArrowLeft'
 
 export async function getStaticPaths() {
   // If you don't have too many articles you can uncomment this code and pre-build each page instead
@@ -86,9 +86,9 @@ function ArticlePage({
         }}
       />
       <Link href={'/'}>
-        <button>
-          <IconArrowLeft />
-        </button>
+        <a aria-label="Go back">
+          <ArrowLeft />
+        </a>
       </Link>
       <Article article={article} />
       {preview && <ExitPreviewButton />}

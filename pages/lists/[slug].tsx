@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { get } from 'idb-keyval'
 
 import { Article } from '@components/article'
-import { IconArrowLeft } from '@components/icons'
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
+import ArrowLeft from '@components/icons/ArrowLeft'
 
 function ArticlePage() {
   const [article, setArticle] = useState<TArticle | 'loading' | null>('loading')
@@ -35,9 +35,9 @@ function ArticlePage() {
   return (
     <Layout>
       <Link href={'/lists'}>
-        <button>
-          <IconArrowLeft />
-        </button>
+        <a aria-label="Go back">
+          <ArrowLeft />
+        </a>
       </Link>
       <Article article={article as TArticle} />
     </Layout>

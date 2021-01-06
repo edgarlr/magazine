@@ -58,6 +58,11 @@ module.exports = {
         green: 'var(--green)',
         red: 'var(--red)',
       },
+      screens: {
+        standalone: {
+          raw: '(display-mode: standalone)',
+        },
+      },
     },
   },
   variants: {
