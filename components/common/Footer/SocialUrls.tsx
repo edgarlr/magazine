@@ -13,35 +13,50 @@ const SocialUrls = () => {
     <ul className="flex py-4 justify-center">
       {twitter && (
         <li className="px-2">
-          <ExternalLink to={`https://twitter.com/${twitter}`}>
+          <ExternalLink
+            to={`https://twitter.com/${twitter}`}
+            ariaLabel="Twitter"
+          >
             <Twitter />
           </ExternalLink>
         </li>
       )}
       {instagram && (
         <li className="px-2">
-          <ExternalLink to={`https://instagram.com/${instagram}`}>
+          <ExternalLink
+            to={`https://instagram.com/${instagram}`}
+            ariaLabel="Instagram"
+          >
             <Instagram />
           </ExternalLink>
         </li>
       )}
       {facebook && (
         <li className="px-2">
-          <ExternalLink to={`https://facebook.com/${facebook}`}>
+          <ExternalLink
+            to={`https://facebook.com/${facebook}`}
+            ariaLabel="Facebook"
+          >
             <Facebook />
           </ExternalLink>
         </li>
       )}
       {youtube && (
         <li className="px-2">
-          <ExternalLink to={`https://youtube.com/user/${youtube}`}>
+          <ExternalLink
+            to={`https://youtube.com/user/${youtube}`}
+            ariaLabel="Youtube"
+          >
             <Youtube />
           </ExternalLink>
         </li>
       )}
       {linkedin && (
         <li className="px-2">
-          <ExternalLink to={`https://linkedin.com/in/${linkedin}`}>
+          <ExternalLink
+            to={`https://linkedin.com/in/${linkedin}`}
+            ariaLabel="Linkedin"
+          >
             <Linkedin />
           </ExternalLink>
         </li>

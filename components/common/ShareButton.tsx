@@ -100,6 +100,7 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
           <li>
             <ExternalLink
               className="py-4 flex"
+              ariaLabel="Share on twitter"
               to={`https://twitter.com/intent/tweet?url=${fullURL}&text=${title}${
                 SOCIAL_USERNAMES.twitter
                   ? `&via=${SOCIAL_USERNAMES.twitter}`

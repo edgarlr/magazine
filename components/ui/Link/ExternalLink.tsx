@@ -6,6 +6,7 @@ type Props = {
   newTab?: boolean
   style?: CSSProperties
   className?: string
+  ariaLabel: string
 }
 
 function ExternalLink({
@@ -14,6 +15,7 @@ function ExternalLink({
   newTab = true,
   style,
   className,
+  ariaLabel,
 }: Props) {
   return (
     <a
@@ -22,6 +24,7 @@ function ExternalLink({
       target={newTab ? '_blank' : '_self'}
       rel={newTab ? 'noopener noreferrer' : ''}
       style={style}
+      aria-label={ariaLabel}
       className={className}
     >
       {children}

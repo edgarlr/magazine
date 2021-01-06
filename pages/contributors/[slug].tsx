@@ -72,7 +72,10 @@ function ContributorPage({
         <h3 className="serif">{contributor?.name}</h3>
         <p className="text-xs uppercase text-secondary">{contributor?.role}</p>
         {contributor?.urls?.twitter && (
-          <ExternalLink to={`https://twitter.com/${contributor?.urls.twitter}`}>
+          <ExternalLink
+            to={`https://twitter.com/${contributor?.urls.twitter}`}
+            ariaLabel="Contributor's twitter"
+          >
             @{contributor?.urls.twitter}
           </ExternalLink>
         )}
