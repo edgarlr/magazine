@@ -28,12 +28,12 @@ const ArticlesCarousel = ({ title, articles }: Props) => {
         <p className="uppercase">{title}</p>
         <ul className="flex">
           <li>
-            <Button onClick={scrollToLeft}>
+            <Button onClick={scrollToLeft} ariaLabel="Previus article">
               <ArrowLeft />
             </Button>
           </li>
           <li>
-            <Button onClick={scrollToRight}>
+            <Button onClick={scrollToRight} ariaLabel="Next article">
               <ArrowRight />
             </Button>
           </li>

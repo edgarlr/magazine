@@ -21,7 +21,7 @@ const Header = () => {
       <Link href="/">
         <a className="serif text-3xl">Magazine</a>
       </Link>
-      <Button onClick={() => setShowSearch(!showSearch)}>
+      <Button onClick={() => setShowSearch(!showSearch)} ariaLabel="Search">
         {showSearch ? <Close /> : <Search />}
       </Button>
 

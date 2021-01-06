@@ -36,7 +36,7 @@ const AddToListButton = ({ article }: Props) => {
   }
 
   return (
-    <Button onClick={onButtonClick}>
+    <Button onClick={onButtonClick} ariaLabel="Add to list">
       <Bookmark style={isOnList ? { fill: 'currentColor' } : {}} />
     </Button>
   )

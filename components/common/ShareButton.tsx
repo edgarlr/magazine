@@ -76,13 +76,14 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
 
   return (
     <div className="relative" ref={shareMenuRef}>
-      <Button onClick={onShareClick}>
+      <Button onClick={onShareClick} ariaLabel="Share">
         {showShare ? <Close /> : <Share />}
       </Button>
       {showShare && (
         <ul className="absolute z-20 right-0 bg-primary flex flex-col p-4 border rounded-lg w-64">
           <li>
             <button
+              aria-label="Share on facebook"
               className="py-4 flex"
               onClick={() =>
                 window.open(
@@ -113,7 +114,11 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
             <p className="whitespace-nowrap overflow-hidden overflow-ellipsis p-2">
               {fullURL}
             </p>
-            <Button className="bg-primary-2" onClick={onCopyToClipboard}>
+            <Button
+              className="bg-primary-2"
+              onClick={onCopyToClipboard}
+              ariaLabel="Copy to clipboard"
+            >
               {isCopied ? 'Copied' : 'Copy'}
             </Button>
           </li>
