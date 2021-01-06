@@ -5,7 +5,7 @@ import ThemeSwitch from '../ThemeSwitch'
 const Footer = ({ categories, pages }: TNavigation) => {
   return (
     <footer className="block bottom-0 left-0 right-0 bg-primary-2 px-4 py-6  md:px-32 lg:px-48 xl:px-1/5">
-      <h6 className="mt-2">Sections</h6>
+      <p className="mt-2">Sections</p>
       <ul>
         {categories.map((category) => (
           <Link href={`/${category.slug}`} key={category.slug}>

@@ -20,7 +20,7 @@
 
   /* Text Colors */
   --text-primary: rgba(0, 0, 0, 1);
-  --text-secondary: rgba(0, 0, 0, 0.5);
+  --text-secondary: #505050;
   --text-accent: var(--pink);
 
   /* Main Colors */

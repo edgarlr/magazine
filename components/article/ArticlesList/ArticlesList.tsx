@@ -8,7 +8,7 @@ type Props = {
 const ArticlesList = ({ articles, title }: Props) => {
   return (
     <section>
-      <h6 className="py-2 uppercase">{title}</h6>
+      <div className="py-2 uppercase">{title}</div>
 
       {articles.map((article) => (
         <ArticleCard article={article} key={article.slug} />
