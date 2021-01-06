@@ -14,7 +14,7 @@ const Layout = ({ children, navigation }: Props) => {
       <Header />
       {navigation && <Nav categories={navigation.categories} />}
 
-      <main className="min-h-screen px-4 pt-14 pb-20 flex flex-col">
+      <main className="min-h-screen px-4 pt-14 pb-20 flex flex-col mx-auto md:w-3/4 lg:w-2/3 xl:w-7/12">
         {children}
       </main>
 

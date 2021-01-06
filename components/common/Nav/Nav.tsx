@@ -10,6 +10,7 @@ const Nav = ({ categories }: { categories: TCategory[] }) => {
     <nav
       className={cn(
         'overflow-x-scroll sticky flex whitespace-nowrap px-4 top-14 z-10 bg-primary scrollbar-none transform transition-transform duration-300',
+        'md:justify-center',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
