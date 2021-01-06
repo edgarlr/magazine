@@ -86,7 +86,7 @@ function ArticlePage({
         }}
       />
       <Link href={'/'}>
-        <a>
+        <a aria-label="Go back">
           <ArrowLeft />
         </a>
       </Link>

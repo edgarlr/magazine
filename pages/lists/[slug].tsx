@@ -35,7 +35,7 @@ function ArticlePage() {
   return (
     <Layout>
       <Link href={'/lists'}>
-        <a>
+        <a aria-label="Go back">
           <ArrowLeft />
         </a>
       </Link>
