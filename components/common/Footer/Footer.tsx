@@ -15,14 +15,16 @@ const Footer = ({ categories, pages }: TNavigation) => {
       </ul>
 
       <Link href="/contributors">
-        <h6 className="mt-2">Contributors</h6>
+        <p className="mt-2">Contributors</p>
       </Link>
 
-      {pages.map((page) => (
-        <Link href={`/pages/${page.slug}`} key={page.slug}>
-          <h6 className="my-4">{page.Title}</h6>
-        </Link>
-      ))}
+      <ul>
+        {pages.map((page) => (
+          <Link href={`/pages/${page.slug}`} key={page.slug}>
+            <li className="my-4">{page.Title}</li>
+          </Link>
+        ))}
+      </ul>
 
       <SocialUrls />
 
