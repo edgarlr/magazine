@@ -35,17 +35,9 @@ function SearchPage({
   })
 
   const sortedArticles = filteredArticles.sort((a: TArticle, b: TArticle) => {
-    if (sort === 'desc')
-      return a.published_at < b.published_at
-        ? 1
-        : a.published_at > b.published_at
-        ? -1
-        : 0
-    return a.published_at > b.published_at
-      ? 1
-      : a.published_at < b.published_at
-      ? -1
-      : 0
+    const key = 'published_at'
+    if (sort === 'desc') return a[key] < b[key] ? 1 : a[key] > b[key] ? -1 : 0
+    return a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0
   })
 
   return (
