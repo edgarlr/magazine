@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-// import cn from 'classnames'
+import cn from 'classnames'
 import { useState } from 'react'
 import s from './SearchInput.module.css'
 import Close from '@components/icons/Close'
@@ -16,8 +16,8 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
 
   const SearchFilters = () => {
     return (
-      <div className="absolute z-20 bg-primary left-0 right-0 px-2 py-4 border-b">
-        <p>SORT BY</p>
+      <div className="absolute z-20 bg-primary left-0 right-0 px-2 pt-2 pb-6 border-b border-secondary">
+        <p className={s.filterHeading}>SORT BY</p>
         <ul>
           <Link
             href={{
@@ -25,7 +25,14 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
               query: filterQueries({ q, category, sort: 'asc' }),
             }}
           >
-            <li className={!sort || sort === 'asc' ? 'font-bold' : ''}>asc</li>
+            <li
+              className={cn(
+                s.filter,
+                !sort || sort === 'asc' ? 'font-bold' : ''
+              )}
+            >
+              Newest
+            </li>
           </Link>
           <Link
             href={{
@@ -33,10 +40,12 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
               query: filterQueries({ q, category, sort: 'desc' }),
             }}
           >
-            <li className={sort === 'desc' ? 'font-bold' : ''}>desc</li>
+            <li className={cn(s.filter, sort === 'desc' ? 'font-bold' : '')}>
+              Oldest
+            </li>
           </Link>
         </ul>
-        <p className="mt-4">FILTER BY</p>
+        <p className={s.filterHeading}>FILTER BY</p>
         <ul>
           <Link
             href={{
@@ -44,7 +53,9 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
               query: { q, sort },
             }}
           >
-            <li className={!category ? 'font-bold' : ''}>All Categories</li>
+            <li className={cn(s.filter, !category ? 'font-bold' : '')}>
+              All Categories
+            </li>
           </Link>
           {categories.map((c) => (
             <Link
@@ -54,7 +65,9 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
               }}
               key={c.slug}
             >
-              <li className={category === c.slug ? 'font-bold' : ''}>
+              <li
+                className={cn(s.filter, category === c.slug ? 'font-bold' : '')}
+              >
                 {c.title}
               </li>
             </Link>
@@ -73,10 +86,10 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
   }
 
   return (
-    <div className="sticky top-6 z-20 mb-6 ">
+    <div className="sticky bg-primary top-0 py-4 z-20 mb-6 ">
       <label
         htmlFor="search"
-        className="flex bg-primary border border-secondary w-full py-2 px-1 rounded-xl focus-within:border-primary"
+        className="flex border border-secondary w-full py-2 px-1 rounded-xl focus-within:border-primary"
       >
         <input
           type="search"

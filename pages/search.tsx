@@ -49,7 +49,7 @@ function SearchPage({
   })
 
   return (
-    <main className="min-h-screen px-4 pt-14 pb-20 flex flex-col mx-auto md:w-3/4 lg:w-2/3 xl:w-7/12">
+    <main className="min-h-screen px-4 pt-6 pb-20 flex flex-col mx-auto md:w-3/4 lg:w-2/3 xl:w-7/12">
       <SearchInput categories={categories} />
 
       {/* {isLoading && <p>Loading...</p>} */}

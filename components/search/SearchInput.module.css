@@ -5,3 +5,11 @@
 .searchClear {
   @apply px-2 opacity-50 flex hover:opacity-100;
 }
+
+.filter {
+  @apply py-1 hover:opacity-40;
+}
+
+.filterHeading {
+  @apply mt-4;
+}
