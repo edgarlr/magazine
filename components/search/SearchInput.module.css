@@ -1,0 +1,7 @@
+.searchContainer {
+  @apply justify-center items-center fixed bg-primary top-0 left-0 right-0 h-14 border-primary mt-14 px-2;
+}
+
+.searchClear {
+  @apply px-2 opacity-50 flex hover:opacity-100;
+}
