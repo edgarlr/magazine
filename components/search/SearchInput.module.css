@@ -1,0 +1,15 @@
+.searchButton {
+  @apply px-2 opacity-50 flex hover:opacity-100;
+}
+
+.filter {
+  @apply text-secondary py-2 hover:opacity-40;
+}
+
+.filterActive {
+  @apply font-bold text-primary;
+}
+
+.filterHeading {
+  @apply mt-6 text-secondary text-xs;
+}
