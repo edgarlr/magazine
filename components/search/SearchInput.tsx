@@ -80,6 +80,7 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
       >
         <input
           type="search"
+          inputMode="search"
           name="search"
           id="search"
           defaultValue={router.query.q}
@@ -106,11 +107,9 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
             <Filters />
           </Button>
         </span>
-        <Link href="/">
-          <Button className={s.searchClear}>
-            <Close />
-          </Button>
-        </Link>
+        <Button className={s.searchClear} onClick={() => router.push('/')}>
+          <Close />
+        </Button>
       </label>
       {showFilters && <SearchFilters />}
     </div>

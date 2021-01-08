@@ -35,6 +35,7 @@ const Header = () => {
           </span>
           <input
             type="search"
+            inputMode="search"
             name="search"
             id="search"
             placeholder="Buscar..."
