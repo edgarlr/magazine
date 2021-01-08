@@ -61,7 +61,9 @@ function SearchPage({
           }`}
         />
       ) : (
-        <p>we couldn&apos;t find anything</p>
+        <p className="text-center my-auto text-secondary">
+          We couldn&apos;t find anything
+        </p>
       )}
     </main>
   )

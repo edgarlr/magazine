@@ -1,15 +1,15 @@
-.searchContainer {
-  @apply justify-center items-center fixed bg-primary top-0 left-0 right-0 h-14 border-primary mt-14 px-2;
-}
-
-.searchClear {
+.searchButton {
   @apply px-2 opacity-50 flex hover:opacity-100;
 }
 
 .filter {
-  @apply py-1 hover:opacity-40;
+  @apply text-secondary py-2 hover:opacity-40;
+}
+
+.filterActive {
+  @apply font-bold text-primary;
 }
 
 .filterHeading {
-  @apply mt-4;
+  @apply mt-6 text-secondary text-xs;
 }

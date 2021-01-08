@@ -11,6 +11,7 @@ import { Button } from '@components/ui/Button'
 const Header = () => {
   const router = useRouter()
   const [showSearch, setShowSearch] = useState(false)
+
   return (
     <header className="fixed bg-primary h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 ">
       <Link href="/lists">
@@ -26,10 +27,7 @@ const Header = () => {
       </Button>
 
       <div className={cn(s.searchContainer, showSearch ? 'flex' : 'hidden')}>
-        <label
-          htmlFor="search"
-          className="flex items-center border border-secondary w-full py-2 px-3 rounded-xl focus-within:border-primary"
-        >
+        <label className="flex items-center border border-secondary w-full py-2 px-3 rounded-xl focus-within:border-primary">
           <span className="absolute">
             <Search />
           </span>
@@ -38,7 +36,7 @@ const Header = () => {
             inputMode="search"
             name="search"
             id="search"
-            placeholder="Buscar..."
+            placeholder="Search..."
             className="bg-transparent outline-none w-full py-2 pr-2 pl-9 search-btn-none"
             onKeyUp={(e) => {
               e.preventDefault()

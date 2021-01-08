@@ -26,10 +26,9 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
             }}
           >
             <li
-              className={cn(
-                s.filter,
-                !sort || sort === 'asc' ? 'font-bold' : ''
-              )}
+              className={cn(s.filter, {
+                [s.filterActive]: !sort || sort === 'asc',
+              })}
             >
               Newest
             </li>
@@ -40,7 +39,11 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
               query: filterQueries({ q, category, sort: 'desc' }),
             }}
           >
-            <li className={cn(s.filter, sort === 'desc' ? 'font-bold' : '')}>
+            <li
+              className={cn(s.filter, {
+                [s.filterActive]: sort === 'desc',
+              })}
+            >
               Oldest
             </li>
           </Link>
@@ -53,7 +56,11 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
               query: { q, sort },
             }}
           >
-            <li className={cn(s.filter, !category ? 'font-bold' : '')}>
+            <li
+              className={cn(s.filter, {
+                [s.filterActive]: !category,
+              })}
+            >
               All Categories
             </li>
           </Link>
@@ -66,21 +73,15 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
               key={c.slug}
             >
               <li
-                className={cn(s.filter, category === c.slug ? 'font-bold' : '')}
+                className={cn(s.filter, {
+                  [s.filterActive]: category === c.slug,
+                })}
               >
                 {c.title}
               </li>
             </Link>
           ))}
         </ul>
-        {/* <Link
-          href={{
-            pathname: '/search',
-            query: { q },
-          }}
-        >
-          <p>CLEAR FILTERS</p>
-        </Link> */}
       </div>
     )
   }
@@ -114,13 +115,15 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
             }
           }}
         />
-        {/* <span className={s.searchClear}>clear</span> */}
-        <span className={s.searchClear}>
-          <Button onClick={() => setShowFilters(!showFilters)}>
-            <Filters />
-          </Button>
-        </span>
-        <Button className={s.searchClear} onClick={() => router.push('/')}>
+
+        <Button
+          className={s.searchButton}
+          onClick={() => setShowFilters(!showFilters)}
+        >
+          <Filters />
+        </Button>
+
+        <Button className={s.searchButton} onClick={() => router.push('/')}>
           <Close />
         </Button>
       </label>
