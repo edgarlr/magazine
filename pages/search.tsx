@@ -3,8 +3,7 @@ import { useRouter } from 'next/router'
 import { ArticlesList } from '@components/article'
 import { fetchAPI } from '@lib/api'
 import { InferGetStaticPropsType } from 'next'
-import Link from 'next/link'
-import { filterQueries } from '@lib/search'
+
 import SearchInput from '@components/search/SearchInput'
 
 export async function getStaticProps() {
@@ -51,7 +50,7 @@ function SearchPage({
 
   return (
     <main className="min-h-screen px-4 pt-14 pb-20 flex flex-col mx-auto md:w-3/4 lg:w-2/3 xl:w-7/12">
-      <SearchInput />
+      <SearchInput categories={categories} />
 
       {/* {isLoading && <p>Loading...</p>} */}
       {sortedArticles && sortedArticles.length !== 0 ? (
@@ -64,46 +63,6 @@ function SearchPage({
       ) : (
         <p>we couldn&apos;t find anything</p>
       )}
-      <h3>Sort by</h3>
-      <ul>
-        <Link
-          href={{
-            pathname: '/search',
-            query: filterQueries({ q, category, sort: 'asc' }),
-          }}
-        >
-          <li>asc</li>
-        </Link>
-        <Link
-          href={{
-            pathname: '/search',
-            query: filterQueries({ q, category, sort: 'desc' }),
-          }}
-        >
-          <li>desc</li>
-        </Link>
-      </ul>
-      <ul>
-        {categories.map((category) => (
-          <Link
-            href={{
-              pathname: '/search',
-              query: filterQueries({ q, category: category.slug, sort }),
-            }}
-            key={category.slug}
-          >
-            <li>{category.title}</li>
-          </Link>
-        ))}
-      </ul>
-      <Link
-        href={{
-          pathname: '/search',
-          query: { q },
-        }}
-      >
-        <li>clear filters</li>
-      </Link>
     </main>
   )
 }
