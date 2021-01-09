@@ -68,10 +68,17 @@ const createSitemap = ({
 
 class Sitemap extends React.Component {
   static async getInitialProps({ res }: NextPageContext) {
-    const categories: TCategory[] = await fetchAPI('/categories')
-    const articles: TArticle[] = await fetchAPI('/articles')
-    const pages: TPage[] = await fetchAPI('/pages')
-    const contributors: TContributor[] = await fetchAPI('/contributors')
+    const [categories, articles, pages, contributors]: [
+      TCategory[],
+      TArticle[],
+      TPage[],
+      TContributor[]
+    ] = await Promise.all([
+      fetchAPI('/categories'),
+      fetchAPI('/articles'),
+      fetchAPI('/pages'),
+      fetchAPI('/contributors'),
+    ])
 
     res?.setHeader('Content-Type', 'text/xml')
     res?.write(createSitemap({ categories, articles, pages, contributors }))
