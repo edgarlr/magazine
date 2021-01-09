@@ -44,6 +44,15 @@ module.exports = (phase) => {
     images: {
       domains: ['res.cloudinary.com'],
     },
+
+    // Generate sitemap
+    webpack: (config, { isServer }) => {
+      if (isServer) {
+        require('./scripts/generate-sitemap')
+      }
+
+      return config
+    },
     async rewrites() {
       return [
         {

@@ -1,0 +1,46 @@
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">     
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app/[slug]</loc>
+  </url>
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app</loc>
+  </url>
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app/offline</loc>
+  </url>
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app/search</loc>
+  </url>
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app/contributors/[slug]</loc>
+  </url>
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app/contributors/index</loc>
+  </url>
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app/lists/[slug]</loc>
+  </url>
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app/lists/index</loc>
+  </url>
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app/articles/[slug]</loc>
+  </url>
+  
+  <url>
+    <loc>https://magazine-starter.vercel.app/pages/[slug]</loc>
+  </url>
+  
+  </urlset>
+  
