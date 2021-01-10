@@ -43,13 +43,10 @@ const Head = () => {
       />
       <NextHead>
         {/* Google fonts */}
+
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=block"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=block"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Playfair+Display&display=optional"
           rel="stylesheet"
         />
 
