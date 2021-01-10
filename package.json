@@ -21,7 +21,8 @@
     "type-check": "tsc --pretty --noEmit",
     "lint": "eslint . --ext .ts --ext .tsx --ext .js",
     "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --fix",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "find:unused": "next-unused"
   },
   "husky": {
     "hooks": {
@@ -38,6 +39,23 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "next-unused": {
+    "debug": true,
+    "alias": { 
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ]
+    },
+    "include": ["components", "lib", "pages"],
+    "exclude": [],
+    "entrypoints": ["pages"]
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -64,6 +82,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": ">=4",
     "lint-staged": ">=10",
+    "next-unused": "^0.0.3",
     "postcss": "^8.1.10",
     "postcss-nesting": "^7.0.1",
     "prettier": "^2.1.2",
