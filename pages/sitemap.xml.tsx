@@ -1,4 +1,3 @@
-import React from 'react'
 import { SITE_URL } from '@lib/constants'
 import { fetchAPI } from '@lib/api'
 import { NextPageContext } from 'next'
@@ -36,6 +35,7 @@ const createSitemap = ({
         return `
                 <url>
                     <loc>${`${SITE_URL}/articles/${slug}`}</loc>
+                    <changefreq>daily</changefreq>
                 </url>
             `
       })
@@ -66,24 +66,25 @@ const createSitemap = ({
     </urlset>
     `
 
-class Sitemap extends React.Component {
-  static async getInitialProps({ res }: NextPageContext) {
-    const [categories, articles, pages, contributors]: [
-      TCategory[],
-      TArticle[],
-      TPage[],
-      TContributor[]
-    ] = await Promise.all([
-      fetchAPI('/categories'),
-      fetchAPI('/articles'),
-      fetchAPI('/pages'),
-      fetchAPI('/contributors'),
-    ])
-
-    res?.setHeader('Content-Type', 'text/xml')
-    res?.write(createSitemap({ categories, articles, pages, contributors }))
-    res?.end()
+export async function getServerSideProps({ res }: NextPageContext) {
+  const [categories, articles, pages, contributors]: [
+    TCategory[],
+    TArticle[],
+    TPage[],
+    TContributor[]
+  ] = await Promise.all([
+    fetchAPI('/categories'),
+    fetchAPI('/articles'),
+    fetchAPI('/pages'),
+    fetchAPI('/contributors'),
+  ])
+  res?.setHeader('Content-Type', 'text/xml')
+  res?.write(createSitemap({ categories, articles, pages, contributors }))
+  res?.end()
+  return {
+    props: {}, // will be passed to the page component as props
   }
 }
 
-export default Sitemap
+// Nullish component
+export default () => null
