@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useTheme } from 'next-themes'
 import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
@@ -8,6 +8,8 @@ import { OG_IMAGE, SEO_DESCRIPTION, SITE_NAME, SITE_URL } from '@lib/constants'
 
 const Head = () => {
   const { systemTheme } = useTheme()
+
+  const link = useRef<HTMLLinkElement>(null)
 
   useEffect(() => {
     // Prevent registering the sw on development
@@ -43,11 +45,14 @@ const Head = () => {
       />
       <NextHead>
         {/* Google fonts */}
-
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Playfair+Display&display=optional"
-          rel="stylesheet"
+          ref={link}
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Playfair+Display&display=optional"
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          onLoad={() => (link.current!.rel = 'stylesheet')}
         />
 
         {/* status bar transparent */}
