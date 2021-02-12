@@ -21,7 +21,7 @@ const Toast = ({ children, id }: Props) => {
   })
 
   return (
-    <div className="relative flex justify-between items-center text-sm mt-2 mx-auto w-11/12 bg-violet py-2 pl-6 pr-2 text-primary rounded-lg md:w-full">
+    <div className="relative shadow flex justify-between items-center text-sm mt-2 mx-auto w-11/12 bg-secondary border py-2 pl-6 pr-2 text-primary rounded-lg animate-fade-in-up md:w-full ">
       {children}
       <Button
         className=" text-primary"

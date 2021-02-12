@@ -6,6 +6,9 @@ module.exports = {
       ...theme('colors'),
       DEFAULT: theme('colors.primary.20', 'currentColor'),
     }),
+    boxShadow: {
+      DEFAULT: '0 5px 15px 0 rgba(0, 0, 0, 0.15)',
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -54,6 +57,21 @@ module.exports = {
       screens: {
         standalone: {
           raw: '(display-mode: standalone)',
+        },
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.15s ease-in-out',
+        'slide-up': 'slideUp 0.15s ease-in-out',
+        'fade-in-up': 'fadeIn 0.15s ease-in-out, slideUp 0.15s ease-in-out',
+      },
+      keyframes: {
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        slideUp: {
+          from: { transform: 'translateY(50%)' },
+          to: { transform: 'translateY(0)' },
         },
       },
     },
