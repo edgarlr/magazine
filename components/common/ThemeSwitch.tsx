@@ -16,7 +16,7 @@ const ThemeSwitch = () => {
       <div className="relative w-max mx-auto my-2 ">
         {/* eslint-disable-next-line jsx-a11y/no-onchange */}
         <select
-          className="select-primary bg-primary"
+          className="select-primary bg-secondary"
           id="theme"
           value={theme}
           onChange={(e) => setTheme(e.target.value)}

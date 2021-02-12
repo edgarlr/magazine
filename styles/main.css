@@ -18,7 +18,7 @@
   --black: #121212;
   --black-a-30: rgba(0, 0, 0, 0.3);
   --pink: #ff2969;
-  --pink-light: #ff568e;
+  --pink-light: #fc7fa9;
 
   /* Theme Colors */
   --primary-a-30: var(--black-a-30);
@@ -72,8 +72,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--primary);
-  color: var(--text-primary);
+  background-color: var(--secondary);
+  color: var(--primary);
 }
 
 body {

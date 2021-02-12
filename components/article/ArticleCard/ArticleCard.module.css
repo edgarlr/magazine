@@ -1,5 +1,5 @@
 .cover {
-  @apply py-6 border-b border-secondary relative;
+  @apply py-6 border-b  relative;
   & figure {
     @apply relative pb-3/5 w-full xl:pb-2/5;
   }

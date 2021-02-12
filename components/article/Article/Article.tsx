@@ -32,7 +32,7 @@ function Article({ article }: { article: TArticle | undefined }) {
 
       <Markdown content={article.content} />
 
-      <footer className="border-t border-primary py-6">
+      <footer className="border-t py-6">
         <AuthorCard author={article.author} />
         <ActionButtons article={article} />
       </footer>

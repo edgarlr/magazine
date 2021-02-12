@@ -80,7 +80,7 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
         {showShare ? <Close /> : <Share />}
       </Button>
       {showShare && (
-        <ul className="absolute z-20 right-0 bg-primary flex flex-col p-4 border rounded-lg w-64">
+        <ul className="absolute z-20 right-0 bg-secondary flex flex-col p-4 border rounded-lg w-64">
           <li>
             <button
               aria-label="Share on facebook"
@@ -111,12 +111,12 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
               Share on Twitter
             </ExternalLink>
           </li>
-          <li className="border border-secondary flex rounded-md max-w-full">
+          <li className="border flex rounded-md max-w-full">
             <p className="whitespace-nowrap overflow-hidden overflow-ellipsis p-2">
               {fullURL}
             </p>
             <Button
-              className="bg-primary-2"
+              className="bg-primary-10"
               onClick={onCopyToClipboard}
               ariaLabel="Copy to clipboard"
             >

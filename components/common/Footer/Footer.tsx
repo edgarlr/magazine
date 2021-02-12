@@ -4,7 +4,7 @@ import ThemeSwitch from '../ThemeSwitch'
 
 const Footer = ({ categories, pages }: TNavigation) => {
   return (
-    <footer className="block bottom-0 left-0 right-0 bg-primary-2 px-4 py-6  md:px-32 lg:px-48 xl:px-1/5">
+    <footer className="block bottom-0 left-0 right-0 bg-primary-05 px-4 py-6  md:px-32 lg:px-48 xl:px-1/5">
       <p className="mt-2">Sections</p>
       <ul>
         {categories.map((category) => (
