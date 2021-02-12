@@ -3,7 +3,7 @@
 }
 
 .filter {
-  @apply text-secondary py-2 hover:opacity-40;
+  @apply cursor-pointer text-primary py-2 hover:opacity-40;
 }
 
 .filterActive {
