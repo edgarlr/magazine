@@ -1,11 +1,11 @@
-import Close from '@components/icons/Close'
+import Copy from '@components/icons/Copy'
 import Facebook from '@components/icons/Facebook'
 import Share from '@components/icons/Share'
 import Twitter from '@components/icons/Twitter'
-import { Button } from '@components/ui/Button'
-import ExternalLink from '@components/ui/Link/ExternalLink'
+import { Menu, MenuButton, MenuWrapper, MenuItem } from '@components/ui/Menu'
 import { SITE_URL, SOCIAL_USERNAMES } from '@lib/constants'
-import { useState, useEffect, useRef, MouseEvent } from 'react'
+import { useToast } from '@lib/hooks/use-toast'
+import { MouseEvent } from 'react'
 
 type Props = {
   title: string
@@ -14,16 +14,12 @@ type Props = {
 }
 
 const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
-  const [showShare, setShowShare] = useState(false)
-  const [isCopied, setIsCopied] = useState(false)
-
-  const shareMenuRef = useRef<HTMLDivElement>(null)
+  const { addToast } = useToast()
 
   const fullURL = `${SITE_URL}${path}`
 
-  const onShareClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const onShareClick = (e: MouseEvent) => {
     e.preventDefault()
-
     if (navigator.share) {
       navigator
         .share({
@@ -32,100 +28,63 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
           url: fullURL,
         })
         .catch(console.error)
-    } else {
-      setShowShare(!showShare)
     }
   }
 
   const onCopyToClipboard = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-
     if (navigator.clipboard) {
       navigator.clipboard
         .writeText(fullURL)
-        .then(() => setIsCopied(true))
+        .then(() => addToast('Copied to the clipboard!'))
         .catch(console.error)
     }
   }
 
-  useEffect(() => {
-    const onOutsideClick = (e: any) => {
-      if (
-        shareMenuRef.current &&
-        !shareMenuRef.current.contains(e.target) &&
-        showShare
-      ) {
-        setShowShare(false)
-      }
-    }
-
-    document.addEventListener('click', onOutsideClick)
-    return () => document.removeEventListener('click', onOutsideClick)
-  }, [showShare])
-
-  useEffect(() => {
-    // Early return when isCopied is false.
-    if (!isCopied) return
-
-    const timer = setTimeout(() => {
-      setIsCopied(!isCopied)
-    }, 3000)
-
-    return () => clearTimeout(timer)
-  }, [isCopied])
+  const onFacebookShare = () => {
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${fullURL}`,
+      'facebook-share-dialog',
+      'width=800,height=600'
+    )
+  }
 
   return (
-    <div className="relative" ref={shareMenuRef}>
-      <Button onClick={onShareClick} ariaLabel="Share">
-        {showShare ? <Close /> : <Share />}
-      </Button>
-      {showShare && (
-        <ul className="absolute z-20 right-0 bg-secondary flex flex-col p-4 border rounded-lg w-64">
-          <li>
-            <button
-              aria-label="Share on facebook"
-              className="py-4 flex"
-              onClick={() =>
-                window.open(
-                  `https://www.facebook.com/sharer/sharer.php?u=${fullURL}`,
-                  'facebook-share-dialog',
-                  'width=800,height=600'
-                )
-              }
-            >
-              <Facebook className="mr-4 " />
-              Share on Facebook
-            </button>
-          </li>
-          <li>
-            <ExternalLink
-              className="py-4 flex"
-              ariaLabel="Share on twitter"
-              to={`https://twitter.com/intent/tweet?url=${fullURL}&text=${title}${
-                SOCIAL_USERNAMES.twitter
-                  ? `&via=${SOCIAL_USERNAMES.twitter}`
-                  : ''
-              }`}
-            >
-              <Twitter className="mr-4 " />
-              Share on Twitter
-            </ExternalLink>
-          </li>
-          <li className="border flex rounded-md max-w-full">
-            <p className="whitespace-nowrap overflow-hidden overflow-ellipsis p-2">
-              {fullURL}
-            </p>
-            <Button
-              className="bg-primary-10"
-              onClick={onCopyToClipboard}
-              ariaLabel="Copy to clipboard"
-            >
-              {isCopied ? 'Copied' : 'Copy'}
-            </Button>
-          </li>
-        </ul>
-      )}
-    </div>
+    <MenuWrapper>
+      <MenuButton ariaLabel="Share" onClick={onShareClick}>
+        <Share />
+      </MenuButton>
+      <Menu title="Share">
+        <MenuItem
+          subfix={<Facebook width={20} height={20} />}
+          onClick={onFacebookShare}
+        >
+          Share on Facebook
+        </MenuItem>
+        <MenuItem
+          subfix={<Twitter width={20} height={20} />}
+          href={`https://twitter.com/intent/tweet?url=${fullURL}&text=${title}${
+            SOCIAL_USERNAMES.twitter ? `&via=${SOCIAL_USERNAMES.twitter}` : ''
+          }`}
+          external
+        >
+          Share on Twitter
+        </MenuItem>
+        <MenuItem unstyled>
+          <button
+            className="w-11/12 my-0 mx-auto border rounded-xl overflow-hidden whitespace-nowrap overflow-ellipsis relative text-sm py-2 pl-2 pr-9 opacity-70 transition-opacity hover:opacity-100"
+            onClick={onCopyToClipboard}
+            aria-label="Copy to clipboard"
+            title={fullURL}
+          >
+            {fullURL}
+            <span className="text-primary absolute right-3 leading-none">
+              <Copy width={16} height={16} />
+            </span>
+          </button>
+        </MenuItem>
+      </Menu>
+    </MenuWrapper>
   )
 }
 
