@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
+import Custom404 from 'pages/404'
 import Link from 'next/link'
 import { get } from 'idb-keyval'
 
@@ -25,7 +25,7 @@ function ArticlePage() {
   }, [slug])
 
   if (!article) {
-    return <ErrorPage statusCode={404} />
+    return <Custom404 />
   }
 
   if (article === 'loading') {

@@ -2,10 +2,10 @@ import { ArticlesList } from '@components/article'
 import { fetchAPI, getMediaURL } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
 import ExternalLink from '@components/ui/Link/ExternalLink'
 import Image from 'next/image'
 import { Layout } from '@components/common/Layout'
+import Custom404 from 'pages/404'
 
 export async function getStaticPaths() {
   // If you don't have too many contributors you can uncomment
@@ -46,7 +46,7 @@ function ContributorPage({
   const { isFallback } = useRouter()
 
   if (!isFallback && !contributor) {
-    return <ErrorPage statusCode={404} />
+    return <Custom404 />
   }
 
   // if featuared is diferent than undefined it will be true
@@ -76,7 +76,7 @@ function ContributorPage({
             to={`https://twitter.com/${contributor?.urls.twitter}`}
             ariaLabel="Contributor's twitter"
           >
-            @{contributor?.urls.twitter}
+            {contributor?.urls.twitter}
           </ExternalLink>
         )}
         {isFeatured && (

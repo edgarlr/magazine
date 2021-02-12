@@ -1,7 +1,7 @@
 import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
+import Custom404 from 'pages/404'
 import { NextSeo } from 'next-seo'
 import ExitPreviewButton from '@components/common/ExitPreviewButton'
 import { Layout } from '@components/common/Layout'
@@ -49,7 +49,7 @@ function PagesPage({
   const { isFallback } = useRouter()
 
   if (!isFallback && !page) {
-    return <ErrorPage statusCode={404} />
+    return <Custom404 />
   }
 
   return (
