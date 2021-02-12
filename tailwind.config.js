@@ -3,20 +3,38 @@ module.exports = {
   darkMode: false,
   theme: {
     borderColor: (theme) => ({
-      DEFAULT: theme('var(--primary-2)', 'currentColor'),
-      primary: 'var(--primary-1)',
-      secondary: 'var(--primary-2)',
-      tertiary: 'var(--secondary)',
-      danger: 'var(--red)',
-      succes: 'var(--green)',
+      ...theme('colors'),
+      DEFAULT: theme('colors.primary.20', 'currentColor'),
     }),
-    extend: {
-      fontFamily: {
-        sans: 'var(--font-sans)',
-        serif: 'var(--font-serif)',
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      primary: {
+        DEFAULT: 'var(--primary)',
+        95: 'var(--primary-95)',
+        90: 'var(--primary-90)',
+        80: 'var(--primary-80)',
+        60: 'var(--primary-60)',
+        40: 'var(--primary-40)',
+        20: 'var(--primary-20)',
+        10: 'var(--primary-10)',
+        '05': 'var(--primary-05)',
       },
+      secondary: 'var(--secondary)',
+      'black-a-30': 'var(--black-a-30)',
+      accent: 'var(--accent)',
+      pink: {
+        DEFAULT: 'var(--pink)',
+        light: 'var(--pink-light)',
+      },
+    },
+    fontFamily: {
+      sans: 'var(--font-sans)',
+      serif: 'var(--font-serif)',
+    },
+    extend: {
       lineHeight: {
-        article: '1.85',
+        article: '1.675',
       },
       inset: {
         '1/2': '50%',
@@ -32,31 +50,6 @@ module.exports = {
         '3/5': '60%',
         '4/5': '80%',
         full: '100%',
-      },
-      boxShadow: {
-        'outline-2': '0 0 0 2px var(--accents-2)',
-        magical:
-          'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
-      },
-      textColor: {
-        primary: 'var(--text-primary)',
-        secondary: 'var(--text-secondary)',
-        accent: 'var(--text-accent)',
-      },
-      colors: {
-        primary: 'var(--primary)',
-        'primary-2': 'var(--primary-2)',
-        secondary: 'var(--secondary)',
-        'secondary-2': 'var(--secondary-2)',
-        hover: 'var(--hover)',
-        'hover-1': 'var(--hover-1)',
-        'hover-2': 'var(--hover-2)',
-        violet: 'var(--violet)',
-        pink: 'var(--pink)',
-        cyan: 'var(--cyan)',
-        blue: 'var(--blue)',
-        green: 'var(--green)',
-        red: 'var(--red)',
       },
       screens: {
         standalone: {
