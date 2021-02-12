@@ -10,14 +10,17 @@ import '@styles/components.css'
 import '@styles/utilities.css'
 import Head from '@components/common/head'
 import ListProvider from '@components/ListProvider'
+import UIProvider from '@components/UIProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
-      <ListProvider>
-        <Head />
-        <Component {...pageProps} />
-      </ListProvider>
+      <UIProvider>
+        <ListProvider>
+          <Head />
+          <Component {...pageProps} />
+        </ListProvider>
+      </UIProvider>
     </ThemeProvider>
   )
 }

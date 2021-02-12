@@ -3,6 +3,11 @@ type TNavigation = {
   pages: TPage[]
 }
 
+type TToast = {
+  id: number
+  content: string
+}
+
 type TArticle = {
   id: number
   title: string
