@@ -2,6 +2,38 @@
   @apply absolute w-64 z-50 mt-2 py-4 flex flex-col rounded-2xl bg-secondary shadow border;
 }
 
+/* Mobile */
+.mobileMenu {
+  z-index: 101;
+  @apply fixed left-0 right-0 top-0 bottom-0 w-full h-full flex flex-col justify-end;
+}
+
+.mobileMenu::before {
+  content: '';
+  z-index: -1;
+  @apply fixed top-0 bottom-0 right-0 left-0 bg-black-a-30;
+}
+
+.mobileContent {
+  overflow-y: scroll;
+  max-height: 80%;
+  @apply flex flex-col pt-10 pb-8 bg-secondary rounded-t-2xl;
+}
+
+.closeBtn {
+  flex: 0 0 5rem;
+  @apply w-full h-24 pb-2 border-t text-xl bg-secondary font-bold text-primary-80;
+}
+
+.mobileTitle {
+  @apply text-xl ml-6 mb-4 font-bold;
+}
+
+.mobileList {
+  @apply m-0 p-0 flex flex-col rounded-2xl;
+}
+
+/* MenuItem */
 .subfix {
   @apply absolute right-6 pointer-events-none;
 }
@@ -19,7 +51,7 @@
 }
 
 .itemContent {
-  @apply text-lg text-primary py-8 flex items-center w-full h-full;
+  @apply text-lg text-primary px-6 py-8 flex items-center w-full h-full;
 }
 
 .menuItemActive > .itemContent {

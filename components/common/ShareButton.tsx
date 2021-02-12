@@ -72,7 +72,7 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
         </MenuItem>
         <MenuItem unstyled>
           <button
-            className="w-11/12 my-0 mx-auto border rounded-xl overflow-hidden whitespace-nowrap overflow-ellipsis relative text-sm py-2 pl-2 pr-9 opacity-70 transition-opacity hover:opacity-100"
+            className="w-11/12 my-0 mx-auto border rounded-xl overflow-hidden whitespace-nowrap overflow-ellipsis relative text-sm py-4 pl-2 pr-9 opacity-70 transition-opacity hover:opacity-100 md:py-2"
             onClick={onCopyToClipboard}
             aria-label="Copy to clipboard"
             title={fullURL}
