@@ -42,7 +42,7 @@
   },
   "next-unused": {
     "debug": true,
-    "alias": { 
+    "alias": {
       "@lib/*": [
         "lib/*"
       ],
@@ -53,9 +53,15 @@
         "styles/*"
       ]
     },
-    "include": ["components", "lib", "pages"],
+    "include": [
+      "components",
+      "lib",
+      "pages"
+    ],
     "exclude": [],
-    "entrypoints": ["pages"]
+    "entrypoints": [
+      "pages"
+    ]
   },
   "dependencies": {
     "classnames": "^2.2.6",

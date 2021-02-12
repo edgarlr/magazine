@@ -1,30 +1,19 @@
-import { getAllStoredContent } from '@lib/storage'
-import { useState, useEffect } from 'react'
+import { createContext, useContext } from 'react'
 
-type ReturnProps<T> = {
-  list: T[]
-  addToList: (article: T) => void
-  removeFromList: (article: T) => void
+type ListContextProps = {
+  list: TArticle[]
+  addToList: (article: TArticle) => void
+  removeFromList: (article: TArticle) => void
 }
 
-export const useList = <T>(): ReturnProps<T> => {
-  const [list, setList] = useState<T[]>([])
+export const ListContext = createContext<ListContextProps | null>(null)
 
-  useEffect(() => {
-    const getStoredArticles = async () => {
-      const storedArticles = await getAllStoredContent()
-      setList(storedArticles)
-    }
-    getStoredArticles()
-  }, [])
+export const useList = (): ListContextProps => {
+  const result = useContext(ListContext)
 
-  const addToList = (article: T) => {
-    setList([...list, article])
+  if (!result) {
+    throw new Error()
   }
 
-  const removeFromList = (article: T) => {
-    setList(list.filter((item: T) => article !== item))
-  }
-
-  return { list, addToList, removeFromList }
+  return result
 }
