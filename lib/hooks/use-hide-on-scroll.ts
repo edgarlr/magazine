@@ -8,7 +8,7 @@ export const useHideOnScroll = () => {
     const onScroll = () => {
       const scrolledDown = window.scrollY > prevScrollY.current
 
-      if (scrolledDown && !isHidden) {
+      if (window.scrollY > 0 && scrolledDown && !isHidden) {
         setIsHidden(true)
       } else if (!scrolledDown && isHidden) {
         setIsHidden(false)
