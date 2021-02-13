@@ -4,21 +4,12 @@ import Link from 'next/link'
 import s from './ArticleCard.module.css'
 import cn from 'classnames'
 import Image from 'next/image'
+import ActionButtons from '../Article/ActionButtons'
 
-type Props = {
-  article: TArticle
-  variant?: 'default' | 'carousel'
-}
-
-const ArticleCard = ({ article, variant = 'default' }: Props) => {
-  const rootClassName = cn({
-    [s.default]: variant === 'default',
-    [s.carousel]: variant === 'carousel',
-  })
-
+const ArticleCardList = ({ article }: { article: TArticle }) => {
   return (
-    <article className={rootClassName}>
-      <Link href={`/articles/${article.slug}`}>
+    <article className={s.lists}>
+      <Link href={`/lists/${article.slug}`}>
         <figure>
           <Image
             src={getMediaURL(article.cover.url)}
@@ -35,7 +26,7 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
             {article.category.title}
           </a>
         </Link>
-        <Link href={`/articles/${article.slug}`}>
+        <Link href={`/lists/${article.slug}`}>
           <h3
             className={cn(
               s.title,
@@ -53,8 +44,10 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
         </div>
         <Date date={article.published_at as string} />
       </section>
+
+      <ActionButtons article={article} />
     </article>
   )
 }
 
-export default ArticleCard
+export default ArticleCardList

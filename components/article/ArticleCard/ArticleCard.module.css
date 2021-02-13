@@ -1,5 +1,5 @@
-.cover {
-  @apply py-6 border-b  relative;
+.default {
+  @apply cursor-pointer py-6 border-b relative;
   & figure {
     @apply relative pb-3/5 w-full xl:pb-2/5;
   }
@@ -9,7 +9,7 @@
 }
 
 .carousel {
-  @apply flex flex-row-reverse items-center justify-between relative min-w-full mr-10;
+  @apply cursor-pointer flex flex-row-reverse items-center justify-between relative min-w-full mr-10;
   scroll-snap-align: start;
   & figure {
     @apply relative pb-2/3 flex-1 xl:pb-1/3;
@@ -20,6 +20,21 @@
   }
   & ul {
     @apply flex absolute bottom-0 bg-primary right-0 transform translate-x-1 translate-y-1;
+  }
+}
+
+.lists {
+  @apply cursor-pointer mb-10 flex flex-row-reverse items-center justify-between relative min-w-full mr-10;
+  scroll-snap-align: start;
+  & figure {
+    @apply relative pb-2/3 flex-1 xl:pb-1/4;
+  }
+  & section {
+    flex: 1.5;
+    @apply mr-8;
+  }
+  & ul {
+    @apply flex absolute bottom-0 bg-secondary right-0 transform translate-x-1 translate-y-1;
   }
 }
 
