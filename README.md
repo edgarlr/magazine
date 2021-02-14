@@ -31,13 +31,15 @@ This starter allows you to clone and deploy a fully customizable Online Magazine
   - [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers) for offline support.
   - [IndexedDB](https://developers.google.com/web/ilt/pwa/working-with-indexeddb) for save articles.
 
+
 ## Integrations
 
 This project integrates out-of-the-box with [Magazine Strapi CMS](https://github.com/edgarlr/magazine-api).
 
+
 ## Getting started
 
-Create your own copy of this project by clicking the ["Use this template"]('https://github.com/edgarlr/magazine/generate') button and filling the form.
+Create your own copy of this project by clicking the ["Use this template"](https://github.com/edgarlr/magazine/generate) button and filling the form.
 
 ### Running locally
 
@@ -48,8 +50,8 @@ Then, create a folder and `git clone` from your copy of this repository.
 Install the dependencies and start the dev server.
 
 ```bash
-    yarn install
-    yarn dev
+  yarn install
+  yarn dev
 ```
 
 The dev server will run on [http://localhost:3000](http://localhost:3000). If it doesn't work make shure that:
@@ -58,16 +60,18 @@ The dev server will run on [http://localhost:3000](http://localhost:3000). If it
 - You've set the Roles & Permissions to `find`on Contributors, Categories, articles and pages. (More info on [Magazine Strapi CMS](https://github.com/edgarlr/magazine-api) running locally instructions.)
 - You've set the `status` of each article and page to be `published`
 
+
 ### Preview mode
 
 To try it, create another post but before you set the status to published:
 
 - Set each variable from the `.env.example` into a new file called `.env.local`:
-  - `PREVIEW_SECRET` can be any string (avoiding spaces). You're are gonna use it later on your CMS too.
-  - `API_URL` should be set as `http://localhost:1337`(no trailing slash).
+  - `PREVIEW_SECRET`: can be any string (avoiding spaces). You're are gonna use it later on your CMS too.
+  - `API_URL`: should be set as `http://localhost:1337`(no trailing slash).
 - On your Strapi admin panel go to "Settings" > "Preview Content"
 - Fill the input with your info, the URL should look like this. `http://localhost:1337/api/:contentType-preview?secret=<your-secret>&id=:id`
 - Last, go to any article or page and click the "Preview" button
+
 
 ## Deployment
 
@@ -79,7 +83,10 @@ Click this button below to clone and deploy this project on [vercel](https://ver
 
 Or you can check the docs to [deploy Next.js](https://nextjs.org/docs/deployment).
 
-Don't forget to update your environment variables: - `PREVIEW_SECRET`: Can be any string (avoiding spaces). It must be same as on your CMS. - `API_URL`: URL of your strapi backend. (No trailing slash).
+Don't forget to update your environment variables:
+- `PREVIEW_SECRET`: Can be any string (avoiding spaces). It must be same as on your CMS. 
+- `API_URL`: URL of your strapi backend. (No trailing slash).
+
 
 ## Customize
 
