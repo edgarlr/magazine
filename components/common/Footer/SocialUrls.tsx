@@ -10,54 +10,54 @@ const SocialUrls = () => {
   const { twitter, instagram, facebook, youtube, linkedin } = SOCIAL_USERNAMES
 
   return (
-    <ul className="flex py-4 justify-center">
+    <ul className="flex py-6 justify-center">
       {twitter && (
-        <li className="px-2">
+        <li className="px-4">
           <ExternalLink
             to={`https://twitter.com/${twitter}`}
             ariaLabel="Twitter"
           >
-            <Twitter />
+            <Twitter width="20" height="20" />
           </ExternalLink>
         </li>
       )}
       {instagram && (
-        <li className="px-2">
+        <li className="px-4">
           <ExternalLink
             to={`https://instagram.com/${instagram}`}
             ariaLabel="Instagram"
           >
-            <Instagram />
+            <Instagram width="20" height="20" />
           </ExternalLink>
         </li>
       )}
       {facebook && (
-        <li className="px-2">
+        <li className="px-4">
           <ExternalLink
             to={`https://facebook.com/${facebook}`}
             ariaLabel="Facebook"
           >
-            <Facebook />
+            <Facebook width="20" height="20" />
           </ExternalLink>
         </li>
       )}
       {youtube && (
-        <li className="px-2">
+        <li className="px-4">
           <ExternalLink
             to={`https://youtube.com/user/${youtube}`}
             ariaLabel="Youtube"
           >
-            <Youtube />
+            <Youtube width="20" height="20" />
           </ExternalLink>
         </li>
       )}
       {linkedin && (
-        <li className="px-2">
+        <li className="px-4">
           <ExternalLink
             to={`https://linkedin.com/in/${linkedin}`}
             ariaLabel="Linkedin"
           >
-            <Linkedin />
+            <Linkedin width="20" height="20" />
           </ExternalLink>
         </li>
       )}

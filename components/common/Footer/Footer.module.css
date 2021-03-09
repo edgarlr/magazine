@@ -1,0 +1,11 @@
+.link {
+  @apply text-sm pb-1 cursor-pointer hover:opacity-60;
+}
+
+.ul {
+  @apply flex flex-col mb-6;
+}
+
+.heading {
+  @apply my-1 font-bold text-sm;
+}
