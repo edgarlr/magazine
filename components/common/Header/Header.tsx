@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
 import s from './Header.module.css'
@@ -7,10 +7,32 @@ import Close from '@components/icons/Close'
 import Search from '@components/icons/Search'
 import Bookmark from '@components/icons/Bookmark'
 import { Button } from '@components/ui/Button'
+import { useIsMobile } from '@lib/hooks/use-media-queries'
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
 
 const Header = () => {
   const router = useRouter()
   const [showSearch, setShowSearch] = useState(false)
+  const isMobile = useIsMobile()
+
+  const searchRef = useRef(null)
+
+  useEffect(() => {
+    if (searchRef.current && isMobile) {
+      if (showSearch) {
+        disableBodyScroll(searchRef.current!)
+      } else {
+        enableBodyScroll(searchRef.current!)
+      }
+    }
+    return () => {
+      clearAllBodyScrollLocks()
+    }
+  }, [showSearch, isMobile])
 
   return (
     <header className="fixed bg-secondary h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 ">
@@ -26,7 +48,10 @@ const Header = () => {
         {showSearch ? <Close /> : <Search />}
       </Button>
 
-      <div className={cn(s.searchContainer, showSearch ? 'flex' : 'hidden')}>
+      <div
+        ref={searchRef}
+        className={cn(s.searchContainer, showSearch ? 'flex' : 'hidden')}
+      >
         <label className="flex items-center border-b w-full py-2 pl-3 focus-within:border-primary md:pb-0">
           <span className="absolute">
             <Search />
