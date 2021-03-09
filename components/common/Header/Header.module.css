@@ -1,5 +1,5 @@
 .searchContainer {
-  @apply justify-center items-center fixed bg-secondary top-0 left-0 right-0 border-primary pt-8 pb-4 px-4;
+  @apply justify-center items-center fixed bg-secondary top-0 left-0 right-0 border-primary pt-8 pb-4 px-4 md:w-2/6 md:pt-4 md:left-auto;
 }
 
 .searchClear {

@@ -8,6 +8,20 @@
   }
 }
 
+@media screen and (min-width: 1024px) {
+  .default {
+    @apply flex flex-row-reverse items-center justify-between gap-20 cursor-pointer mx-auto w-5/6 py-10;
+    & figure {
+      flex: 0.8;
+      @apply relative lg:pb-1/4;
+    }
+    & section {
+      @apply py-8;
+      flex: 1;
+    }
+  }
+}
+
 .carousel {
   @apply cursor-pointer flex flex-row-reverse items-center justify-between relative min-w-full mr-10;
   scroll-snap-align: start;

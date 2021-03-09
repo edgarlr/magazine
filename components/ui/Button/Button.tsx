@@ -16,7 +16,7 @@ const Button = ({ children, onClick, className, style, ariaLabel }: Props) => {
       style={style}
       aria-label={ariaLabel}
       className={cn(
-        'p-2 w-max rounded-xl disabled:opacity-50 hover:bg-primary-05',
+        'p-2 w-max rounded-full disabled:opacity-50 hover:bg-primary-05',
         className
       )}
     >
