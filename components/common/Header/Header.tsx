@@ -27,7 +27,7 @@ const Header = () => {
       </Button>
 
       <div className={cn(s.searchContainer, showSearch ? 'flex' : 'hidden')}>
-        <label className="flex items-center border w-full py-2 px-3 rounded-xl focus-within:border-primary">
+        <label className="flex items-center border-b w-full py-2 pl-3 focus-within:border-primary md:pb-0">
           <span className="absolute">
             <Search />
           </span>
@@ -37,7 +37,7 @@ const Header = () => {
             name="search"
             id="search"
             placeholder="Search..."
-            className="bg-transparent outline-none w-full py-2 pr-2 pl-9 search-btn-none"
+            className="bg-transparent outline-none w-full py-2 pr-2 pl-9 search-btn-none lg:text-sm"
             onKeyUp={(e) => {
               e.preventDefault()
               if (e.key === 'Enter') {
