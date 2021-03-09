@@ -18,6 +18,19 @@ function Home({
     <Layout navigation={navigation}>
       <ArticlesCarousel title="Top stories" articles={articles} />
       <ArticlesList articles={articles} title="Recent" />
+
+      <div className="lg:py-24 lg:flex lg:gap-28 lg:mx-auto">
+        <ArticlesList
+          articles={articles}
+          title="Articulos Principales"
+          variant="top"
+        />
+        <ArticlesList
+          articles={articles}
+          title="Artículos Más leidos"
+          variant="top"
+        />
+      </div>
     </Layout>
   )
 }

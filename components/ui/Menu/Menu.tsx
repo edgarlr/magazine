@@ -41,7 +41,7 @@ const Menu = ({ children, title, position = 'right' }: Props) => {
       <p className="px-6 mt-1 mx-0 mb-2 font-bold text-sm text-primary">
         {title}
       </p>
-      <ul className="m-0 p-0 flex flex-col rounded-2xl">{children}</ul>
+      <ul className="w-full m-0 p-0 flex flex-col rounded-2xl">{children}</ul>
     </div>
   )
 }

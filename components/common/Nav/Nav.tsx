@@ -17,7 +17,7 @@ const Nav = ({ categories }: { categories: TCategory[] }) => {
       <Link href={`/`}>
         <a
           className={cn(
-            'uppercase px-6 pt-1 pb-2 text-sm font-bold',
+            'uppercase px-6 pt-1 pb-2 text-xs font-bold text-primary-90',
             router.pathname === '/' && 'border-b-2 border-primary'
           )}
         >
@@ -28,7 +28,7 @@ const Nav = ({ categories }: { categories: TCategory[] }) => {
         <Link href={`/${category.slug}`} key={category.slug}>
           <a
             className={cn(
-              'uppercase pt-1 pb-2 px-4 text-sm font-bold ',
+              'uppercase pt-1 pb-2 px-4 text-xs font-bold text-primary-90',
               router.query.slug === category.slug && 'border-b-2 border-primary'
             )}
           >

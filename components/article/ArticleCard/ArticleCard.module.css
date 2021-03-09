@@ -22,6 +22,17 @@
   }
 }
 
+.top {
+  @apply flex py-6 items-center justify-between relative min-w-full cursor-pointer;
+  & section {
+    flex: 1;
+  }
+  & .topNumber {
+    flex: 0.125;
+    @apply text-2xl font-bold text-primary-20;
+  }
+}
+
 .lists {
   @apply cursor-pointer mb-10 py-16 border-b flex flex-row-reverse items-center justify-between relative mx-auto w-full mr-10 md:w-10/12 md:py-12;
   scroll-snap-align: start;

@@ -1,10 +1,11 @@
 import { ArticleCard } from '..'
 import ArticleCardLists from '../ArticleCard/ArticleCardLists'
+import ArticleCardTop from '../ArticleCard/ArticleCardTop'
 
 type Props = {
   articles: TArticle[]
   title: string
-  variant?: 'default' | 'lists'
+  variant?: 'default' | 'lists' | 'top'
 }
 
 const ArticlesList = ({ articles, title, variant = 'default' }: Props) => {
@@ -14,6 +15,11 @@ const ArticlesList = ({ articles, title, variant = 'default' }: Props) => {
         <ArticleCardLists article={article} key={article.slug} />
       ))
     }
+    if (variant === 'top') {
+      return articles.map((article, index) => (
+        <ArticleCardTop article={article} index={index} key={article.slug} />
+      ))
+    }
     return articles.map((article) => (
       <ArticleCard article={article} key={article.slug} />
     ))
@@ -21,7 +27,7 @@ const ArticlesList = ({ articles, title, variant = 'default' }: Props) => {
 
   return (
     <section>
-      <div className="py-2 uppercase">{title}</div>
+      <div className="py-2 text-sm font-bold uppercase">{title}</div>
       {renderCards()}
     </section>
   )

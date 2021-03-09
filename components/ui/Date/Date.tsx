@@ -10,7 +10,7 @@ type Props = {
 
 function Date({ date, style, className = '' }: Props) {
   return (
-    <p style={style} className={cn('text-sx text-secondary', className)}>
+    <p style={style} className={cn('text-xs text-primary-60', className)}>
       <time dateTime={date}>{getFormattedDate(date)}</time>
     </p>
   )
