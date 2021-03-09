@@ -26,6 +26,7 @@ function Home({
       ) : (
         <ArticlesHero articles={articles} />
       )}
+
       <ArticlesList articles={articles} title="Recent" />
 
       <div className="lg:py-24 lg:flex lg:gap-28 lg:mx-auto">
@@ -40,6 +41,8 @@ function Home({
           variant="top"
         />
       </div>
+
+      <ArticlesList articles={articles} title="More articles" />
     </Layout>
   )
 }

@@ -27,7 +27,9 @@ const ArticlesList = ({ articles, title, variant = 'default' }: Props) => {
 
   return (
     <section>
-      <div className="py-2 text-sm font-bold uppercase">{title}</div>
+      <div className="mt-10 text-center py-4 font-serif text-xl border-b border-primary-50 uppercase">
+        {title}
+      </div>
       {renderCards()}
     </section>
   )

@@ -7,6 +7,9 @@
     @apply absolute bottom-0 right-0 pb-3 flex;
   }
 }
+.default:last-child {
+  @apply border-none;
+}
 
 @media screen and (min-width: 1024px) {
   .default {

@@ -9,7 +9,7 @@ import ActionButtons from '../Article/ActionButtons'
 
 const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
   return (
-    <section className="mb-4 flex justify-between items-center py-16 border-b">
+    <section className="mb-4 flex justify-between items-center py-16">
       <div style={{ width: '45%' }}>
         <article className={s.hero}>
           <Link href={`/articles/${articles[0].slug}`}>
