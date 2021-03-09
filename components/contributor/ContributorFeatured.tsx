@@ -12,7 +12,7 @@ const ContributorFeatured = ({
   )
   return (
     <Link href={`/contributors/${contributor.slug}`}>
-      <li className="flex py-2">
+      <li className="flex mb-10 cursor-pointer">
         <figure className="relative w-16 h-16">
           <Image
             src={thumbnailUrl}
@@ -22,8 +22,10 @@ const ContributorFeatured = ({
           />
         </figure>
         <div className="ml-5">
-          <h3 className="serif">{contributor.name}</h3>
-          <p className="text-xs uppercase text-secondary">{contributor.role}</p>
+          <h3 className="serif ">{contributor.name}</h3>
+          <p className="text-xs uppercase text-primary-60">
+            {contributor.role}
+          </p>
         </div>
       </li>
     </Link>

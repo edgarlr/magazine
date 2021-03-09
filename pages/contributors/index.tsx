@@ -31,7 +31,7 @@ export function ContributorsPage({
           />
         ))}
       </ul>
-      <h6 className="uppercase pt-4">more contributors</h6>
+      <h6 className="font-normal pt-4">more contributors</h6>
       <ul>
         {others.map((contributor) => (
           <Contributor contributor={contributor} key={contributor.slug} />
