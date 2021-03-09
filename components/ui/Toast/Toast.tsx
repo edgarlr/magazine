@@ -14,7 +14,7 @@ const Toast = ({ children, id }: Props) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(id)
-    }, 3000)
+    }, 5000)
     return () => {
       clearTimeout(timer)
     }
