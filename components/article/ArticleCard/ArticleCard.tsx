@@ -45,10 +45,10 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
             {article.title}
           </h3>
         </Link>
-        <div className="serif text-s">
+        <div className="text-sm mt-2">
           By{' '}
           <Link href={`/contributors/${article.author.slug}`}>
-            <a className="hover:underline">{article.author.name}</a>
+            <a className="font-bold hover:underline">{article.author.name}</a>
           </Link>
         </div>
         <Date date={article.published_at as string} />
