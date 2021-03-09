@@ -19,14 +19,14 @@ const Header = () => {
   const [showSearch, setShowSearch] = useState(false)
   const isMobile = useIsMobile()
 
-  const searchRef = useRef(null)
+  const searchRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (searchRef.current && isMobile) {
       if (showSearch) {
-        disableBodyScroll(searchRef.current!)
+        disableBodyScroll(searchRef.current)
       } else {
-        enableBodyScroll(searchRef.current!)
+        enableBodyScroll(searchRef.current)
       }
     }
     return () => {

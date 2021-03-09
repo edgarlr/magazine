@@ -16,17 +16,17 @@ import {
 const SearchInput = ({ categories }: { categories: TCategory[] }) => {
   const [showFilters, setShowFilters] = useState(false)
 
-  const filtersRef = useRef(null)
+  const searchRef = useRef<HTMLDivElement>(null)
 
   const router = useRouter()
   const { q, category, sort } = router.query
 
   useEffect(() => {
-    if (filtersRef.current) {
+    if (searchRef.current) {
       if (showFilters) {
-        disableBodyScroll(filtersRef.current!)
+        disableBodyScroll(searchRef.current!)
       } else {
-        enableBodyScroll(filtersRef.current!)
+        enableBodyScroll(searchRef.current!)
       }
     }
     return () => {
@@ -34,12 +34,26 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
     }
   }, [showFilters])
 
+  useEffect(() => {
+    if (!showFilters) return
+
+    const onOutsideClick = (e: any) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setShowFilters(false)
+      }
+    }
+
+    document.addEventListener('click', onOutsideClick)
+    document.addEventListener('touchstart', onOutsideClick)
+    return () => {
+      document.removeEventListener('click', onOutsideClick)
+      document.removeEventListener('touchstart', onOutsideClick)
+    }
+  }, [showFilters])
+
   const SearchFilters = () => {
     return (
-      <div
-        ref={filtersRef}
-        className="absolute z-20 bg-secondary left-0 right-0 px-2 pt-2 pb-6 border-b"
-      >
+      <div className="absolute z-20 bg-secondary left-0 right-0 px-2 pt-2 pb-6 border-b">
         <p className={s.filterHeading}>SORT BY</p>
         <ul>
           <Link
@@ -110,7 +124,7 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
   }
 
   return (
-    <div className="sticky bg-secondary top-0 py-4 z-20 mb-6">
+    <div ref={searchRef} className="sticky bg-secondary top-0 py-4 z-20 mb-6">
       <label
         htmlFor="search"
         className="flex border-b w-full py-2 px-1 focus-within:border-primary"
