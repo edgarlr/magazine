@@ -1,22 +1,45 @@
 import { useRouter } from 'next/router'
 import cn from 'classnames'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import s from './SearchInput.module.css'
 import Close from '@components/icons/Close'
 import Filters from '@components/icons/Filters'
 import Link from 'next/link'
 import { filterQueries } from '@lib/search'
 import { Button } from '@components/ui/Button'
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
 
 const SearchInput = ({ categories }: { categories: TCategory[] }) => {
   const [showFilters, setShowFilters] = useState(false)
 
+  const filtersRef = useRef(null)
+
   const router = useRouter()
   const { q, category, sort } = router.query
 
+  useEffect(() => {
+    if (filtersRef.current) {
+      if (showFilters) {
+        disableBodyScroll(filtersRef.current!)
+      } else {
+        enableBodyScroll(filtersRef.current!)
+      }
+    }
+    return () => {
+      clearAllBodyScrollLocks()
+    }
+  }, [showFilters])
+
   const SearchFilters = () => {
     return (
-      <div className="absolute z-20 bg-secondary left-0 right-0 px-2 pt-2 pb-6 border-b">
+      <div
+        ref={filtersRef}
+        className="absolute z-20 bg-secondary left-0 right-0 px-2 pt-2 pb-6 border-b"
+      >
         <p className={s.filterHeading}>SORT BY</p>
         <ul>
           <Link
@@ -87,10 +110,10 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
   }
 
   return (
-    <div className="sticky bg-secondary top-0 py-4 z-20 mb-6 ">
+    <div className="sticky bg-secondary top-0 py-4 z-20 mb-6">
       <label
         htmlFor="search"
-        className="flex border w-full py-2 px-1 rounded-xl focus-within:border-primary"
+        className="flex border-b w-full py-2 px-1 focus-within:border-primary"
       >
         <input
           type="search"

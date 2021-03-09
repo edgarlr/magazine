@@ -11,5 +11,5 @@
 }
 
 .filterHeading {
-  @apply mt-6 text-secondary text-xs;
+  @apply mt-6 text-primary-60 text-xs;
 }
