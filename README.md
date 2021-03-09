@@ -31,11 +31,9 @@ This starter allows you to clone and deploy a fully customizable Online Magazine
   - [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers) for offline support.
   - [IndexedDB](https://developers.google.com/web/ilt/pwa/working-with-indexeddb) for save articles.
 
-
 ## Integrations
 
 This project integrates out-of-the-box with [Magazine Strapi CMS](https://github.com/edgarlr/magazine-api).
-
 
 ## Getting started
 
@@ -60,7 +58,6 @@ The dev server will run on [http://localhost:3000](http://localhost:3000). If it
 - You've set the Roles & Permissions to `find`on Contributors, Categories, articles and pages. (More info on [Magazine Strapi CMS](https://github.com/edgarlr/magazine-api) running locally instructions.)
 - You've set the `status` of each article and page to be `published`
 
-
 ### Preview mode
 
 To try it, create another post but before you set the status to published:
@@ -71,7 +68,6 @@ To try it, create another post but before you set the status to published:
 - On your Strapi admin panel go to "Settings" > "Preview Content"
 - Fill the input with your info, the URL should look like this. `http://localhost:1337/api/:contentType-preview?secret=<your-secret>&id=:id`
 - Last, go to any article or page and click the "Preview" button
-
 
 ## Deployment
 
@@ -84,9 +80,9 @@ Click this button below to clone and deploy this project on [vercel](https://ver
 Or you can check the docs to [deploy Next.js](https://nextjs.org/docs/deployment).
 
 Don't forget to update your environment variables:
-- `PREVIEW_SECRET`: Can be any string (avoiding spaces). It must be same as on your CMS. 
-- `API_URL`: URL of your strapi backend. (No trailing slash).
 
+- `PREVIEW_SECRET`: Can be any string (avoiding spaces). It must be same as on your CMS.
+- `API_URL`: URL of your strapi backend. (No trailing slash).
 
 ## Customize
 

@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import { ThemeProvider } from 'next-themes'
 import ToastContainer from './ui/Toast/ToastContainer'
 import { ToastContext } from '@lib/hooks/use-toast'
 
@@ -23,8 +24,10 @@ const UIProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ToastContext.Provider value={{ addToast, removeToast }}>
-      <ToastContainer toasts={toasts} />
-      {children}
+      <ThemeProvider>
+        {children}
+        <ToastContainer toasts={toasts} />
+      </ThemeProvider>
     </ToastContext.Provider>
   )
 }

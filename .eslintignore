@@ -1,3 +1,7 @@
 **/node_modules/*
 **/out/*
 **/.next/*
+**/public/*
+**/styles/*
+
+README.md

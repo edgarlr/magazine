@@ -1,5 +1,4 @@
 import type { AppProps } from 'next/app'
-import { ThemeProvider } from 'next-themes'
 import '@styles/main.css'
 // import '@styles/tailwind.css'
 import 'tailwindcss/base.css'
@@ -14,14 +13,12 @@ import UIProvider from '@components/UIProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider>
-      <UIProvider>
-        <ListProvider>
-          <Head />
-          <Component {...pageProps} />
-        </ListProvider>
-      </UIProvider>
-    </ThemeProvider>
+    <UIProvider>
+      <ListProvider>
+        <Head />
+        <Component {...pageProps} />
+      </ListProvider>
+    </UIProvider>
   )
 }
 

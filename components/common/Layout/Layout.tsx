@@ -15,7 +15,7 @@ const Layout = ({ children, navigation }: Props) => {
   const { addToast } = useToast()
 
   useEffect(() => {
-    if (!isOffline) {
+    if (isOffline) {
       addToast('No Internet Connection')
     }
   }, [addToast, isOffline])
