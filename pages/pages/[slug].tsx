@@ -6,6 +6,7 @@ import { NextSeo } from 'next-seo'
 import ExitPreviewButton from '@components/common/ExitPreviewButton'
 import { Layout } from '@components/common/Layout'
 import Markdown from '@components/common/Markdown/Markdown'
+import Image from 'next/image'
 
 export async function getStaticPaths() {
   // If you don't have too many pages or simply prefer to generate
@@ -75,9 +76,24 @@ function PagesPage({
           }),
         }}
       />
-      <header className="mb-8">
+
+      <header>
         <h1 className="serif pb-4">{page?.title}</h1>
       </header>
+
+      {page?.cover && (
+        <div className="mt-4 mb-8">
+          <Image
+            src={getMediaURL(
+              page.cover?.formats.medium?.url || page?.cover?.url
+            )}
+            alt={page?.cover?.alternativeText || ''}
+            width={page?.cover?.width}
+            height={page?.cover?.height}
+          />
+        </div>
+      )}
+
       <Markdown content={page?.content} />
       {preview && <ExitPreviewButton />}
     </Layout>
