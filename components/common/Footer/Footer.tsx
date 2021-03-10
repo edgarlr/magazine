@@ -43,7 +43,7 @@ const Footer = ({ categories, pages }: TNavigation) => {
             {pages.map((page) => (
               <Link href={`/pages/${page.slug}`} key={page.slug}>
                 <li>
-                  <a className={s.link}>{page.Title}</a>
+                  <a className={s.link}>{page.title}</a>
                 </li>
               </Link>
             ))}

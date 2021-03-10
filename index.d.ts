@@ -77,7 +77,7 @@ type TGlobal = {
 
 type TPage = {
   id: number
-  Title: string
+  title: string
   slug: string
   description: string
   content: string

@@ -13,8 +13,8 @@
 
   .markdown {
     @apply text-lg max-w-full leading-article;
-    & > * + p {
-      @apply my-4;
+    & > * {
+      @apply mb-4;
     }
 
     & a {
@@ -35,19 +35,20 @@
     }
 
     & h3 {
-      @apply mt-12;
+      @apply mt-10;
     }
-
+    & h4 {
+      @apply mt-8;
+    }
+    & h5 {
+      @apply mt-6;
+    }
     & hr {
-      @apply border-none border border-t border-primary;
-    }
-
-    & em {
-      @apply block text-center text-sm border-primary mb-8 text-secondary;
+      @apply border-primary-20 mt-20;
     }
 
     & blockquote {
-      @apply my-6 pt-1 pb-2 pl-6 pr-4 relative text-secondary border-l-4 border-primary leading-tight;
+      @apply my-6 py-4 pl-6 pr-4 relative text-secondary border-l-4 border-primary leading-tight bg-primary-05;
     }
 
     & blockquote p {

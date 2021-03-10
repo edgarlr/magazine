@@ -55,10 +55,10 @@ function PagesPage({
   return (
     <Layout navigation={navigation}>
       <NextSeo
-        title={page?.Title}
+        title={page?.title}
         description={page?.description}
         openGraph={{
-          title: page?.Title,
+          title: page?.title,
           description: page?.description,
           // Only include OG image if exists
           // This will break disabling Strapi Image Optimization
@@ -73,7 +73,9 @@ function PagesPage({
           }),
         }}
       />
-      <h1 className="text-xl">{page?.Title}</h1>
+      <header className="py-10">
+        <h1 className="serif pb-4">{page?.title}</h1>
+      </header>
       <Markdown content={page?.content} />
       {preview && <ExitPreviewButton />}
     </Layout>
