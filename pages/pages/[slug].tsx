@@ -75,7 +75,7 @@ function PagesPage({
           }),
         }}
       />
-      <header className="py-10">
+      <header className="mb-8">
         <h1 className="serif pb-4">{page?.title}</h1>
       </header>
       <Markdown content={page?.content} />
