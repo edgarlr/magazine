@@ -6,7 +6,7 @@
   .searchContainer::before {
     content: '';
     z-index: -1;
-    @apply absolute top-0 right-0 left-0 h-screen bg-secondary opacity-30;
+    @apply absolute top-0 right-0 left-0 h-screen bg-secondary opacity-60;
     transform: translateY(6rem);
   }
 }

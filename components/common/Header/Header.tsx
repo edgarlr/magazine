@@ -35,7 +35,10 @@ const Header = () => {
   }, [showSearch, isMobile])
 
   return (
-    <header className="fixed bg-secondary h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 ">
+    <header
+      ref={searchRef}
+      className="fixed bg-secondary h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
+    >
       <Button href="/lists" ariaLabel="My bookmarks">
         <Bookmark />
       </Button>
@@ -46,10 +49,7 @@ const Header = () => {
         {showSearch ? <Close /> : <Search />}
       </Button>
 
-      <div
-        ref={searchRef}
-        className={cn(s.searchContainer, showSearch ? 'flex' : 'hidden')}
-      >
+      <div className={cn(s.searchContainer, showSearch ? 'flex' : 'hidden')}>
         <label className="flex items-center border-b w-full py-2 pl-3 focus-within:border-primary md:pb-0">
           <span className="absolute">
             <Search />
