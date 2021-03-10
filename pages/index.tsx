@@ -32,13 +32,13 @@ function Home({
       <div className="lg:py-24 lg:flex lg:gap-28 lg:mx-auto">
         <ArticlesList
           articles={articles.slice(0, 5)}
-          title="Articulos Principales"
+          title="Featured"
           variant="top"
           className="lg:w-1/2"
         />
         <ArticlesList
           articles={articles.slice(6, 11)}
-          title="Artículos Más leidos"
+          title="Popular"
           variant="top"
           className="lg:w-1/2"
         />
