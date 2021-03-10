@@ -8,20 +8,21 @@ import { Layout } from '@components/common/Layout'
 import Markdown from '@components/common/Markdown/Markdown'
 
 export async function getStaticPaths() {
-  const slugs: TPage[] = await fetchAPI('/pages')
+  // If you don't have too many pages or simply prefer to generate
+  // all pages at build time, to you can uncomment this code below.
+
+  // IMPORTANT! You MUST have at list one page published on your CMS
+
+  // const slugs: TPage[] = await fetchAPI('/pages')
+  // return {
+  //   paths: slugs.map((page) => `/pages/${page.slug}`),
+  //   fallback: true, // Needs to be `true` to enable preview mode
+  // }
 
   return {
-    paths: slugs.map((page) => `/pages/${page.slug}`),
-    fallback: true, // Needs to be `true` to enable preview mode
+    paths: [],
+    fallback: 'blocking', // `blocking` insted of `true` for better SEO https://nextjs.org/docs/basic-features/data-fetching#fallback-blocking
   }
-
-  // If you have too many articles you can pass no paths at all an generate all the pages at request time.
-  // Read more on https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation
-
-  // return {
-  //   paths: [],
-  //   fallback: 'blocking', // `blocking` insted of `true` for better SEO https://nextjs.org/docs/basic-features/data-fetching#fallback-blocking
-  // }
 }
 
 export async function getStaticProps({
