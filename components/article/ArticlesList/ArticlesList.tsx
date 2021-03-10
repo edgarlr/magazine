@@ -6,9 +6,15 @@ type Props = {
   articles: TArticle[]
   title: string
   variant?: 'default' | 'lists' | 'top'
+  className?: string
 }
 
-const ArticlesList = ({ articles, title, variant = 'default' }: Props) => {
+const ArticlesList = ({
+  articles,
+  title,
+  variant = 'default',
+  className = '',
+}: Props) => {
   const renderCards = () => {
     if (variant === 'lists') {
       return articles.map((article) => (
@@ -26,7 +32,7 @@ const ArticlesList = ({ articles, title, variant = 'default' }: Props) => {
   }
 
   return (
-    <section>
+    <section className={className}>
       <div className="mt-10 text-center py-4 font-serif text-xl border-b border-primary-50 uppercase">
         {title}
       </div>

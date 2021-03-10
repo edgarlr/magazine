@@ -31,14 +31,16 @@ function Home({
 
       <div className="lg:py-24 lg:flex lg:gap-28 lg:mx-auto">
         <ArticlesList
-          articles={articles.slice(0, 4)}
+          articles={articles.slice(0, 5)}
           title="Articulos Principales"
           variant="top"
+          className="lg:w-1/2"
         />
         <ArticlesList
-          articles={articles.slice(5, 10)}
+          articles={articles.slice(6, 11)}
           title="Artículos Más leidos"
           variant="top"
+          className="lg:w-1/2"
         />
       </div>
 

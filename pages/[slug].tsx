@@ -92,11 +92,13 @@ function CategoryPage({
             articles={articles}
             title="Articulos Principales"
             variant="top"
+            className="lg:w-1/2"
           />
           <ArticlesList
             articles={articles}
             title="Artículos Más leidos"
             variant="top"
+            className="lg:w-1/2"
           />
         </div>
 
