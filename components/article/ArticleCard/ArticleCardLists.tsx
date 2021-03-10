@@ -12,7 +12,9 @@ const ArticleCardList = ({ article }: { article: TArticle }) => {
       <Link href={`/lists/${article.slug}`}>
         <figure>
           <Image
-            src={getMediaURL(article.cover.url)}
+            src={getMediaURL(
+              article.cover.formats.medium?.url || article.cover.url
+            )}
             alt={article.cover.alternativeText || ''}
             layout="fill"
             className="object-cover"

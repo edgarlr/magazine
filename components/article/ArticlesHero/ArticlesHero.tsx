@@ -15,7 +15,9 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
           <Link href={`/articles/${articles[0].slug}`}>
             <figure>
               <Image
-                src={getMediaURL(articles[0].cover.url)}
+                src={getMediaURL(
+                  articles[0].cover.formats.medium?.url || articles[0].cover.url
+                )}
                 alt={articles[0].cover.alternativeText || ''}
                 layout="fill"
                 className="object-cover"
