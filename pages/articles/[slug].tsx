@@ -58,7 +58,7 @@ function ArticlePage({
   }
 
   return (
-    <Layout navigation={navigation}>
+    <Layout navigation={navigation} isMarkdown>
       <NextSeo
         title={article?.title}
         description={article?.description}

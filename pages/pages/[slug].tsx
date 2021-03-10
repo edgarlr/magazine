@@ -54,7 +54,7 @@ function PagesPage({
   }
 
   return (
-    <Layout navigation={navigation}>
+    <Layout navigation={navigation} isMarkdown>
       <NextSeo
         title={page?.title}
         description={page?.description}

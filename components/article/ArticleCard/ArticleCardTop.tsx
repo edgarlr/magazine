@@ -17,7 +17,7 @@ const ArticleCardTop = ({ article, index }: Props) => {
           <h3
             className={cn(
               s.title,
-              'serif leading-tight overflow-hidden max-h-28 mb-3 hover:underline'
+              'serif leading-tight overflow-hidden max-h-28 mb-3 hover:underline text-xl'
             )}
           >
             {article.title}

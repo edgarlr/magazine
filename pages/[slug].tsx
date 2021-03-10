@@ -1,9 +1,11 @@
-import { ArticlesList } from '@components/article'
+import { ArticlesCarousel, ArticlesList } from '@components/article'
 import { Hero } from '@components/common/Hero'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { NextSeo } from 'next-seo'
 import { Layout } from '@components/common/Layout'
+import { useMediaQuery } from '@lib/hooks/use-media-queries'
+import ArticlesHero from '@components/article/ArticlesHero/ArticlesHero'
 
 export async function getStaticPaths() {
   const categories: TCategory[] = await fetchAPI('/categories')
@@ -39,8 +41,9 @@ function CategoryPage({
   articles,
   navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const isTablet = useMediaQuery(1023)
   return (
-    <Layout navigation={navigation}>
+    <>
       <NextSeo
         title={category.title}
         description={category.description}
@@ -60,9 +63,34 @@ function CategoryPage({
           }),
         }}
       />
-      <Hero title={category.title} description={category.description} />
-      <ArticlesList articles={articles} title="Articles" />
-    </Layout>
+
+      <Layout navigation={navigation}>
+        <Hero title={category.title} description={category.description} />
+        {isTablet ? (
+          //Tablet and smaller devices
+          <ArticlesCarousel title="Top stories" articles={articles} />
+        ) : (
+          <ArticlesHero articles={articles} />
+        )}
+
+        <ArticlesList articles={articles} title="Recent" />
+
+        <div className="lg:py-24 lg:flex lg:gap-28 lg:mx-auto">
+          <ArticlesList
+            articles={articles}
+            title="Articulos Principales"
+            variant="top"
+          />
+          <ArticlesList
+            articles={articles}
+            title="Artículos Más leidos"
+            variant="top"
+          />
+        </div>
+
+        <ArticlesList articles={articles} title="More articles" />
+      </Layout>
+    </>
   )
 }
 
