@@ -1,14 +1,13 @@
 import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
-
 import { Article } from '@components/article'
 import { NextSeo } from 'next-seo'
 import ExitPreviewButton from '@components/common/ExitPreviewButton'
 import { Layout } from '@components/common/Layout'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import Custom404 from 'pages/404'
+import { Button } from '@components/ui/Button'
 
 export async function getStaticPaths() {
   // If you don't have too many articles you can uncomment this code and pre-build each page instead
@@ -85,11 +84,9 @@ function ArticlePage({
           }),
         }}
       />
-      <Link href={'/'}>
-        <a aria-label="Go back">
-          <ArrowLeft />
-        </a>
-      </Link>
+      <Button ariaLabel="Go back" href="/" className="-ml-2">
+        <ArrowLeft />
+      </Button>
       <Article article={article} />
       {preview && <ExitPreviewButton />}
     </Layout>

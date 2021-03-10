@@ -36,11 +36,9 @@ const Header = () => {
 
   return (
     <header className="fixed bg-secondary h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 ">
-      <Link href="/lists">
-        <a aria-label="My Bookmars">
-          <Bookmark />
-        </a>
-      </Link>
+      <Button href="/lists" ariaLabel="My bookmarks">
+        <Bookmark />
+      </Button>
       <Link href="/">
         <a className="serif text-2xl">Magazine</a>
       </Link>
