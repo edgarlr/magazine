@@ -1,4 +1,4 @@
-// social base urls
+// social base url
 export const TwitterURL = 'https://twitter.com'
 
 // Global Data
@@ -9,9 +9,8 @@ export const SOCIAL_USERNAMES = {
   twitter: 'edgarlr_',
   instagram: 'edgar.lr',
   facebook: 'edgarlr',
-  youtube: 'edgarlr',
+  youtube: null,
   linkedin: 'edgarlr',
-  email: 'edgarlr',
 }
 
 // Default SEO
