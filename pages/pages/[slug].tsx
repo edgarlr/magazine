@@ -8,18 +8,19 @@ import { Layout } from '@components/common/Layout'
 import Markdown from '@components/common/Markdown/Markdown'
 
 export async function getStaticPaths() {
-  // If you don't have too many contributors you can uncomment
-  // this code and pre-build each page instead.
-
   const slugs: TPage[] = await fetchAPI('/pages')
+
   return {
     paths: slugs.map((page) => `/pages/${page.slug}`),
-    fallback: false,
+    fallback: true, // Needs to be `true` to enable preview mode
   }
+
+  // If you have too many articles you can pass no paths at all an generate all the pages at request time.
+  // Read more on https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation
 
   // return {
   //   paths: [],
-  //   fallback: 'blocking',
+  //   fallback: 'blocking', // `blocking` insted of `true` for better SEO https://nextjs.org/docs/basic-features/data-fetching#fallback-blocking
   // }
 }
 

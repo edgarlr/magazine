@@ -10,15 +10,19 @@ import Custom404 from 'pages/404'
 import { Button } from '@components/ui/Button'
 
 export async function getStaticPaths() {
-  // If you don't have too many articles you can uncomment this code and pre-build each page instead
   const articles: TArticle[] = await fetchAPI('/articles')
+
   return {
     paths: articles.map((article) => `/articles/${article.slug}`),
-    fallback: false,
+    fallback: true, // Needs to be `true` to enable preview mode
   }
+
+  // If you have too many articles you can pass no paths at all an generate all the pages at request time.
+  // Read more on https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation
+
   // return {
   //   paths: [],
-  //   fallback: 'blocking',
+  //   fallback: 'blocking', `blocking` insted of `true` for better SEO https://nextjs.org/docs/basic-features/data-fetching#fallback-blocking
   // }
 }
 
