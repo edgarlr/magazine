@@ -1,0 +1,15 @@
+.featuredContributor {
+  @apply flex mb-10 cursor-pointer md:py-2;
+}
+
+@media screen and (min-width: 768px) {
+  .featuredContributor {
+    flex: 0 0 50%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .featuredContributor {
+    flex: 0 0 30%;
+  }
+}
