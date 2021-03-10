@@ -2,6 +2,8 @@ import Link from 'next/link'
 import SocialUrls from './SocialUrls'
 import ThemeSwitch from '../ThemeSwitch'
 import s from './Footer.module.css'
+import ExternalLink from '@components/ui/Link/ExternalLink'
+import Github from '@components/icons/Github'
 
 const Footer = ({ categories, pages }: TNavigation) => {
   return (
@@ -54,6 +56,17 @@ const Footer = ({ categories, pages }: TNavigation) => {
       <SocialUrls />
 
       <ThemeSwitch />
+
+      <ExternalLink
+        to="https://github.com/edgarlr/magazine"
+        ariaLabel="Link to source coude"
+        className="mx-auto flex items-center w-max pt-4 py-2 opacity-80 hover:opacity-100 text-sm"
+      >
+        <span className="mr-2">
+          <Github width="16" height="16" />
+        </span>
+        Source
+      </ExternalLink>
     </footer>
   )
 }
