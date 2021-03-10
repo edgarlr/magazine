@@ -87,7 +87,7 @@ function ContributorPage({
           </ExternalLink>
         )}
         {isFeatured && (
-          <p className="text-center py-2 leading-tight mt-8">
+          <p className="text-center py-2 leading-tight mt-8 lg:w-4/6 lg:mx-auto">
             {contributor?.featured?.description}
           </p>
         )}
