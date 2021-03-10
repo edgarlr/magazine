@@ -33,7 +33,9 @@ function Article({ article }: { article: TArticle | undefined }) {
 
         <div className="my-8">
           <Image
-            src={getMediaURL(article.cover.url)}
+            src={getMediaURL(
+              article.cover.formats.medium?.url || article.cover.url
+            )}
             alt={article.cover.alternativeText || ''}
             width={article.cover.width}
             height={article.cover.height}
