@@ -33,9 +33,9 @@ if (typeof importScripts === 'function') {
 
     // Google Fonts
     workbox.routing.registerRoute(
-      /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
+      /\/fonts\/.*$/i,
       new workbox.strategies.CacheFirst({
-        cacheName: 'google-fonts',
+        cacheName: 'fonts',
         plugins: [
           new workbox.cacheableResponse.CacheableResponsePlugin({
             statuses: [0, 200],
