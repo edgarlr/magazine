@@ -46,7 +46,7 @@ function CategoryPage({
   if (articles.length === 0) {
     return (
       <Layout navigation={navigation}>
-        <Hero title={category.title} description={category.description} />
+        <Hero title={category.title} />
         <div className="text-center my-auto">
           <p>There are no articles to show yet.</p>
         </div>
@@ -77,7 +77,7 @@ function CategoryPage({
       />
 
       <Layout navigation={navigation}>
-        <Hero title={category.title} description={category.description} />
+        <Hero title={category.title} />
         {isTablet ? (
           //Tablet and smaller devices
           <ArticlesCarousel title="Top stories" articles={articles} />
