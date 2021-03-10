@@ -42,6 +42,18 @@ function CategoryPage({
   navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const isTablet = useMediaQuery(1023)
+
+  if (articles.length === 0) {
+    return (
+      <Layout navigation={navigation}>
+        <Hero title={category.title} description={category.description} />
+        <div className="text-center my-auto">
+          <p>There are no articles to show yet.</p>
+        </div>
+      </Layout>
+    )
+  }
+
   return (
     <>
       <NextSeo
