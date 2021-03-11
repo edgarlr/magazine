@@ -2,7 +2,12 @@
 
 #### Live demo: [https://magazine-starter.vercel.app](https://magazine-starter.vercel.app)
 
-This starter allows you to clone and deploy a fully customizable Online Magazine with just a few clicks.
+This starter allows you to clone and deploy a fully customizable Online Magazine in just a few clicks.
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dliiwavlg/image/upload/v1615423117/magazine_he7vqh.png" width="450px" />
+</p>
+
 
 ## Features
 
@@ -17,7 +22,7 @@ This starter allows you to clone and deploy a fully customizable Online Magazine
 - Preview unpublished content.
 - Search module and hooks.
 - Static Site Generated with Next.js
-- dynamically generated sitemap
+- Dynamically generated sitemap
 - Content creation and managment from Strapi CMS (No code necessary).
 
 ## Built with:
