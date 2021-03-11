@@ -8,7 +8,6 @@ This starter allows you to clone and deploy a fully customizable Online Magazine
   <img src="https://res.cloudinary.com/dliiwavlg/image/upload/v1615423117/magazine_he7vqh.png" width="450px" />
 </p>
 
-
 ## Features
 
 - Great performance

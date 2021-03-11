@@ -1,11 +1,15 @@
 .link {
-  @apply text-sm pb-1 cursor-pointer hover:opacity-60;
+  @apply text-base cursor-pointer hover:opacity-60 lg:text-sm;
 }
 
 .ul {
   @apply flex flex-col mb-6;
 }
 
+.ul li {
+  @apply mb-2;
+}
+
 .heading {
-  @apply my-1 font-bold text-sm;
+  @apply my-2 font-bold text-base lg:text-sm;
 }
