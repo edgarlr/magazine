@@ -13,11 +13,11 @@ const Footer = ({ categories, pages }: TNavigation) => {
           <h3 className={s.heading}>Sections</h3>
           <ul className={s.ul}>
             {categories.map((category) => (
-              <Link href={`/${category.slug}`} key={category.slug}>
-                <li>
+              <li key={category.slug}>
+                <Link href={`/${category.slug}`}>
                   <a className={s.link}>{category.title}</a>
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -25,17 +25,17 @@ const Footer = ({ categories, pages }: TNavigation) => {
         <div>
           <h3 className={s.heading}>About</h3>
           <ul className={s.ul}>
-            <Link href="/contributors">
-              <li>
+            <li>
+              <Link href="/contributors">
                 <a className={s.link}>Contributors</a>
-              </li>
-            </Link>
+              </Link>
+            </li>
 
-            <Link href="/contributors">
-              <li>
+            <li>
+              <Link href="/contributors">
                 <a className={s.link}>Contact</a>
-              </li>
-            </Link>
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -43,11 +43,11 @@ const Footer = ({ categories, pages }: TNavigation) => {
           <h3 className={s.heading}>Other</h3>
           <ul className={s.ul}>
             {pages.map((page) => (
-              <Link href={`/pages/${page.slug}`} key={page.slug}>
-                <li>
+              <li key={page.slug}>
+                <Link href={`/pages/${page.slug}`}>
                   <a className={s.link}>{page.title}</a>
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
