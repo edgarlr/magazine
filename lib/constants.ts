@@ -14,31 +14,14 @@ export const SOCIAL_USERNAMES = {
 }
 
 // Default SEO
-export const SEO_DESCRIPTION = 'This is a magazine description'
+export const SEO_DESCRIPTION =
+  'All-in-one  open source digital magazine starter kit with high performance and fully customizable. '
 
 export const OG_IMAGE = {
   large: {
     url:
-      'https://res.cloudinary.com/dliiwavlg/image/upload/v1607574336/large_Frame_1_78a3c2bdca.jpg',
-    width: 1000,
-    height: 525,
-  },
-  small: {
-    url:
-      'https://res.cloudinary.com/dliiwavlg/image/upload/v1607574336/small_Frame_1_78a3c2bdca.jpg',
-    width: 500,
-    height: 263,
-  },
-  medium: {
-    url:
-      'https://res.cloudinary.com/dliiwavlg/image/upload/v1607574336/medium_Frame_1_78a3c2bdca.jpg',
-    width: 750,
-    height: 394,
-  },
-  thumbnail: {
-    url:
-      'https://res.cloudinary.com/dliiwavlg/image/upload/v1607574335/thumbnail_Frame_1_78a3c2bdca.jpg',
-    width: 245,
-    height: 129,
+      'https://res.cloudinary.com/dliiwavlg/image/upload/v1615590785/magazineog_qppjhg.jpg',
+    width: 1200,
+    height: 627,
   },
 }
