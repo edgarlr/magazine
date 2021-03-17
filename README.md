@@ -1,8 +1,8 @@
-# Online Magazine Starter Kit
+# Digital Magazine Starter Kit
 
 #### Live demo: [https://magazine-starter.vercel.app](https://magazine-starter.vercel.app)
 
-This starter allows you to clone and deploy a fully customizable Online Magazine in just a few clicks.
+This starter allows you to clone and deploy a fully customizable Digital Magazine in just a few clicks.
 
 <p align="center">
   <img src="https://res.cloudinary.com/dliiwavlg/image/upload/v1615423117/magazine_he7vqh.png" width="450px" />
@@ -73,15 +73,77 @@ To try it, create another post but before you set the status to published:
 - Fill the input with your info, the URL should look like this. `http://localhost:1337/api/:contentType-preview?secret=<your-secret>&id=:id`
 - Last, go to any article or page and click the "Preview" button
 
+### Google Analytics
+
+The projects is pre-configured to track the page views with google analytics.
+Read more on [Page views | Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/pages)
+
+You only need to set the `GA_MEASUREMENT_ID` env variable with your measurement ID.
+
+### Finding your Measurement ID
+1. Sing in to [your Analytics Account](https://analytics.google.com)
+2. Go to **Admin** and select the property you want to track from the property column.
+3. Under **Property** click on **Streams**
+4. Select or create a new stream
+5. Your measurement id will be displayed at the top of the page.
+
+### Removing Google Analytics
+If you prefer not to use Google Analytics, you can easily remove it.
+
+The tracker consist on two main sections, the initial loading of the scripts on `_document.tsx` and the onRouterChange handler on `_app.tsx.
+
+#### Removing the initial loader
+
+In `_document.tsx`, remove the two scripts inside the `HEAD` component. Make sure not to remove the entire component. The code after removing them should look like this.
+
+```jsx
+class MyDocument extends Document {
+  // ...
+  render() {
+    return (
+      <Html lang="en">
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+
+```
+
+#### Removing the onRouterChange handler
+In `_app.tsx` you can comment or remove all the code before the `return`. Remember to remove the `useEffect` and `useRouter` imports as well.
+The component after removing it should look like this.
+
+```jsx
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <UIProvider>
+      <ListProvider>
+        <Head />
+        <Component {...pageProps} />
+      </ListProvider>
+    </UIProvider>
+  )
+}
+```
+
+**NOTE**
+If you're trying to deploy to vercel the `GA_MEASUREMENT_ID` variable will still be needed, but since you have removed all the code that will use it, you can simply fill the field with dummy text.
+
+
 ## Deployment
 
 You'll need to deploy your Strapi CMS first and have your api URL.
 
 Click this button below to clone and deploy this project on [vercel](https://vercel.com).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fedgarlr%2Fmagazine&env=API_URL,PREVIEW_SECRET&envDescription=API%20Keys%20needed%20for%20your%20app%20and%20the%20preview%20mode&envLink=https%3A%2F%2Fgithub.com%2Fedgarlr%2Fmagazine%23preview-mode&project-name=magazine&repo-name=magazine&demo-title=Magazine&demo-description=Online%20Magazine%20Starter%20Kit%20using%20Next.js%20and%20Strapi%20CMS&demo-url=https%3A%2F%2Fmagazine-starter.vercel.app&demo-image=https%3A%2F%2Fres.cloudinary.com%2Fdliiwavlg%2Fimage%2Fupload%2Fv1613284152%2FScreen_Shot_2021-02-14_at_0.27.57_s3ohzu.png)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world&env=API_URL,PREVIEW_SECRET,GA_MEASUREMENT_ID&envDescription=API%20Keys%20needed%20for%20the%20application%2C%20preview%20mode%20and%20google%20analytics&envLink=https%3A%2F%2Fgithub.com%2Fedgarlr%2Fmagazine%23preview-mode&project-name=magazine&repo-name=magazine&demo-title=Digital%20Magazine&demo-description=All-in-one%20digital%20magazine%20starter%20kit.&demo-url=https%3A%2F%2Fmagazine-starter.vercel.app&demo-image=https%3A%2F%2Fres.cloudinary.com%2Fdliiwavlg%2Fimage%2Fupload%2Fv1615997486%2FScreen_Shot_2021-03-17_at_10.10.22_jle2xq.png)
 
-Or you can check the docs to [deploy Next.js](https://nextjs.org/docs/deployment).
+Or you can take a look at the docs to [deploy Next.js](https://nextjs.org/docs/deployment).
 
 Don't forget to update your environment variables:
 
