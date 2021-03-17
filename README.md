@@ -1,8 +1,8 @@
-# Online Magazine Starter Kit
+# Digital Magazine Starter Kit
 
 #### Live demo: [https://magazine-starter.vercel.app](https://magazine-starter.vercel.app)
 
-This starter allows you to clone and deploy a fully customizable Online Magazine in just a few clicks.
+This starter allows you to clone and deploy a fully customizable Digital Magazine in just a few clicks.
 
 <p align="center">
   <img src="https://res.cloudinary.com/dliiwavlg/image/upload/v1615423117/magazine_he7vqh.png" width="450px" />
@@ -79,9 +79,9 @@ You'll need to deploy your Strapi CMS first and have your api URL.
 
 Click this button below to clone and deploy this project on [vercel](https://vercel.com).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fedgarlr%2Fmagazine&env=API_URL,PREVIEW_SECRET&envDescription=API%20Keys%20needed%20for%20your%20app%20and%20the%20preview%20mode&envLink=https%3A%2F%2Fgithub.com%2Fedgarlr%2Fmagazine%23preview-mode&project-name=magazine&repo-name=magazine&demo-title=Magazine&demo-description=Online%20Magazine%20Starter%20Kit%20using%20Next.js%20and%20Strapi%20CMS&demo-url=https%3A%2F%2Fmagazine-starter.vercel.app&demo-image=https%3A%2F%2Fres.cloudinary.com%2Fdliiwavlg%2Fimage%2Fupload%2Fv1613284152%2FScreen_Shot_2021-02-14_at_0.27.57_s3ohzu.png)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world&env=API_URL,PREVIEW_SECRET,GA_TRACKING_ID&envDescription=API%20Keys%20needed%20for%20the%20application%2C%20preview%20mode%20and%20google%20analytics&envLink=https%3A%2F%2Fgithub.com%2Fedgarlr%2Fmagazine%23preview-mode&project-name=magazine&repo-name=magazine&demo-title=Digital%20Magazine&demo-description=All-in-one%20digital%20magazine%20starter%20kit.&demo-url=https%3A%2F%2Fmagazine-starter.vercel.app&demo-image=https%3A%2F%2Fres.cloudinary.com%2Fdliiwavlg%2Fimage%2Fupload%2Fv1615997486%2FScreen_Shot_2021-03-17_at_10.10.22_jle2xq.png)
 
-Or you can check the docs to [deploy Next.js](https://nextjs.org/docs/deployment).
+Or you can take a look at the docs to [deploy Next.js](https://nextjs.org/docs/deployment).
 
 Don't forget to update your environment variables:
 
