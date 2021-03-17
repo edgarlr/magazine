@@ -87,6 +87,53 @@ You only need to set the `GA_MEASUREMENT_ID` env variable with your measurement 
 4. Select or create a new stream
 5. Your measurement id will be displayed at the top of the page.
 
+### Removing Google Analytics
+If you prefer not to use Google Analytics, you can easily remove it.
+
+The tracker consist on two main sections, the initial loading of the scripts on `_document.tsx` and the onRouterChange handler on `_app.tsx.
+
+#### Removing the initial loader
+
+In `_document.tsx`, remove the two scripts inside the `HEAD` component. Make sure not to remove the entire component. The code after removing them should look like this.
+
+```jsx
+class MyDocument extends Document {
+  // ...
+  render() {
+    return (
+      <Html lang="en">
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+
+```
+
+#### Removing the onRouterChange handler
+In `_app.tsx` you can comment or remove all the code before the `return`. Remember to remove the `useEffect` and `useRouter` imports as well.
+The component after removing it should look like this.
+
+```jsx
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <UIProvider>
+      <ListProvider>
+        <Head />
+        <Component {...pageProps} />
+      </ListProvider>
+    </UIProvider>
+  )
+}
+```
+
+**NOTE**
+If you're trying to deploy to vercel the `GA_MEASUREMENT_ID` variable will still be needed, but since you have removed all the code that will use it, you can simply fill the field with dummy text.
+
 
 ## Deployment
 
