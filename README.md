@@ -73,6 +73,21 @@ To try it, create another post but before you set the status to published:
 - Fill the input with your info, the URL should look like this. `http://localhost:1337/api/:contentType-preview?secret=<your-secret>&id=:id`
 - Last, go to any article or page and click the "Preview" button
 
+### Google Analytics
+
+The projects is pre-configured to track the page views with google analytics.
+Read more on [Page views | Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/pages)
+
+You only need to set the `GA_MEASUREMENT_ID` env variable with your measurement ID.
+
+### Finding your Measurement ID
+1. Sing in to [your Analytics Account](https://analytics.google.com)
+2. Go to **Admin** and select the property you want to track from the property column.
+3. Under **Property** click on **Streams**
+4. Select or create a new stream
+5. Your measurement id will be displayed at the top of the page.
+
+
 ## Deployment
 
 You'll need to deploy your Strapi CMS first and have your api URL.
