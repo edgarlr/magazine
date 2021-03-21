@@ -23,6 +23,7 @@ This starter allows you to clone and deploy a fully customizable Digital Magazin
 - Static Site Generated with Next.js
 - Dynamically generated sitemap
 - Content creation and managment from Strapi CMS (No code necessary).
+- Google Analytics
 
 ## Built with:
 
@@ -81,6 +82,7 @@ Read more on [Page views | Google Analytics](https://developers.google.com/analy
 You only need to set the `GA_MEASUREMENT_ID` env variable with your measurement ID.
 
 ### Finding your Measurement ID
+
 1. Sing in to [your Analytics Account](https://analytics.google.com)
 2. Go to **Admin** and select the property you want to track from the property column.
 3. Under **Property** click on **Streams**
@@ -88,9 +90,10 @@ You only need to set the `GA_MEASUREMENT_ID` env variable with your measurement 
 5. Your measurement id will be displayed at the top of the page.
 
 ### Removing Google Analytics
+
 If you prefer not to use Google Analytics, you can easily remove it.
 
-The tracker consist on two main sections, the initial loading of the scripts on `_document.tsx` and the onRouterChange handler on `_app.tsx.
+The tracker consist on two main sections, the initial loading of the scripts on `_document.tsx` and the onRouterChange handler on `\_app.tsx.
 
 #### Removing the initial loader
 
@@ -111,10 +114,10 @@ class MyDocument extends Document {
     )
   }
 }
-
 ```
 
 #### Removing the onRouterChange handler
+
 In `_app.tsx` you can comment or remove all the code before the `return`. Remember to remove the `useEffect` and `useRouter` imports as well.
 The component after removing it should look like this.
 
@@ -133,7 +136,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 **NOTE**
 If you're trying to deploy to vercel the `GA_MEASUREMENT_ID` variable will still be needed, but since you have removed all the code that will use it, you can simply fill the field with dummy text.
-
 
 ## Deployment
 
