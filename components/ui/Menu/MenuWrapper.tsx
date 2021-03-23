@@ -4,7 +4,7 @@ import { MenuContext } from './use-menu-context'
 
 const MenuWrapper = ({ children }: { children: React.ReactNode }) => {
   const [isVisible, setIsVisible] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
+  const menuWrapperRef = useRef<HTMLDivElement>(null)
 
   const toggle = useCallback(() => {
     setIsVisible((oldVisible) => !oldVisible)
@@ -14,7 +14,10 @@ const MenuWrapper = ({ children }: { children: React.ReactNode }) => {
     if (!isVisible) return
 
     const onOutsideClick = (e: any) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
+      if (
+        menuWrapperRef.current &&
+        !menuWrapperRef.current.contains(e.target)
+      ) {
         toggle()
       }
     }
@@ -27,11 +30,14 @@ const MenuWrapper = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isVisible, toggle])
 
-  const value = useMemo(() => ({ isVisible, toggle }), [isVisible, toggle])
+  const value = useMemo(() => ({ isVisible, toggle, menuWrapperRef }), [
+    isVisible,
+    toggle,
+  ])
 
   return (
     <MenuContext.Provider value={value}>
-      <div className="relative" ref={menuRef}>
+      <div className="relative" ref={menuWrapperRef}>
         {children}
       </div>
     </MenuContext.Provider>

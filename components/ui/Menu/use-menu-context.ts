@@ -1,8 +1,9 @@
-import { createContext, useContext } from 'react'
+import { createContext, RefObject, useContext } from 'react'
 
 type MenuContextProps = {
   isVisible: boolean
   toggle: () => void
+  menuWrapperRef: RefObject<HTMLDivElement>
 }
 
 export const MenuContext = createContext<MenuContextProps | null>(null)
