@@ -9,19 +9,20 @@ import Custom404 from 'pages/404'
 import Twitter from '@components/icons/Twitter'
 
 export async function getStaticPaths() {
-  // If you don't have too many contributors you can uncomment
-  // this code and pre-build each page instead.
-
-  // const slugs: TContributor[] = await fetchAPI('/contributors')
-  // return {
-  //   paths: slugs.map((contributor) => `/contributors/${contributor.slug}`),
-  //   fallback: false,
-  // }
+  const slugs: TContributor[] = await fetchAPI('/contributors')
 
   return {
-    paths: [],
-    fallback: 'blocking',
+    paths: slugs.map((contributor) => `/contributors/${contributor.slug}`),
+    fallback: false,
   }
+
+  // If you have too many contributors you can pass no paths at all an generate all the pages at request time.
+  // Read more on https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation
+
+  // return {
+  //   paths: [],
+  //   fallback: 'blocking',
+  // }
 }
 
 export async function getStaticProps({
