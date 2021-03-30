@@ -28,10 +28,11 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
-    // Google Fonts
+    // Self-hosted Fonts
     workbox.routing.registerRoute(
       /\/fonts\/.*$/i,
       new workbox.strategies.CacheFirst({
@@ -81,7 +82,8 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 12 * 60 * 60, // 12 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
     // CSS Files
@@ -98,7 +100,8 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
     // JSON, XML, CSV FILES
@@ -115,7 +118,8 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
     // API Routes
@@ -132,7 +136,8 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
     // Others
@@ -153,10 +158,28 @@ if (typeof importScripts === 'function') {
       'GET'
     )
 
+    // Register 'default'
+    const defaultStrategy = new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'default',
+      plugins: [
+        new workbox.cacheableResponse.CacheableResponsePlugin({
+          statuses: [0, 200],
+        }),
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 128,
+          maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
+          purgeOnQuotaError: true, // Opt-in to automatic cleanup
+        }),
+      ],
+    })
+
     // Use a stale-while-revalidate strategy for all other requests.
-    workbox.routing.setDefaultHandler(
-      new workbox.strategies.StaleWhileRevalidate()
-    )
+    workbox.routing.setDefaultHandler((args) => {
+      if (args.event.request.method === 'GET') {
+        return defaultStrategy.handle(args)
+      }
+      return fetch(args.event.request)
+    })
 
     // Fallback page
     workbox.routing.setCatchHandler(async ({ event }) => {
@@ -166,6 +189,7 @@ if (typeof importScripts === 'function') {
       return Response.error()
     })
   } else {
-    // console.log('Workbox could not be loaded. No Offline support');
+    /* eslint-disable no-console */
+    console.log('Workbox could not be loaded. No Offline support')
   }
 }
