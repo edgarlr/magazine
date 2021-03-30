@@ -159,7 +159,7 @@ if (typeof importScripts === 'function') {
     )
 
     // Register 'default'
-    const defaultStrategy = workbox.strategies.StaleWhileRevalidate({
+    const defaultStrategy = new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'default',
       plugins: [
         new workbox.cacheableResponse.CacheableResponsePlugin({
