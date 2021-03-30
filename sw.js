@@ -28,10 +28,11 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
-    // Google Fonts
+    // Self-hosted Fonts
     workbox.routing.registerRoute(
       /\/fonts\/.*$/i,
       new workbox.strategies.CacheFirst({
@@ -81,7 +82,8 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 12 * 60 * 60, // 12 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
     // CSS Files
@@ -98,7 +100,8 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
     // JSON, XML, CSV FILES
@@ -115,7 +118,8 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
     // API Routes
@@ -132,7 +136,8 @@ if (typeof importScripts === 'function') {
             maxAgeSeconds: 24 * 60 * 60, // 24 hours
           }),
         ],
-      })
+      }),
+      'GET'
     )
 
     // Others
