@@ -71,7 +71,7 @@ function ContributorPage({
             />
           </figure>
         )}
-        <h3 className="serif mt-0">{contributor?.name}</h3>
+        <h1 className="serif mt-0 text-2xl">{contributor?.name}</h1>
         <p className="text-sm font-serif uppercase  mb-2">
           {contributor?.role}
         </p>

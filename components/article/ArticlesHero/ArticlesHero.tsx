@@ -13,7 +13,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
       <div style={{ width: '45%' }}>
         <article className={s.hero}>
           <Link href={`/articles/${articles[0].slug}`}>
-            <a>
+            <a aria-label={`Link to ${articles[0].title}`}>
               <figure>
                 <Image
                   src={getMediaURL(
