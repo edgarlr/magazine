@@ -18,6 +18,7 @@ const Button = ({
   style,
   ariaLabel,
   href,
+  ...rest
 }: Props) => {
   if (href) {
     return (
@@ -29,6 +30,7 @@ const Button = ({
             'p-2 w-max rounded-full disabled:opacity-50 hover:bg-primary-05',
             className
           )}
+          {...rest}
         >
           {children}
         </a>
@@ -44,6 +46,7 @@ const Button = ({
         'p-2 w-max rounded-full disabled:opacity-50 hover:bg-primary-05',
         className
       )}
+      {...rest}
     >
       {children}
     </button>
