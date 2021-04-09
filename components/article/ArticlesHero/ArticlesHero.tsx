@@ -14,7 +14,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
         <article className={s.hero}>
           <Link href={`/articles/${articles[0].slug}`}>
             <a aria-label={`Link to ${articles[0].title}`}>
-              <figure>
+              <div className={s.cover}>
                 <Image
                   src={getMediaURL(
                     articles[0].cover.formats.medium?.url ||
@@ -24,7 +24,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
                   layout="fill"
                   className="object-cover"
                 />
-              </figure>
+              </div>
             </a>
           </Link>
 

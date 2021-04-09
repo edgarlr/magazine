@@ -29,7 +29,7 @@ function Home({
 
       <ArticlesList articles={articles.slice(5, 10)} title="Recent" />
 
-      <div className="lg:py-24 lg:flex lg:gap-28 lg:mx-auto">
+      <div className="lg:py-24 lg:flex lg:w-full lg:gap-28 lg:mx-auto">
         <ArticlesList
           articles={articles.slice(0, 5)}
           title="Featured"
