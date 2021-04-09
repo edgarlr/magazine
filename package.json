@@ -29,9 +29,7 @@
     "*.@(ts|tsx)": [
       "yarn lint",
       "yarn format"
-    ],
-    "*.{ts,tsx,js}": "eslint --cache --fix",
-    "*.--write": "prettier --write"
+    ]
   },
   "prettier": {
     "semi": false,
