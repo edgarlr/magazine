@@ -10,11 +10,10 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier",
-    "prettier/@typescript-eslint"
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "react"],
   "rules": {
     "react/react-in-jsx-scope": 0,
     "jsx-a11y/anchor-is-valid": 0,

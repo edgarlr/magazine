@@ -61,7 +61,12 @@ const MenuItem = ({
   }
 
   return (
-    <li className={cn(s.menuItem, { [s.menuItemActive]: active })}>
+    <li
+      role="menuitem"
+      tabIndex={-1}
+      data-selected={active ? '' : undefined}
+      className={cn(s.menuItem, { [s.menuItemActive]: active })}
+    >
       {Component}
 
       {subfix && <span className={s.subfix}>{subfix}</span>}

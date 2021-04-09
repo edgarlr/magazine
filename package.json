@@ -22,13 +22,8 @@
     "lint": "eslint . --ext .ts --ext .tsx --ext .js",
     "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --fix",
     "format": "prettier . --write",
-    "find:unused": "next-unused"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn run type-check"
-    }
+    "find:unused": "next-unused",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
@@ -66,11 +61,11 @@
   "dependencies": {
     "body-scroll-lock": "^3.1.5",
     "classnames": "^2.2.6",
-    "idb-keyval": "^3.2.0",
+    "idb-keyval": "5.0.4",
     "next": "^10.0.1",
     "next-offline": "^5.0.3",
     "next-seo": "^4.17.0",
-    "next-themes": "^0.0.10",
+    "next-themes": "0.0.14",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-markdown": "^5.0.3"
@@ -86,17 +81,16 @@
     "@typescript-eslint/parser": "^4.7.0",
     "autoprefixer": "^10.0.2",
     "eslint": "^7.13.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-prettier": "8.1.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": ">=4",
+    "husky": ">=6",
     "lint-staged": ">=10",
-    "next-unused": "^0.0.3",
+    "next-unused": "0.0.6",
     "postcss": "^8.1.10",
     "postcss-nesting": "^7.0.1",
     "prettier": "^2.1.2",
-    "stylelint-config-recommended": "^3.0.0",
     "tailwindcss": "^2.0.1",
     "typescript": "^4.0.5"
   }

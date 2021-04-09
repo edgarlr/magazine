@@ -9,7 +9,7 @@ type Props = {
 }
 
 const MenuButton = ({ children, ariaLabel, onClick = undefined }: Props) => {
-  const { toggle } = useMenuContext()
+  const { toggle, isVisible } = useMenuContext()
 
   const handleOnClick = (e: MouseEvent) => {
     onClick && onClick(e)
@@ -17,7 +17,11 @@ const MenuButton = ({ children, ariaLabel, onClick = undefined }: Props) => {
   }
 
   return (
-    <Button onClick={handleOnClick} ariaLabel={ariaLabel}>
+    <Button
+      onClick={handleOnClick}
+      ariaLabel={ariaLabel}
+      aria-expanded={isVisible ? true : undefined}
+    >
       {children}
     </Button>
   )

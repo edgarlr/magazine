@@ -10,16 +10,18 @@ const ArticleCardList = ({ article }: { article: TArticle }) => {
   return (
     <article className={s.lists}>
       <Link href={`/lists/${article.slug}`}>
-        <figure>
-          <Image
-            src={getMediaURL(
-              article.cover.formats.medium?.url || article.cover.url
-            )}
-            alt={article.cover.alternativeText || ''}
-            layout="fill"
-            className="object-cover"
-          />
-        </figure>
+        <a aria-label={`Link to ${article.title}`}>
+          <figure>
+            <Image
+              src={getMediaURL(
+                article.cover.formats.medium?.url || article.cover.url
+              )}
+              alt={article.cover.alternativeText || ''}
+              layout="fill"
+              className="object-cover"
+            />
+          </figure>
+        </a>
       </Link>
 
       <section className="pt-4">
@@ -29,14 +31,16 @@ const ArticleCardList = ({ article }: { article: TArticle }) => {
           </a>
         </Link>
         <Link href={`/lists/${article.slug}`}>
-          <h3
-            className={cn(
-              s.title,
-              'serif leading-tight overflow-hidden max-h-28 hover:underline'
-            )}
-          >
-            {article.title}
-          </h3>
+          <a>
+            <h3
+              className={cn(
+                s.title,
+                'serif leading-tight overflow-hidden max-h-28 hover:underline'
+              )}
+            >
+              {article.title}
+            </h3>
+          </a>
         </Link>
         <div className="serif text-s">
           By{' '}

@@ -19,16 +19,18 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
   return (
     <article className={rootClassName}>
       <Link href={`/articles/${article.slug}`}>
-        <figure>
-          <Image
-            src={getMediaURL(
-              article.cover.formats.medium?.url || article.cover.url
-            )}
-            alt={article.cover.alternativeText || ''}
-            layout="fill"
-            className="object-cover"
-          />
-        </figure>
+        <a>
+          <figure>
+            <Image
+              src={getMediaURL(
+                article.cover.formats.medium?.url || article.cover.url
+              )}
+              alt={article.cover.alternativeText || ''}
+              layout="fill"
+              className="object-cover"
+            />
+          </figure>
+        </a>
       </Link>
 
       <section className="pt-4">
@@ -38,14 +40,16 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
           </a>
         </Link>
         <Link href={`/articles/${article.slug}`}>
-          <h3
-            className={cn(
-              s.title,
-              'serif leading-tight overflow-hidden max-h-28 hover:underline'
-            )}
-          >
-            {article.title}
-          </h3>
+          <a>
+            <h3
+              className={cn(
+                s.title,
+                'serif leading-tight overflow-hidden max-h-28 hover:underline'
+              )}
+            >
+              {article.title}
+            </h3>
+          </a>
         </Link>
         <div className="text-sm mt-2">
           By{' '}

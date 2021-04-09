@@ -17,7 +17,7 @@ function ArticlePage() {
 
   useEffect(() => {
     const getArticle = async () => {
-      const indexedArticle: string = await get(slug?.toString() || '')
+      const indexedArticle = await get(slug?.toString() || '')
       if (!indexedArticle) return setArticle(null)
       return setArticle(JSON.parse(indexedArticle))
     }

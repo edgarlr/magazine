@@ -22,10 +22,22 @@ const Menu = ({ children, title, position = 'right' }: Props) => {
   if (isMobile) {
     return (
       <Portal id="drawer">
-        <div className={cn(s.mobileMenu, 'animate-fade-in')}>
+        <div
+          className={cn(s.mobileMenu, 'animate-fade-in')}
+          aria-labelledby="menuTitleId"
+        >
           <div className={cn(s.mobileContent, 'animate-slide-up')}>
-            <p className={s.mobileTitle}>{title}</p>
-            <ul className={s.mobileList}>{children}</ul>
+            <p className={s.mobileTitle} id="menuTitleId">
+              {title}
+            </p>
+            <ul
+              className={s.mobileList}
+              role="menu"
+              tabIndex={-1}
+              aria-labelledby="menuTitleId"
+            >
+              {children}
+            </ul>
           </div>
 
           <button onClick={toggle} className={s.closeBtn}>
@@ -39,6 +51,8 @@ const Menu = ({ children, title, position = 'right' }: Props) => {
   return (
     <Portal id="menu">
       <div
+        className={s.menu}
+        aria-labelledby="menuTitleId"
         style={
           wrapperRect
             ? {
@@ -56,12 +70,21 @@ const Menu = ({ children, title, position = 'right' }: Props) => {
               }
             : {}
         }
-        className={s.menu}
       >
-        <p className="px-6 mt-1 mx-0 mb-2 font-bold text-sm text-primary">
+        <p
+          className="px-6 mt-1 mx-0 mb-2 font-bold text-sm text-primary"
+          id="menuTitleId"
+        >
           {title}
         </p>
-        <ul className="w-full m-0 p-0 flex flex-col rounded-2xl">{children}</ul>
+        <ul
+          role="menu"
+          tabIndex={-1}
+          className="w-full m-0 p-0 flex flex-col rounded-2xl"
+          aria-labelledby="menuTitleId"
+        >
+          {children}
+        </ul>
       </div>
     </Portal>
   )
