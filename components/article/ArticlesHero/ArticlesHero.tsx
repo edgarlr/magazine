@@ -13,16 +13,19 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
       <div style={{ width: '45%' }}>
         <article className={s.hero}>
           <Link href={`/articles/${articles[0].slug}`}>
-            <figure>
-              <Image
-                src={getMediaURL(
-                  articles[0].cover.formats.medium?.url || articles[0].cover.url
-                )}
-                alt={articles[0].cover.alternativeText || ''}
-                layout="fill"
-                className="object-cover"
-              />
-            </figure>
+            <a>
+              <figure>
+                <Image
+                  src={getMediaURL(
+                    articles[0].cover.formats.medium?.url ||
+                      articles[0].cover.url
+                  )}
+                  alt={articles[0].cover.alternativeText || ''}
+                  layout="fill"
+                  className="object-cover"
+                />
+              </figure>
+            </a>
           </Link>
 
           <section className="pt-8">
@@ -32,21 +35,23 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
               </a>
             </Link>
             <Link href={`/articles/${articles[0].slug}`}>
-              <h3
-                className={cn(
-                  s.title,
-                  'serif leading-tight overflow-hidden max-h-28 mt-4 mb-2 hover:underline'
-                )}
-              >
-                {articles[0].title}
-              </h3>
+              <a>
+                <h3
+                  className={cn(
+                    s.title,
+                    'serif leading-tight overflow-hidden max-h-28 mt-4 mb-2 hover:underline'
+                  )}
+                >
+                  {articles[0].title}
+                </h3>
+              </a>
             </Link>
             <div className="flex text-sm">
               By
               <Link href={`/contributors/${articles[0].author.slug}`}>
-                <p className="pl-1 pr-2 font-bold hover:underline">
+                <a className="pl-1 pr-2 font-bold hover:underline">
                   {articles[0].author.name}
-                </p>
+                </a>
               </Link>
               {' | '}
               <Date

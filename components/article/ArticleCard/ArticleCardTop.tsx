@@ -14,30 +14,32 @@ const ArticleCardTop = ({ article, index }: Props) => {
       <div className={s.topNumber}>{index + 1}</div>
       <section>
         <Link href={`/articles/${article.slug}`}>
-          <h3
-            className={cn(
-              s.title,
-              'serif leading-tight overflow-hidden max-h-28 mb-3 hover:underline text-xl'
-            )}
-          >
-            {article.title}
-          </h3>
+          <a>
+            <h3
+              className={cn(
+                s.title,
+                'serif leading-tight overflow-hidden max-h-28 mb-3 hover:underline text-xl'
+              )}
+            >
+              {article.title}
+            </h3>
+          </a>
         </Link>
 
         <div className="text-sm flex flex-wrap">
           <p>
             By
             <Link href={`/contributors/${article.author.slug}`}>
-              <span className="pl-1 font-bold hover:underline">
+              <a className="pl-1 font-bold hover:underline">
                 {article.author.name}
-              </span>
+              </a>
             </Link>
           </p>
           <span className="mx-3">|</span>
           <Link href={`/${article.category.slug}`}>
-            <span className="text-accent hover:underline">
+            <a className="text-accent hover:underline">
               {article.category.title}
-            </span>
+            </a>
           </Link>
           <span className="mx-3">|</span>
           <Date date={article.published_at as string} />
