@@ -10,17 +10,15 @@ const ArticleCardList = ({ article }: { article: TArticle }) => {
   return (
     <article className={s.lists}>
       <Link href={`/lists/${article.slug}`}>
-        <a aria-label={`Link to ${article.title}`}>
-          <figure>
-            <Image
-              src={getMediaURL(
-                article.cover.formats.medium?.url || article.cover.url
-              )}
-              alt={article.cover.alternativeText || ''}
-              layout="fill"
-              className="object-cover"
-            />
-          </figure>
+        <a aria-label={`Link to ${article.title}`} className={s.cover}>
+          <Image
+            src={getMediaURL(
+              article.cover.formats.medium?.url || article.cover.url
+            )}
+            alt={article.cover.alternativeText || ''}
+            layout="fill"
+            className="object-cover"
+          />
         </a>
       </Link>
 
