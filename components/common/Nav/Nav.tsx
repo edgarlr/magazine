@@ -8,6 +8,7 @@ const Nav = ({ categories }: { categories: TCategory[] }) => {
   const { isHidden } = useHideOnScroll()
   return (
     <nav
+      aria-label="Categories Nav"
       className={cn(
         'overflow-x-scroll sticky flex whitespace-nowrap px-4 top-14 z-10 bg-secondary scrollbar-none transform transition-transform duration-300',
         'md:justify-center',

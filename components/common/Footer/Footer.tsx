@@ -8,7 +8,10 @@ import Github from '@components/icons/Github'
 const Footer = ({ categories, pages }: TNavigation) => {
   return (
     <footer className="block bottom-0 left-0 right-0 bg-primary-05 px-6 py-6 md:px-32 lg:px-48 xl:px-1/5">
-      <nav className="flex flex-col  mt-6 mb-6 flex-wrap md:flex-row md:justify-between">
+      <nav
+        className="flex flex-col  mt-6 mb-6 flex-wrap md:flex-row md:justify-between"
+        aria-label="Footer Nav"
+      >
         <div>
           <h3 className={s.heading}>Sections</h3>
           <ul className={s.ul}>
