@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Layout } from '@components/common/Layout'
 import Custom404 from 'pages/404'
 import Twitter from '@components/icons/Twitter'
-import { SocialProfileJsonLd } from 'next-seo'
+import { BreadcrumbJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { SITE_URL } from '@lib/constants'
 
 export async function getStaticPaths() {
@@ -80,6 +80,21 @@ function ContributorPage({
         name={contributor?.name as string}
         url={`${SITE_URL}/contributors/${contributor?.slug}`}
         sameAs={contributorSocialMedia(contributor?.urls) as []}
+      />
+
+      <BreadcrumbJsonLd
+        itemListElements={[
+          {
+            position: 1,
+            name: 'Contributors',
+            item: `${SITE_URL}/contributors`,
+          },
+          {
+            position: 2,
+            name: contributor?.name as string,
+            item: `${SITE_URL}/contributors/${contributor?.name}`,
+          },
+        ]}
       />
 
       <section className="text-center py-4">
