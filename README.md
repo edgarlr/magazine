@@ -10,8 +10,8 @@ This starter allows you to clone and deploy a fully customizable Digital Magazin
 
 ## Features
 
-- Great performance
-- SEO and Social Media friendly
+- Great performance and Accessibility
+- SEO and Social Media friendly (Open Graph and JSON-LD)
 - Responsive
 - UI Components
 - Dark and light theme
