@@ -7,6 +7,8 @@ import Image from 'next/image'
 import { Layout } from '@components/common/Layout'
 import Custom404 from 'pages/404'
 import Twitter from '@components/icons/Twitter'
+import { SocialProfileJsonLd } from 'next-seo'
+import { SITE_URL } from '@lib/constants'
 
 export async function getStaticPaths() {
   const slugs: TContributor[] = await fetchAPI('/contributors')
@@ -58,8 +60,28 @@ function ContributorPage({
     contributor?.featured?.profile_image.formats.thumbnail?.url
   )
 
+  const contributorSocialMedia = (urls: TContributor['urls']) => {
+    if (!urls) return []
+
+    const { facebook, twitter, instagram, linkedin } = urls
+
+    return [
+      facebook && `https://www.facebook.com/${facebook}`,
+      instagram && `https://instagram.com/${instagram}`,
+      linkedin && `https://www.linkedin.com/in/${linkedin}`,
+      twitter && `https://twitter.com/${twitter}`,
+    ].filter((elem) => elem !== null)
+  }
+
   return (
     <Layout>
+      <SocialProfileJsonLd
+        type="Person"
+        name={contributor?.name as string}
+        url={`${SITE_URL}/contributors/${contributor?.slug}`}
+        sameAs={contributorSocialMedia(contributor?.urls) as []}
+      />
+
       <section className="text-center py-4">
         {isFeatured && (
           <figure className="relative w-24 h-24 mx-auto my-6">
