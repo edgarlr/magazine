@@ -1,6 +1,6 @@
 .default {
   @apply cursor-pointer py-6 border-b relative;
-  & figure {
+  & .cover {
     @apply relative pb-3/5 w-full xl:pb-2/5;
   }
   & ul {
@@ -14,7 +14,7 @@
 @media screen and (min-width: 1024px) {
   .default {
     @apply flex flex-row-reverse items-center justify-between gap-20 cursor-pointer mx-auto w-5/6 py-10;
-    & figure {
+    & .cover {
       flex: 0.8;
       @apply relative lg:pb-1/4;
     }
@@ -38,7 +38,7 @@
 
 .hero {
   @apply relative cursor-pointer transition-transform transform scale-100;
-  & figure {
+  & .cover {
     @apply relative pb-3/5 w-full;
   }
   & ul {
@@ -49,7 +49,7 @@
 .lists {
   @apply cursor-pointer mb-10 py-16 border-b flex flex-row-reverse items-center justify-between relative mx-auto w-full mr-10 md:w-10/12 md:py-12;
   scroll-snap-align: start;
-  & figure {
+  & .cover {
     @apply relative pb-2/5 flex-1 xl:pb-1/4;
   }
   & section {
@@ -64,7 +64,7 @@
 .carousel {
   @apply cursor-pointer flex flex-row-reverse items-center justify-between relative min-w-full mr-10;
   scroll-snap-align: start;
-  & figure {
+  & .cover {
     @apply relative pb-2/3 flex-1 xl:pb-1/3;
   }
   & section {
