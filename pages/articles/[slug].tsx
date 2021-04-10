@@ -2,12 +2,13 @@ import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import { Article } from '@components/article'
-import { NextSeo } from 'next-seo'
+import { ArticleJsonLd, NextSeo } from 'next-seo'
 import ExitPreviewButton from '@components/common/ExitPreviewButton'
 import { Layout } from '@components/common/Layout'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import Custom404 from 'pages/404'
 import { Button } from '@components/ui/Button'
+import { SITE_LOGO, SITE_NAME, SITE_URL } from '@lib/constants'
 
 export async function getStaticPaths() {
   const articles: TArticle[] = await fetchAPI('/articles')
@@ -57,6 +58,8 @@ function ArticlePage({
     return <Custom404 />
   }
 
+  const fullURL = `${SITE_URL}/articles/${article?.slug}`
+
   return (
     <Layout navigation={navigation} isMarkdown>
       <NextSeo
@@ -65,6 +68,7 @@ function ArticlePage({
         openGraph={{
           title: article?.title,
           description: article?.description,
+          url: fullURL,
           type: 'article',
           article: {
             publishedTime: article?.published_at as string,
@@ -88,6 +92,26 @@ function ArticlePage({
           }),
         }}
       />
+      <ArticleJsonLd
+        url={fullURL}
+        title={article?.title as string}
+        datePublished={article?.published_at as string}
+        dateModified={article?.updated_at as string}
+        authorName={[article?.author.name as string]}
+        publisherName={SITE_NAME}
+        publisherLogo={SITE_LOGO}
+        description={article?.description as string}
+        // Only include images if exists
+        // This will break disabling Strapi Image Optimization
+        images={
+          article?.cover
+            ? Object.values(article.cover.formats).map((image) => {
+                return getMediaURL(image?.url)
+              })
+            : []
+        }
+      />
+
       <Button ariaLabel="Go back" href="/" className="-ml-2">
         <ArrowLeft />
       </Button>
