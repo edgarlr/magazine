@@ -4,6 +4,8 @@ export const TwitterURL = 'https://twitter.com'
 // Global Data
 export const SITE_URL = 'https://magazine-starter.vercel.app'
 export const SITE_NAME = 'Magazine'
+export const SITE_LOGO =
+  'https://res.cloudinary.com/dliiwavlg/image/upload/v1615590785/magazineog_qppjhg.jpg'
 
 export const SOCIAL_USERNAMES = {
   twitter: 'edgarlr_',
